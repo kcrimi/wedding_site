@@ -22,7 +22,7 @@ force-https: False
 
 author: "Kevin Crimi"
 lang: "en"
-title: "{ John Smith }"
+title: "Kevin Crimi"
 favicon: "/img/favicon.ico"
 description: "Blog and website of John Smith, blogging mainly for tech. Opinions expressed are mine."
 keywords: "smith, jones, personal, jekyll, theme"
