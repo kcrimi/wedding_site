@@ -20,7 +20,7 @@ force-https: True
 # HTML Head #
 #############
 
-author: "John Smith"
+author: "Kevin Crimi"
 lang: "en"
 title: "{ John Smith }"
 favicon: "/img/favicon.ico"
