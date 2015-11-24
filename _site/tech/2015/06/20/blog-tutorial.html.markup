@@ -21,7 +21,7 @@
   <meta name="description" content="Blog and website of John Smith, blogging mainly for tech. Opinions expressed are mine.">
   <meta name="author" content="John Smith">
   <meta name="keywords" content="smith, jones, personal, jekyll, theme">
-  <link rel="canonical" href="/tech/2015/06/20/blog-tutorial.html">
+  <link rel="canonical" href="//tech/2015/06/20/blog-tutorial.html">
   
   
   <title>{ John Smith }  | Setting up the Blog</title>
@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
   <!-- Custom CSS -->
-  <link href="/css/grayscale.css" rel="stylesheet">
-  <link href="/css/timeline.css" rel="stylesheet">
+  <link href="//css/grayscale.css" rel="stylesheet">
+  <link href="//css/timeline.css" rel="stylesheet">
 
   <!-- Custom Fonts -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -45,7 +45,7 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
   
-    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="//img/favicon.ico">
   
 </head>
 
@@ -64,9 +64,9 @@
                 <i class="fa fa-bars"></i>
             </button>
             
-              <a class="navbar-brand page-scroll" href="/index.html#page-top">
+              <a class="navbar-brand page-scroll" href="//index.html#page-top">
             
-            <div><img src="/img/black-lab-glass.ico" alt="">  { John Smith }</div>
+            <div><img src="//img/black-lab-glass.ico" alt="">  { John Smith }</div>
           </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -82,25 +82,25 @@
                   
                     
                       <li>
-                        <a class="page-scroll" href="/index.html#about"> About </a>
+                        <a class="page-scroll" href="//index.html#about"> About </a>
                       </li>
                     
                   
                     
                       <li>
-                        <a class="page-scroll" href="/blog/index.html"> Blog </a>
+                        <a class="page-scroll" href="//blog/index.html"> Blog </a>
                       </li>
                     
                   
                     
                       <li>
-                        <a class="page-scroll" href="/index.html#career"> Career </a>
+                        <a class="page-scroll" href="//index.html#career"> Career </a>
                       </li>
                     
                   
                     
                       <li>
-                        <a class="page-scroll" href="/index.html#contact"> Contact </a>
+                        <a class="page-scroll" href="//index.html#contact"> Contact </a>
                       </li>
                     
                   
@@ -119,9 +119,9 @@
 
           <h1><strong>Setting up the Blog</strong></h1>
           <h4><strong>20 Jun 2015</strong>
-            <small> . tech . <a href="/tech/2015/06/20/blog-tutorial.html#disqus_thread">Comments</a>
+            <small> . tech . <a href="//tech/2015/06/20/blog-tutorial.html#disqus_thread">Comments</a>
             
-              <a href="/tags/tutorial.html">#tutorial</a>
+              <a href="//tags/tutorial.html">#tutorial</a>
             
             </small>
           </h4>
@@ -168,13 +168,13 @@ disqus-shortname: "<your disqus="" username="">"
 
   
     <div style="float:left; padding: 0 5px; vertical-align:top">
-      <div class="fb-share-button" data-href="https://panossakkos.github.io/tech/2015/06/20/blog-tutorial.html" data-layout="button_count"></div>
+      <div class="fb-share-button" data-href="https://panossakkos.github.io//tech/2015/06/20/blog-tutorial.html" data-layout="button_count"></div>
     </div>
   
 
   
     <div style="float:left; padding: 0 5px; vertical-align:top">
-      <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://panossakkos.github.io/tech/2015/06/20/blog-tutorial.html" data-text="Setting up the Blog #tutorial "></a>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://panossakkos.github.io//tech/2015/06/20/blog-tutorial.html" data-text="Setting up the Blog #tutorial "></a>
   </div>
   
 
@@ -182,7 +182,7 @@ disqus-shortname: "<your disqus="" username="">"
     <div style="float:left; padding: 0 5px; vertical-align:top">
       <script type="text/javascript">reddit_newwindow='1'</script>
       <script type="text/javascript">reddit_title='Setting up the Blog'</script>
-      <script type="text/javascript">reddit_url='https://panossakkos.github.io/tech/2015/06/20/blog-tutorial.html'</script>
+      <script type="text/javascript">reddit_url='https://panossakkos.github.io//tech/2015/06/20/blog-tutorial.html'</script>
       <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script>
     </div>
   
@@ -260,7 +260,7 @@ disqus-shortname: "<your disqus="" username="">"
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="/js/grayscale.js"></script>
+<script src="//js/grayscale.js"></script>
 
 
 
