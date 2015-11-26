@@ -8,13 +8,17 @@ url: "http://www.kevincrimi.com"
 # and NOT your user repository (https://yourusername.github.io)
 # then add in the baseurl here, like this: "/repository-name"
 
-baseurl:
+# baseurl: ""
 
 google-tracking-id: "UA-35880426-4"
 
 # Forces https everywhere in your website, except when you serve it locally
 
 force-https: False
+
+# Timezones
+timezone: America/New_York
+future: true
 
 #############
 # HTML Head #
@@ -136,7 +140,7 @@ pages_list:
     nav: True
 
 # Pagination path
-paginate_path: "blog/page:num"
+paginate_path: "shows/page:num"
 
 # Enable minification SASS
 sass:

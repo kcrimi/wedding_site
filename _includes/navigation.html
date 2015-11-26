@@ -39,17 +39,17 @@
                   {% endfor %}
 
                 {% else %}
-                  <!-- Blog, Post, Tag pages-->
+                  <!-- All other pages pages-->
                   {% for p in site.pages_list %}
                     {% if p.nav %}
-                      {% if page.section-type == "blog" and p.name == "upcoming-shows" %}
-                        <!-- Blog button in blog.html doesn't refresh the page -->
+                      {% if page.section-type == "shows" and p.name == "upcoming-shows" %}
+                        <!-- Shows button in shows.html doesn't refresh the page -->
                         <li>
                           <a class="page-scroll" href="#{{ p.name }}"> {{ p.display }} </a>
                         </li>
                       {% elsif p.name == "upcoming-shows" %}
                         <li>
-                          <a class="page-scroll" href="{{site.baseurl}}/blog/index.html"> {{ p.name }} </a>
+                          <a class="page-scroll" href="{{site.baseurl}}/shows/index.html"> {{ p.name }} </a>
                         </li>
                       {% else %}
                         <li>
