@@ -90,7 +90,7 @@ events:
     description: "Orchestration and arranging in Sibelius for high quality, professional scores"
 
 # First image of the Career timeline
-# career-img: "/img/career/default.png"
+career-img: "/img/bubbles/BW_playing_guitar.png"
 
 ##################
 # Contact layout #
