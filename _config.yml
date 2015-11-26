@@ -69,18 +69,24 @@ disqus-shortname: "panossakkos"
 ###############
 
 events:
-  - image: "/img/career/spidertocat.png"
-    date: "September 2013 - Today"
-    description: "Saving the neighborhood!"
-  - image: "/img/career/baracktocat.jpg"
-    date: "September 2007 - August 2013"
-    description: "Started coding"
-  - image: "/img/career/baracktocat.jpg"
-    date: "November 2015"
-    description: "web hook set up"
+  - title: "Guitar is the greatest thing in the world"
+    image: "/img/bubbles/BW_playing_guitar.png"
+    description: "Trained in styles ranging from jazz to folk and specializing in fingerpicking, slide, and electric"
+  - title: "Effects"
+    image: "/img/bubbles/pedals.png"
+    description: "Command of wide array of guitar FX to create atmospheric textures"
+  - title: "Multi-Instrumentalist"
+    image: "/img/bubbles/multi_instrumentalist.png"
+    description: "Doubles on mandolin, pedal steel guitar, bass, drums, keys and vocals"
+  - title: "Recording/Production"
+    image: "/img/bubbles/pro_tools.png"
+    description: "Comfortable engineering in a variety of software (Pro Tools, Reason, Kontakt)"
+  - title: "Arranging"
+    image: "/img/bubbles/sibelius.png"
+    description: "Orchestration and arranging in Sibelius for high quality, professional scores"
 
 # First image of the Career timeline
-career-img: "/img/career/default.png"
+# career-img: "/img/career/default.png"
 
 ##################
 # Contact layout #
