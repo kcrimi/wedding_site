@@ -3,18 +3,23 @@
 
 <div class="pagination">
 
-  {% if paginator.previous_page and paginator.next_page%}
+  {% if paginator.previous_page or paginator.next_page %}
+    
+    <h5> {{paginator.page}} of {{paginator.total_pages}}</h5>
+
     <h4>
-        <a href="{{site.baseurl}}{{ paginator.previous_page_path }}" class="previous">Newer Posts</a>  <a href="{{site.baseurl}}{{ paginator.next_page_path }}" class="next">Older Posts</a>
-    </h4>
-  {% endif %}
+      {% if paginator.previous_page %}
+    
+        <a href="{{site.baseurl}}{{ paginator.previous_page_path }}" class="previous">Newer Shows</a>
 
-  {% if paginator.previous_page %}
-    <h4><a href="{{site.baseurl}}{{ paginator.previous_page_path }}" class="previous">Newer Posts</a></h4>
-  {% endif %}
+      {% endif %}
+  
+      {% if paginator.next_page %}
+    
+        <a href="{{site.baseurl}}{{ paginator.next_page_path }}" class="next">Older Shows</a>
+  
+      {% endif %}
 
-  {% if paginator.next_page %}
-    <h4><a href="{{site.baseurl}}{{ paginator.next_page_path }}" class="next">Older Posts</a></h4>
   {% endif %}
 
 </div>

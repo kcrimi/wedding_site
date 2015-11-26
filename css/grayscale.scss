@@ -396,3 +396,9 @@ body {
     50% { opacity:0; }
     100% { opacity:1; }
 }
+
+.pagination{
+    .previous, .next{
+        padding: 0px 20px 0px 20px
+    }
+}

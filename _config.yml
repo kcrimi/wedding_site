@@ -61,7 +61,7 @@ lines:			# You can add HTML Tags in the Text
 
 post-preview-words: 96
 
-paginate: 5
+paginate: 25
 
 fb-share: True
 twitter-share: True
@@ -140,7 +140,7 @@ pages_list:
     nav: True
 
 # Pagination path
-paginate_path: "shows/page:num"
+paginate_path: "past-shows/page:num"
 
 # Enable minification SASS
 sass:
