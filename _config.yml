@@ -125,10 +125,15 @@ social:
 # In the default page it will point to the preview of the last post
 
 pages_list:
-  About: 'about'
-  Blog: 'blog'
-  Skills: 'skills'
-  Contact: 'contact'
+  - name: 'about'
+    nav: True
+  - name: 'skills'
+    nav: True
+  - name: 'upcoming-shows'
+    display: 'upcoming shows'
+    nav: True
+  - name: 'contact'
+    nav: True
 
 # Pagination path
 paginate_path: "blog/page:num"

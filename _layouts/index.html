@@ -12,25 +12,33 @@
 
     {% include header.html %}
 
-    {% for page in site.pages %}
+    {% for p in site.pages_list %}
 
-      {% if page.section-type == "about" %}
+      {% for page in site.pages %}
 
-        {% include about.html %}
+        {% if p.name == page.section-type %}
 
-      {% elsif page.section-type == "latest-post" %}
+          {% if page.section-type == "about" %}
 
-        {% include latest-post.html %}
+            {% include about.html %}
 
-      {% elsif page.section-type == "skills" %}
+          {% elsif page.section-type == "upcoming-shows" %}
 
-        {% include skills.html %}
+            {% include upcoming-shows.html %}
 
-      {% elsif page.section-type == "contact" %}
+          {% elsif page.section-type == "skills" %}
 
-        {% include contact.html %}
+            {% include skills.html %}
 
-      {% endif %}
+          {% elsif page.section-type == "contact" %}
+
+            {% include contact.html %}
+
+          {% endif %}
+
+        {% endif %}
+
+      {% endfor %}
 
     {% endfor %}
 
