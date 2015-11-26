@@ -14,29 +14,28 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
 
-          <h1><strong>{{ page.title }}</strong></h1>
-          <h4><strong>{{ page.date | date_to_string }}</strong>
-            <small> . {{ page.category }} . <a href="{{site.baseurl}}{{page.url }}#disqus_thread">Comments</a>
-            {% for tag in page.tags %}
-              <a href="{{site.baseurl}}/tags/{{tag}}.html">#{{ tag }}</a>
-            {% endfor %}
-            </small>
-          </h4>
+          <h1><strong>
+            {% if page.title %}
+              {{ page.title }} <small> at </small>
+            {% endif %}
+            <a href = "{{page.venue-url}}"> {{page.venue}}</a>
+          </strong></h1>
+          
+          <h4><a href="{{page.artist-url}}"> <small>with</small> {{page.artist}} </a></h4>
+
+          <h3>
+            <strong>
+              {{ page.date | date_to_string }} &#8226; {{page.set-time}} 
+              {% if page.price %}
+                &#8226; {{page.price}}
+              {% endif %}
+            </strong>
+          </h3>
 
           {{ page.content | markdownify }}
 
           {% include share.html %}
 
-          {% include comments.html %}
-
-        </div>
-      </div>
-    </section>
-
-    <section id="{{ page.title }}" class="container content-section text-center">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-          {% include social-buttons.html %}
         </div>
       </div>
     </section>
