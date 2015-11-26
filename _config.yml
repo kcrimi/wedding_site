@@ -69,7 +69,7 @@ disqus-shortname: "panossakkos"
 ###############
 
 events:
-  - title: "Guitar is the greatest thing in the world"
+  - title: "Guitar"
     image: "/img/bubbles/BW_playing_guitar.png"
     description: "Trained in styles ranging from jazz to folk and specializing in fingerpicking, slide, and electric"
   - title: "Effects"
@@ -127,7 +127,7 @@ social:
 pages_list:
   About: 'about'
   Blog: 'blog'
-  Career: 'career'
+  Skills: 'skills'
   Contact: 'contact'
 
 # Pagination path
