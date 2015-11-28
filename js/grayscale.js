@@ -17,8 +17,13 @@ $(window).scroll(function() {
 $(function() {
     $('a.page-scroll').bind('click', function(event) {
         var $anchor = $(this);
+        if($anchor.attr('href') == "#page-top"){
+            $anchorOffset = 0
+        } else {
+            $anchorOffset = 0
+        }
         $('html, body').stop().animate({
-            scrollTop: $($anchor.attr('href')).offset().top
+            scrollTop: $($anchor.attr('href')).offset().top - $anchorOffset
         }, 1500, 'easeInOutExpo'
         , function(){ $anchor.blur(); });
         event.preventDefault();
