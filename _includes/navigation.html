@@ -42,12 +42,6 @@
                   <!-- All other pages pages-->
                   {% for p in site.pages_list %}
                     {% if p.nav %}
-                      {% if page.section-type == "past-shows" and p.name == "upcoming-shows" %}
-                        <!-- Shows button in shows.html doesn't refresh the page -->
-                        <li>
-                          <a class="page-scroll" href="#{{ p.name }}"> {{ p.display }} </a>
-                        </li>
-                      {% else %}
                         <li>
                           {% if p.display %}
                             <a class="page-scroll" href="{{site.baseurl}}/index.html#{{ p.name }}"> {{ p.display }} </a>
@@ -55,7 +49,6 @@
                             <a class="page-scroll" href="{{site.baseurl}}/index.html#{{ p.name }}"> {{ p.name }} </a>
                           {% endif %}
                         </li>
-                      {% endif %}
                     {% endif %}
                   {% endfor %}
                 {% endif %}
