@@ -24,8 +24,14 @@
           {% if showDate <= currentDate %}
             <h4> <strong> {{ post.date | date_to_string }} {{post.set-time}} </strong>
               <small>. {{ post.location }} .</small>
-              <strong> <a href="{{ post.venue-url }}"> {{post.venue}} </a> </strong>
-              <small> <a href="{{post.artist-url}}"> <i> w / </i> {{post.artist}} </i> </a></small>
+              <strong> <a href="{{ post.url }}">
+                {% if post.event %}
+                  {{post.event}} at {{post.venue}}
+                {% else %}
+                  {{post.venue}}
+                {% endif %}
+               </a> </strong>
+              <small> <i> w / </i> <a href="{{post.artist-url}}"> {{post.artist}} </i> </a></small>
             </h4>
           {% endif %}
 
