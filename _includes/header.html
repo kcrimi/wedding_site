@@ -1,8 +1,13 @@
 
 <!-- Intro Start -->
 
+{% if page.bgImage %}}
+<header class="intro" style="background-image: url( {{page.bgImage}} )">
+{% else %}
 <header class="intro">
+{% endif %}
     <div class="intro-body">
+    <p>{{ bgImage }}</p>
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">

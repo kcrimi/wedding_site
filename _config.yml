@@ -36,7 +36,7 @@ keywords: "guitar, kevin crimi, music, new york, pedal steel, folk, americana"
 ################
 
 black-favicon: "/img/guitar.ico"
-background-img: "../img/bg_pedal_board.jpg"
+background-img: "/img/bg_pedal_board.jpg"
 me-img: "/img/BW_playing_guitar2.png"
 
 ##############################
