@@ -74,7 +74,7 @@ disqus-shortname: "panossakkos"
 
 events:
   - title: "Guitar"
-    image: "/img/bubbles/BW_playing_guitar.png"
+    image: "/img/bubbles/guitar.png"
     description: "Trained in styles ranging from jazz to folk and specializing in fingerpicking, slide, and electric"
   - title: "Effects"
     image: "/img/bubbles/pedals.png"
