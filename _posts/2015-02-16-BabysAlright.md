@@ -1,13 +1,12 @@
 ---
-layout: post
-section-type: post
+event: null
+layout: show
 venue: Baby's Alright
-location: NY
+location: Brooklyn, NY
 artist: Aimee deBeer
-set-time: 7pm
+set-time: 8:30
 venue-url: http://babysallright.com/
 artist-url: http://aimeedebeer.com/
-price: "free!"
----
+price: null
 
-Come see us rock out
+---
