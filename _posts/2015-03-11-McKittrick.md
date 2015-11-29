@@ -4,7 +4,7 @@ layout: show
 venue: Manderley Bar (McKittrick Hotel)
 location: NYC, NY
 artist: Aimee deBeer
-set-time: 10:30
+set-time: 10:30pm
 venue-url: http://www.mckittrickhotel.com/
 artist-url: http://aimeedebeer.com/
 price: FREE!
