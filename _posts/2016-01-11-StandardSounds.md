@@ -1,5 +1,5 @@
 ---
-event: null
+event: Penthouse
 layout: show
 venue: The Standard
 location: East Village, NY
