@@ -36,7 +36,7 @@
           {{ page.content | markdownify }}
 
           {% for image in page.images %}
-            <img src="{{image}}">
+            <img class="show-image" src="{{image}}">
           {% endfor %}
 
           {% include share.html %}
