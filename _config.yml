@@ -32,12 +32,14 @@ description: "Your new favorite band"
 keywords: "guitar, kevin crimi, music, new york, pedal steel, folk, americana"
 
 ################
-# Intro layout #
+# Images #
 ################
 
-black-favicon: "/img/guitar.ico"
-background-img: "/img/pheasants.jpg"
-me-img: "/img/BW_playing_guitar2.png"
+background-img: "/img/pheasants/pheasants.jpg"
+banner-texture:
+  - url: "/img/pheasants/banner-texture-1.png"
+  - url: "/img/pheasants/banner-texture-2.png"
+  - url: "/img/pheasants/banner-texture-3.png"
 
 ##############################
 # Dynamic Text on the header #

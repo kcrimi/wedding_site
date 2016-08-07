@@ -36,9 +36,18 @@ h5,
 h6 {
     margin: 0 0 35px;
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: Spillmilk,"Palatino Linotype", "Book Antiqua", Palatino, serif;
     font-weight: 700;
     letter-spacing: 1px;
+}
+
+h2 {
+    font-size: 36px;
+    text-align:center;
+}
+
+h3 {
+    font-size: 30px;
 }
 
 p {
@@ -83,8 +92,8 @@ ol {
 .navbar-custom {
     margin-bottom: 0;
     text-transform: uppercase;
-    font-family: Spillmilk;
-    background-color: transparentize($dark, .66);
+    font-family: Spillmilk,"Palatino Linotype", "Book Antiqua", Palatino, serif;
+    background-color: transparentize($black, .66);
 
     /* Fix height limit and scroll for small screen and many items menu */
     max-height: 100%;
@@ -146,7 +155,7 @@ ol {
 
     .top-nav-collapse {
         padding: 0;
-        background-color: transparentize($dark, .66);
+        background-color: transparentize($black, .66);
     }
 }
 
@@ -173,9 +182,15 @@ ol {
         .intro-text {
             font-size: 18px;
         }
-        div#soundcloud_container {
-            opacity: .8;
-        }
+    }
+}
+
+
+.theme-background {
+    background: url( {{ site.banner-texture[0].url }} ) no-repeat top left;
+    background-size: 100% 100%;
+    h3 {
+        padding: 8px;
     }
 }
 
@@ -192,6 +207,9 @@ ol {
                 font-size: 25px;
             }
         }
+    }
+    .theme-background {
+        background-size: contain;
     }
 }
 
@@ -380,6 +398,7 @@ img::selection {
 img::-moz-selection {
     background: transparent;
 }
+
 
 body {
     webkit-tap-highlight-color: rgba($light, 0.2);

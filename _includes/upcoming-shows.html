@@ -1,17 +1,30 @@
 
 <!-- Upcoming Shows Preview Start -->
 
-<section id="{{ page.title }}" class="container content-section text-center">
+{% capture bannerTextures %} {{site.banner-texture | size}} {% endcapture %}
+
+<section id="{{ page.title }}" class="container content-section">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2">
-        {{ page.content | markdownify }}
-
+        {{ "## upcoming shows" | markdownify }}
 
         {% assign future_shows = false %}
         {% capture currentDate %}{{site.time | date: '%F'}}{% endcapture %}
-        {% for post in site.posts reversed limit:5 %}
+        {% assign month = null %}
+        {% assign monthCount  = 0 %}
+        {% for post in site.posts reversed %}
           {% capture showDate %}{{post.date | date: '%F'}}{% endcapture %}
           {% if showDate >= currentDate %}
+            {% capture showMonth %}{{post.date | date: '%B'}}{% endcapture %}
+            {% if month != showMonth %}
+              {% assign t = monthCount | modulo: bannerTextures %}
+              <div class="theme-background" style="background-image: url(
+                {{ site.banner-texture[t].url }})">
+                <h3 class="banner-header">{{showMonth}}</h3>
+              </div>
+              {% assign month = showMonth %}
+              {% assign monthCount = monthCount | plus:1 %}
+            {% endif %}
             {% assign future_shows = true %}
             <h4> <strong> {{ post.date | date_to_string }} {{post.set-time}} </strong>
               <small>. {{ post.location }} .</small>
