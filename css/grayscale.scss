@@ -4,6 +4,11 @@
 @import "variables";
 @import "mixins";
 
+/*
+ * Fonts
+ */
+@include font-face(Spillmilk, "spillmilk.regular", spillmilk);
+
 /*!
  * Start Bootstrap - Grayscale Bootstrap Theme (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
@@ -77,16 +82,16 @@ ol {
 
 .navbar-custom {
     margin-bottom: 0;
-    border-bottom: 1px solid rgba($light, 0.3);
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    background-color: $dark;
+    font-family: Spillmilk;
+    background-color: transparentize($dark, .66);
 
     /* Fix height limit and scroll for small screen and many items menu */
     max-height: 100%;
     overflow-y: auto;
 
     .navbar-brand {
+        font-size: 25px;
         font-weight: 700;
             &:focus {
                 outline: none;
@@ -105,7 +110,7 @@ ol {
         color: $light;
     }
     ul {
-      font-size: 14px;
+      font-size: 16px;
     }
     .nav {
         li {
@@ -141,11 +146,7 @@ ol {
 
     .top-nav-collapse {
         padding: 0;
-        background-color: $dark;
-    }
-
-    .navbar-custom.top-nav-collapse {
-        border-bottom: 1px solid rgba($light, 0.3);
+        background-color: transparentize($dark, .66);
     }
 }
 

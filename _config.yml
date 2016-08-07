@@ -10,7 +10,7 @@ url: http://music.kevincrimi.com
 
 # baseurl: ""
 
-google-tracking-id: "UA-71210506-1"
+google-tracking-id: "UA-71210506-4"
 
 # Forces https everywhere in your website, except when you serve it locally
 
@@ -26,9 +26,9 @@ future: true
 
 author: "Kevin Crimi"
 lang: "en"
-title: "Kevin Crimi"
+title: "Brightwood Patriarch"
 favicon: "/img/favicon.ico"
-description: "New York-based musician, recording engineer, arranger/composer specializing in folk, pop, and experimental music"
+description: "Your new favorite band"
 keywords: "guitar, kevin crimi, music, new york, pedal steel, folk, americana"
 
 ################
@@ -36,7 +36,7 @@ keywords: "guitar, kevin crimi, music, new york, pedal steel, folk, americana"
 ################
 
 black-favicon: "/img/guitar.ico"
-background-img: "/img/bg_pedal_board.jpg"
+background-img: "/img/pheasants.jpg"
 me-img: "/img/BW_playing_guitar2.png"
 
 ##############################
@@ -129,10 +129,6 @@ social:
 # In the default page it will point to the preview of the last post
 
 pages_list:
-  - name: 'about'
-    nav: True
-  - name: 'skills'
-    nav: True
   - name: 'upcoming-shows'
     display: 'upcoming shows'
     nav: True

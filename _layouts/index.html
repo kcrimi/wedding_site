@@ -12,35 +12,9 @@
 
     {% include header.html %}
 
-    {% for p in site.pages_list %}
+    {% include upcoming-shows.html %}
 
-      {% for page in site.pages %}
-
-        {% if p.name == page.section-type %}
-
-          {% if page.section-type == "about" %}
-
-            {% include about.html %}
-
-          {% elsif page.section-type == "upcoming-shows" %}
-
-            {% include upcoming-shows.html %}
-
-          {% elsif page.section-type == "skills" %}
-
-            {% include skills.html %}
-
-          {% elsif page.section-type == "contact" %}
-
-            {% include contact.html %}
-
-          {% endif %}
-
-        {% endif %}
-
-      {% endfor %}
-
-    {% endfor %}
+    {% include contact.html %}
 
     {% include footer.html %}
 
