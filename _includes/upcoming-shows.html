@@ -3,7 +3,7 @@
 
 {% capture bannerTextures %} {{site.banner-texture | size}} {% endcapture %}
 
-<section id="{{ page.title }}" class="container content-section">
+<section id="upcoming-shows" class="container content-section ">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2">
         {{ "## upcoming shows" | markdownify }}
@@ -26,17 +26,25 @@
               {% assign monthCount = monthCount | plus:1 %}
             {% endif %}
             {% assign future_shows = true %}
-            <h4> <strong> {{ post.date | date_to_string }} {{post.set-time}} </strong>
-              <small>. {{ post.location }} .</small>
-              <strong> <a href="{{ post.url }}">
-                {% if post.event %}
-                  {{post.event}} at {{post.venue}}
-                {% else %}
-                  {{post.venue}}
+            
+            <div class = "show-row">
+              <strong class="date"> {{ post.date | date: '%d' }} </strong>
+              
+              <a href="{{ post.url }}">
+                <strong>
+                  {% if post.event %}
+                    {{post.event}} at {{post.venue}}
+                  {% else %}
+                    {{post.venue}}
+                  {% endif %}
+                </strong>
+                 {{ post.location }}
+                <strong class="inline-block"> {{post.set-time}} </strong>
+                {% if post.artist %}                
+                  <small class="inline-block"><i> w / {{post.artist}} </i></small>
                 {% endif %}
-               </a> </strong>
-              <small> <i> w / </i> <a href="{{post.artist-url}}"> {{post.artist}} </i> </a></small>
-            </h4>
+              </a>
+            </div>
           {% endif %}
         {% endfor %}
 
