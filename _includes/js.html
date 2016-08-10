@@ -4,6 +4,19 @@
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
+
+<!-- Stratus Player Start -->
+<script type="text/javascript" src="https://stratus.soundcloud.com/stratus.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $.stratus({
+    key: "{{ site.stratus-client-id }}",
+    links: "https://soundcloud.com/kevincrimi/sets/preview"
+  });
+});
+</script>
+<!-- Stratus Player End -->
+
 <!-- Bootstrap Core JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
@@ -29,7 +42,6 @@
   <!-- Google Tracking Id End -->
 
 {% endif %}
-
 
 {% if site.disqus-shortname %}
 

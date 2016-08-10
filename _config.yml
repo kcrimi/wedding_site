@@ -20,6 +20,8 @@ force-https: False
 timezone: America/New_York
 future: true
 
+stratus-client-id: "b8973509a794b2ef46b7a0534b22e3cf"
+
 #############
 # HTML Head #
 #############

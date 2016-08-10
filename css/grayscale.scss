@@ -231,6 +231,20 @@ ol {
     }
 }
 
+.bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.player-bar {
+    opacity: .7;
+    background-color: black;
+    iframe {
+        opacity:.80
+    }
+}
+
 @media(min-width:767px) {
     .intro {
         height: 100%;
