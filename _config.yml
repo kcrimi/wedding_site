@@ -1,7 +1,7 @@
 
 # Site settings
 
-url: http://music.kevincrimi.com
+url: "http://band.kevincrimi.com"
 
 # If you're hosting your site at a Project repository on GitHub pages
 # (https://yourusername.github.io/repository-name)
@@ -20,7 +20,9 @@ force-https: False
 timezone: America/New_York
 future: true
 
-stratus-client-id: "b8973509a794b2ef46b7a0534b22e3cf"
+stratus:
+  client-id: "b8973509a794b2ef46b7a0534b22e3cf"
+  playlist-link: "https://soundcloud.com/kevincrimi/sets/preview/s-8P1y8"
 
 #############
 # HTML Head #

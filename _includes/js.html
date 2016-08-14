@@ -6,13 +6,33 @@
 
 
 <!-- Stratus Player Start -->
+
+<script src="{{site.baseurl}}/js/browser.js"></script>
+
 <script type="text/javascript" src="https://stratus.soundcloud.com/stratus.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
   $.stratus({
-    key: "{{ site.stratus-client-id }}",
-    links: "https://soundcloud.com/kevincrimi/sets/preview"
+    key: "{{ site.stratus.client-id }}",
+    links: "{{ site.stratus.playlist-link }}",
+    download: false,
+    stats: false,
+    random: true,
+    volume: 100,
+    buying: false,
+    theme: "https://stratus.soundcloud.com/themes/dark.css"
   });
+  var cssId = 'myCss';  // you could encode the css path itself to generate id..
+  if (!document.getElementById(cssId)) {
+      var head  = document.getElementsByTagName('head')[0];
+      var link  = document.createElement('link');
+      link.id   = cssId;
+      link.rel  = 'stylesheet';
+      link.type = 'text/css';
+      link.href = '{{site.baseurl}}/css/stratus-player.css';
+      link.media = 'all';
+      head.appendChild(link);
+  }
 });
 </script>
 <!-- Stratus Player End -->
