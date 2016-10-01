@@ -3,6 +3,9 @@
 
 <footer>
     <div class="container text-center">
+    {% if page.credit-text %}
+    	<p class="credit-text">{{ page.credit-text }}</p>
+    {% endif %}
         <p>Copyright &copy; {{ site.author }} {{ site.time | date: "%Y" }}</p>
     </div>
 </footer>
