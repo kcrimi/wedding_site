@@ -139,7 +139,7 @@ pages_list:
     display: 'upcoming shows'
     nav: True
   - name: 'contact'
-    nav: True
+    nav: False
 
 # Pagination path
 paginate_path: "past-shows/page:num"

@@ -20,10 +20,10 @@ $(function() {
         if($anchor.attr('href') == "#page-top"){
             $anchorOffset = 0
         } else {
-            $anchorOffset = 0
+            $anchorOffset = 160
         }
         $('html, body').stop().animate({
-            scrollTop: $($anchor.attr('href')).offset().top - $anchorOffset
+            scrollTop: $($anchor.attr('href')).offset().top + $anchorOffset
         }, 1500, 'easeInOutExpo'
         , function(){ $anchor.blur(); });
         event.preventDefault();
