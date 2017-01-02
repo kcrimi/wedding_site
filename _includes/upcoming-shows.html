@@ -49,12 +49,13 @@
         {% endfor %}
 
         {% if future_shows == false %}
-          <h4> 
-            <strong> Sorry, no upcoming shows. Stay tuned! </strong>
-          </h4>
+          <div class="theme-background" style="background-image: url(
+            {{ site.banner-texture[0].url }})">
+            <h3 class="banner-header">no upcoming shows</h3>
+          </div>
         {% endif %}
 
-        <a href="{{site.baseurl}}/past-shows"><h4><strong>View past shows</strong></h4></a>
+        <h4 class="text-center"><a href="{{site.baseurl}}/past-shows"><strong>View past shows</strong></a></h4>
 
       </div>
     </div>
