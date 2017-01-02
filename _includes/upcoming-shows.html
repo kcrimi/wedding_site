@@ -2,63 +2,60 @@
 <!-- Upcoming Shows Preview Start -->
 
 {% capture bannerTextures %} {{site.banner-texture | size}} {% endcapture %}
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2">
+    {{ "## upcoming shows" | markdownify }}
 
-<section id="upcoming-shows" class="container content-section ">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
-        {{ "## upcoming shows" | markdownify }}
-
-        {% assign future_shows = false %}
-        {% capture currentDate %}{{site.time | date: '%F'}}{% endcapture %}
-        {% assign month = null %}
-        {% assign monthCount  = 0 %}
-        {% for post in site.posts reversed %}
-          {% capture showDate %}{{post.date | date: '%F'}}{% endcapture %}
-          {% if showDate >= currentDate %}
-            {% capture showMonth %}{{post.date | date: '%B'}}{% endcapture %}
-            {% if month != showMonth %}
-              {% assign t = monthCount | modulo: bannerTextures %}
-              <div class="theme-background" style="background-image: url(
-                {{ site.banner-texture[t].url }})">
-                <h3 class="banner-header">{{showMonth}}</h3>
-              </div>
-              {% assign month = showMonth %}
-              {% assign monthCount = monthCount | plus:1 %}
-            {% endif %}
-            {% assign future_shows = true %}
-            
-            <div class = "show-row">
-              <strong class="date"> {{ post.date | date: '%d' }} </strong>
-              
-              <a href="{{ post.url }}">
-                <strong>
-                  {% if post.event %}
-                    {{post.event}} at {{post.venue}}
-                  {% else %}
-                    {{post.venue}}
-                  {% endif %}
-                </strong>
-                 {{ post.location }}
-                <strong class="inline-block"> {{post.set-time}} </strong>
-                {% if post.artist %}                
-                  <small class="inline-block"><i> w / {{post.artist}} </i></small>
-                {% endif %}
-              </a>
-            </div>
-          {% endif %}
-        {% endfor %}
-
-        {% if future_shows == false %}
+    {% assign future_shows = false %}
+    {% capture currentDate %}{{site.time | date: '%F'}}{% endcapture %}
+    {% assign month = null %}
+    {% assign monthCount  = 0 %}
+    {% for post in site.posts reversed %}
+      {% capture showDate %}{{post.date | date: '%F'}}{% endcapture %}
+      {% if showDate >= currentDate %}
+        {% capture showMonth %}{{post.date | date: '%B'}}{% endcapture %}
+        {% if month != showMonth %}
+          {% assign t = monthCount | modulo: bannerTextures %}
           <div class="theme-background" style="background-image: url(
-            {{ site.banner-texture[0].url }})">
-            <h3 class="banner-header">no upcoming shows</h3>
+            {{ site.banner-texture[t].url }})">
+            <h3 class="banner-header">{{showMonth}}</h3>
           </div>
+          {% assign month = showMonth %}
+          {% assign monthCount = monthCount | plus:1 %}
         {% endif %}
+        {% assign future_shows = true %}
+        
+        <div class = "show-row">
+          <strong class="date"> {{ post.date | date: '%d' }} </strong>
+          
+          <a href="{{ post.url }}">
+            <strong>
+              {% if post.event %}
+                {{post.event}} at {{post.venue}}
+              {% else %}
+                {{post.venue}}
+              {% endif %}
+            </strong>
+             {{ post.location }}
+            <strong class="inline-block"> {{post.set-time}} </strong>
+            {% if post.artist %}                
+              <small class="inline-block"><i> w / {{post.artist}} </i></small>
+            {% endif %}
+          </a>
+        </div>
+      {% endif %}
+    {% endfor %}
 
-        <h4 class="text-center"><a href="{{site.baseurl}}/past-shows"><strong>View past shows</strong></a></h4>
-
+    {% if future_shows == false %}
+      <div class="theme-background" style="background-image: url(
+        {{ site.banner-texture[0].url }})">
+        <h3 class="banner-header">no upcoming shows</h3>
       </div>
-    </div>
-</section>
+    {% endif %}
+
+    <h4 class="text-center"><a href="{{site.baseurl}}/past-shows"><strong>View past shows</strong></a></h4>
+
+  </div>
+</div>
 
 <!-- Upcoming Shows Preview End -->
