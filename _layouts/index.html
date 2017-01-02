@@ -13,7 +13,7 @@
     {% include header.html %}
     
     {% for p in site.pages_list %}
-    	<section id="{{ p.name }}" class="content-section text-center {% cycle '', 'even'%}">
+    	<section id="{{ p.name }}" class="content-section {% cycle '', 'even'%}">
         <div class=container>
     		{% include {{ p.name }}.html %}
         </div>
