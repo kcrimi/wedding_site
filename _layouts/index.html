@@ -11,10 +11,12 @@
     {% include navigation.html %}
 
     {% include header.html %}
-
-    {% include upcoming-shows.html %}
-
-    {% include contact.html %}
+    
+    {% for p in site.pages_list %}
+    	<section id="contact" class="container content-section text-center {% cycle '', 'even'%}">
+    		{% include {{p.name}}.html %}
+    	</section>
+    {% endfor %}
 
     {% include footer.html %}
 

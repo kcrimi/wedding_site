@@ -338,6 +338,9 @@ ol {
 }
 
 .content-section {
+    &.even {
+        background-color: darken($dark, 15%);
+    }
     padding-top: 70px;
     padding-bottom: 30px;
 }
