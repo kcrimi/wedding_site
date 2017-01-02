@@ -102,7 +102,9 @@ career-img: "/img/bubbles/BW_playing_guitar.png"
 # Contact layout #
 ##################
 
-email: "kevincrimi@gmail.com"
+email:
+  info: "Info@BrightwoodPatriarch.com"
+  booking: "Booking@BrightwoodPatriarch.com"
 
 ##################
 # Social Buttons #
@@ -139,7 +141,7 @@ pages_list:
     display: 'upcoming shows'
     nav: True
   - name: 'contact'
-    nav: False
+    nav: True
 
 # Pagination path
 paginate_path: "past-shows/page:num"
