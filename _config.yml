@@ -20,10 +20,6 @@ force-https: False
 timezone: America/New_York
 future: true
 
-stratus:
-  client-id: "b8973509a794b2ef46b7a0534b22e3cf"
-  playlist-link: "https://soundcloud.com/kevincrimi/sets/preview/s-8P1y8"
-
 #############
 # HTML Head #
 #############
@@ -40,25 +36,6 @@ keywords: "Kevin Crimi, Melissa Choi, Wedding , save the date, nashville"
 ################
 
 background-img: "/img/ice-cream-scoop.jpg"
-banner-texture:
-  - url: "/img/pheasants/banner-texture-1.png"
-  - url: "/img/pheasants/banner-texture-2.png"
-  - url: "/img/pheasants/banner-texture-3.png"
-
-##############################
-# Dynamic Text on the header #
-##############################
-
-dynamic-typing: False
-shuffle: True	# Shuffle the lines.
-loop: True
-loop-count:	False # Set False for infinite loop, or set any number for finite loop.
-type-speed:	10		# Default 10
-start-delay: 200	# Default 200
-delete-delay: 5000	# Default 5000
-lines:			# You can add HTML Tags in the Text
-  - text: "The lower you fall, the higher you'll fly."
-  - text: "Where’s your will to be weird?"  
 
 
 ########
@@ -137,8 +114,8 @@ err-img: "/img/dim_sum.jpg"
 # In the default page it will point to the preview of the last post
 
 pages_list:
-  - name: 'upcoming-shows'
-    display: 'upcoming shows'
+  - name: 'about'
+    display: 'About'
     nav: True
   - name: 'contact'
     nav: True
