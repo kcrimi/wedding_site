@@ -7,7 +7,7 @@
 /*
  * Fonts
  */
-@include font-face(Spillmilk, "spillmilk.regular", spillmilk);
+@include font-face(Garden, "garden.regular", garden);
 
 /*!
  * Start Bootstrap - Grayscale Bootstrap Theme (http://startbootstrap.com)
@@ -18,8 +18,7 @@
 body {
     width: 100%;
     height: 100%;
-    font-family: Spillmilk,"Palatino Linotype", "Book Antiqua", Palatino, serif;
-    text-transform: uppercase;
+    font-family: Garden,"Palatino Linotype", "Book Antiqua", Palatino, serif;
     color: $light;
     background-color: $primary;
 }
@@ -36,8 +35,7 @@ h4,
 h5,
 h6 {
     margin: 0 0 35px;
-    text-transform: uppercase;
-    font-family: Spillmilk,"Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-family: Garden,"Palatino Linotype", "Book Antiqua", Palatino, serif;
     font-weight: 700;
     letter-spacing: 1px;
 }
@@ -92,8 +90,7 @@ ol {
 
 .navbar-custom {
     margin-bottom: 0;
-    text-transform: uppercase;
-    font-family: Spillmilk,"Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-family: Garden,"Palatino Linotype", "Book Antiqua", Palatino, serif;
     background-color: transparentize($black, .66);
 
     /* Fix height limit and scroll for small screen and many items menu */
@@ -168,22 +165,22 @@ ol {
     text-align: center;
     color: $light;
     background: url( {{ site.background-img }} ) no-repeat bottom center scroll;
-    background-color: $primary;
+    background-color: $dark;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
     .intro-body {
+        background: radial-gradient(rgba(0, 0, 0, 0.6) , rgba(0, 128, 0, 0) 40%);
         display: table-cell;
         vertical-align: middle;
+        transform: rotate(-9deg);
         .brand-heading {
             font-size: 40px;
         }
         .intro-text {
-            font-size: 18px;
-        }
-        div#soundcloud_container {
-            opacity: .8;
+            font-size: 40px;
+            line-height: 185%;
         }
     }
 }
@@ -257,7 +254,7 @@ ol {
             }
 
             .intro-text {
-                font-size: 25px;
+                font-size: 95px;
             }
         }
     }
