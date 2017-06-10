@@ -1,7 +1,7 @@
 
 # Site settings
 
-url: "http://band.kevincrimi.com"
+url: "http://choicolateicecrimi.com"
 
 # If you're hosting your site at a Project repository on GitHub pages
 # (https://yourusername.github.io/repository-name)
@@ -10,7 +10,7 @@ url: "http://band.kevincrimi.com"
 
 # baseurl: ""
 
-google-tracking-id: "UA-71210506-4"
+google-tracking-id: "UA-71210506-5"
 
 # Forces https everywhere in your website, except when you serve it locally
 
@@ -30,16 +30,16 @@ stratus:
 
 author: "Kevin Crimi"
 lang: "en"
-title: "Brightwood Patriarch"
+title: "Melissa and Kevin's Wedding"
 favicon: "/img/favicon.ico"
 description: "Your new favorite band"
-keywords: "guitar, kevin crimi, music, new york, pedal steel, folk, americana"
+keywords: "Kevin Crimi, Melissa Choi, Wedding , save the date, nashville"
 
 ################
 # Images #
 ################
 
-background-img: "/img/pheasants/pheasants.jpg"
+background-img: "/img/ice-cream-scoop.jpg"
 banner-texture:
   - url: "/img/pheasants/banner-texture-1.png"
   - url: "/img/pheasants/banner-texture-2.png"
