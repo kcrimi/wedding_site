@@ -115,9 +115,7 @@ err-img: "/img/dim_sum.jpg"
 
 pages_list:
   - name: 'about'
-    display: 'About'
-    nav: True
-  - name: 'contact'
+    display: 'Information'
     nav: True
 
 # Pagination path
