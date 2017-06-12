@@ -171,7 +171,7 @@ ol {
     background-size: cover;
     -o-background-size: cover;
     .intro-body {
-        background: radial-gradient(rgba(0, 0, 0, 0.6) , rgba(0, 128, 0, 0) 40%);
+        background: radial-gradient(rgba(255, 255, 255, 1), rgba(0,128,0,0) 75%);
         display: table-cell;
         vertical-align: middle;
         transform: rotate(-9deg);
@@ -179,6 +179,7 @@ ol {
             font-size: 40px;
         }
         .intro-text {
+            color: $dark;
             font-size: 40px;
             line-height: 185%;
         }
@@ -249,6 +250,7 @@ ol {
         height: 100%;
         padding: 0;
         .intro-body {
+            background: radial-gradient(rgba(255,255,255,.9), rgba(0,128,0,0) 48%);
             .brand-heading {
                 font-size: 100px;
             }
@@ -337,7 +339,9 @@ ol {
 }
 
 .content-section {
+    color: #161f21;
     &.even {
+        color: #FFFFFF;
         background-color: $secondary;
     }
     padding-top: 70px;
