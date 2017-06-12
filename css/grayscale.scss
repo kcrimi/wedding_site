@@ -61,6 +61,9 @@ p {
         font-size: 20px;
         line-height: 1.6;
     }
+    h2 {
+        font-size: 68px;
+    }
 }
 
 a {
@@ -73,6 +76,11 @@ a {
     text-decoration: none;
         color: darken($primary, 20%);
     }
+}
+
+.unstylized {
+    font-family: "Times New Roman", Georgia, serif;
+    font-weight: 700;
 }
 
 .light {
@@ -164,7 +172,7 @@ ol {
     padding: 100px 0;
     text-align: center;
     color: $light;
-    background: url( {{ site.background-img }} ) no-repeat bottom center scroll;
+    background: url( {{ site.background-img }} ) no-repeat left center scroll;
     background-color: $dark;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -235,14 +243,6 @@ ol {
     position: fixed;
     bottom: 0;
     width: 100%;
-}
-
-.player-bar {
-    opacity: .7;
-    background-color: black;
-    iframe {
-        opacity:.80
-    }
 }
 
 @media(min-width:767px) {
@@ -346,6 +346,9 @@ ol {
     }
     padding-top: 70px;
     padding-bottom: 30px;
+    .important-row {
+        font-size: 19px;
+    }
 }
 
 .download-section {
@@ -364,6 +367,10 @@ ol {
     .content-section {
         padding-top: 125px;
         padding-bottom: 125px;
+        .important-row {
+            font-size: 30px;
+            line-height: 80px;
+        }
     }
 
     .download-section {
