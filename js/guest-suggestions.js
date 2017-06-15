@@ -25,36 +25,67 @@ $(document).ready(function() {
   request.send();
 
   $("#guest-name").on('input', function() {
+    selectedGuest = null
     var val = this.value;
-    console.log('input '+guests.length)
     for (var i = 0; i < guests.length; i++ ){
-      console.log('check ' + guests[i].name)
       if (guests[i].name === val) {
-        console.log('hit')
         selectedGuest = guests[i]
-        populateFields()
-        return
+        break
       }
     }
-    clearFields()
+    populateFields()
   })
 
-  var populateFields = function() {
-    console.log('update')
-    $("#address1").val(selectedGuest.address.street)
-    $("#address2").val(selectedGuest.address.extended)
-    $("#city").val(selectedGuest.address.city)
-    $("#state").val(selectedGuest.address.state)
-    $("#zip").val(selectedGuest.address.zip)
-    $("#country").val(selectedGuest.address.country)
+  $('.address-form-field').on('input', function() {
+    console.log(selectedGuest)
+    if (selectedGuest &&
+      (fieldDifferentThanData($("#address1"), selectedGuest.address.street) 
+        || fieldDifferentThanData($("#address2"), selectedGuest.address.extended)
+        || fieldDifferentThanData($("#city"), selectedGuest.address.city)
+        || fieldDifferentThanData($("#state"), selectedGuest.address.region)
+        || fieldDifferentThanData($("#zip"), selectedGuest.address.postcode)
+        || fieldDifferentThanData($("#country"), selectedGuest.address.country)
+        )) {
+      console.log('tripped')
+     $('#submit-address').prop('disabled', false)
+    } else {
+      $('#submit-address').prop('disabled', true)
+    }
+  })
+
+  var fieldDifferentThanData = function(element, data) {
+    var different = element.val() != data && !(data == "" && element.val() == null)
+    if (different) {
+      console.log(element)
+    }
+    return different
   }
 
-  var clearFields = function() {
-    $("#address1").val('')
-    $("#address2").val('')
-    $("#city").val('')
-    $("#state").val('')
-    $("#zip").val('')
-    $("#country").val('')
+  var populateFields = function() {
+    var disabled;
+    if (selectedGuest) {
+      disabled = false
+      $("#address1").val(selectedGuest.address.street)
+      $("#address2").val(selectedGuest.address.extended)
+      $("#city").val(selectedGuest.address.city)
+      $("#state").val(selectedGuest.address.region)
+      $("#zip").val(selectedGuest.address.postcode)
+      $("#country").val(selectedGuest.address.country)
+    } else {
+      disabled = true
+      $("#address1").val('')
+      $("#address2").val('')
+      $("#city").val('')
+      $("#state").val('')
+      $("#zip").val('')
+      $("#country").val('')
+    }
+    $("#address1").prop('disabled', disabled)
+    $("#address2").prop('disabled', disabled)
+    $("#city").prop('disabled', disabled)
+    $("#state").prop('disabled', disabled)
+    $("#zip").prop('disabled', disabled)
+    $("#country").prop('disabled', disabled)
   }
+
 });
