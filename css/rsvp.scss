@@ -1,2 +1,33 @@
 ---
 ---
+datalist {
+	display: none;
+}
+/* specifically hide the arrow on focus */
+input::-webkit-calendar-picker-indicator {
+	display: none;
+}
+.form-field {
+	color: white;
+    text-align: center;
+    background: transparent;
+    border-bottom-color: white;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    width: 400px;
+    line-height: 33px;
+}
+
+input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	color: whitesmoke;
+}
+input::-moz-placeholder { /* Firefox 19+ */
+	color: whitesmoke;
+}
+input:-ms-input-placeholder { /* IE 10+ */
+	color: whitesmoke;
+}
+input:-moz-placeholder { /* Firefox 18- */
+	color: whitesmoke;
+}

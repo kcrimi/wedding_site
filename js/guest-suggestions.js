@@ -1,46 +1,60 @@
-$(function() {
-  document.cookie="session=89003d6bbd6a51dc3ccc10e98f1239f1e4266b76gAJVKGY5MDQ2NzFmY2U4YzE0ZjgyYTRkMzA2YTZmNDYxNDZiOTAwNjQ3OTFxAS4=";
-  var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://www.aisleplanner.com/api/wedding/43499/guests",
-    "method": "GET",
-    "headers": {
-      "x-xsrf-token": "6defb5fe6bb0a6476a6b011857329c2617af2a0f",
-      "x-requested-with": "XMLHttpRequest",
-      "x-ap-api-version": "2017-06-12",
-      "Content-Type": "application/json",
-    }
-  }
-  $.ajax(settings).done(function (response) {
-    console.log(response);
-  });
+$(document).ready(function() {
+  var dataList = document.getElementById('guest-datalist');
+  var input = document.getElementById('guest-name');
+  var request = new XMLHttpRequest();
+  var guests = []
+  var selectedGuest;
 
-    var availableTags = [
-      "ActionScript",
-      "AppleScript",
-      "Asp",
-      "BASIC",
-      "C",
-      "C++",
-      "Clojure",
-      "COBOL",
-      "ColdFusion",
-      "Erlang",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"
-    ];
-    $( "#tags" ).autocomplete({
-      source: availableTags
-    });
-  } );
+  request.onreadystatechange = function(response) {
+    if (request.readyState === 4) {
+      if (request.status === 200) {
+        guests = JSON.parse(request.responseText);
+        guests.forEach(function(item) {
+          var option = document.createElement('option');
+          option.value = item.name
+          dataList.appendChild(option);
+        });
+        input.placeholder = "Find your name"
+      } else {
+        input.placeholder = "Couldn't load guestlist :("
+      }
+    }
+  };
+
+  request.open('GET', 'https://aisle-planner.herokuapp.com/guests', true);
+  request.send();
+
+  $("#guest-name").on('input', function() {
+    var val = this.value;
+    console.log('input '+guests.length)
+    for (var i = 0; i < guests.length; i++ ){
+      console.log('check ' + guests[i].name)
+      if (guests[i].name === val) {
+        console.log('hit')
+        selectedGuest = guests[i]
+        populateFields()
+        return
+      }
+    }
+    clearFields()
+  })
+
+  var populateFields = function() {
+    console.log('update')
+    $("#address1").val(selectedGuest.address.street)
+    $("#address2").val(selectedGuest.address.extended)
+    $("#city").val(selectedGuest.address.city)
+    $("#state").val(selectedGuest.address.state)
+    $("#zip").val(selectedGuest.address.zip)
+    $("#country").val(selectedGuest.address.country)
+  }
+
+  var clearFields = function() {
+    $("#address1").val('')
+    $("#address2").val('')
+    $("#city").val('')
+    $("#state").val('')
+    $("#zip").val('')
+    $("#country").val('')
+  }
+});
