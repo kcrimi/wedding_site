@@ -1,14 +1,14 @@
 $(document).ready(function() {
   var dataList = document.getElementById('guest-datalist');
   var input = document.getElementById('guest-name');
-  var request = new XMLHttpRequest();
+  var guestListRequest = new XMLHttpRequest();
   var guests = []
   var selectedGuest;
 
-  request.onreadystatechange = function(response) {
-    if (request.readyState === 4) {
-      if (request.status === 200) {
-        guests = JSON.parse(request.responseText);
+  guestListRequest.onreadystatechange = function(response) {
+    if (guestListRequest.readyState === XMLHttpRequest.DONE) {
+      if (guestListRequest.status === 200) {
+        guests = JSON.parse(guestListRequest.responseText);
         guests.forEach(function(item) {
           var option = document.createElement('option');
           option.value = item.name
@@ -21,8 +21,8 @@ $(document).ready(function() {
     }
   };
 
-  request.open('GET', 'https://aisle-planner.herokuapp.com/guests', true);
-  request.send();
+  guestListRequest.open('GET', 'https://aisle-planner.herokuapp.com/guests', true);
+  guestListRequest.send();
 
   $("#guest-name").on('input', function() {
     selectedGuest = null
@@ -37,7 +37,6 @@ $(document).ready(function() {
   })
 
   $('.address-form-field').on('input', function() {
-    console.log(selectedGuest)
     if (selectedGuest &&
       (fieldDifferentThanData($("#address1"), selectedGuest.address.street) 
         || fieldDifferentThanData($("#address2"), selectedGuest.address.extended)
@@ -46,17 +45,36 @@ $(document).ready(function() {
         || fieldDifferentThanData($("#zip"), selectedGuest.address.postcode)
         || fieldDifferentThanData($("#country"), selectedGuest.address.country)
         )) {
-      console.log('tripped')
      $('#submit-address').prop('disabled', false)
     } else {
       $('#submit-address').prop('disabled', true)
     }
   })
 
+  $('#submit-address').click(function() {
+    console.log('clicked')
+    const request = new XMLHttpRequest()
+    request.open('POST', 'https://aisle-planner.herokuapp.com/guests/'+selectedGuest.guests[0]+'/address', true)
+    request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    request.onreadystatechange = function() {
+      if(request.readyState == XMLHttpRequest.DONE && request.status == 200) {
+        console.log('submitted!')
+      }
+    }
+    const address = {
+      address1: $("#address1").val(),
+      address2: $("#address2").val(),
+      city: $("#city").val(),
+      state: $("#state").val(),
+      zip: $("#zip").val(),
+      country: $("#country").val()
+    }
+    request.send(JSON.stringify(address))
+  })
+
   var fieldDifferentThanData = function(element, data) {
     var different = element.val() != data && !(data == "" && element.val() == null)
     if (different) {
-      console.log(element)
     }
     return different
   }
