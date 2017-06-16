@@ -30,6 +30,7 @@ $(document).ready(function() {
     for (var i = 0; i < guests.length; i++ ){
       if (guests[i].name === val) {
         selectedGuest = guests[i]
+        console.log(selectedGuest)
         break
       }
     }
@@ -37,14 +38,7 @@ $(document).ready(function() {
   })
 
   $('.address-form-field').on('input', function() {
-    if (selectedGuest &&
-      (fieldDifferentThanData($("#address1"), selectedGuest.address.street) 
-        || fieldDifferentThanData($("#address2"), selectedGuest.address.extended)
-        || fieldDifferentThanData($("#city"), selectedGuest.address.city)
-        || fieldDifferentThanData($("#state"), selectedGuest.address.region)
-        || fieldDifferentThanData($("#zip"), selectedGuest.address.postcode)
-        || fieldDifferentThanData($("#country"), selectedGuest.address.country)
-        )) {
+    if (selectedGuest && fieldsHaveChanged()) {
      $('#submit-address').prop('disabled', false)
     } else {
       $('#submit-address').prop('disabled', true)
@@ -72,8 +66,26 @@ $(document).ready(function() {
     request.send(JSON.stringify(address))
   })
 
+  var fieldsHaveChanged = function () {
+    var changed =  
+      (!selectedGuest.address 
+        && !(!$('#address1').val() && !$('#address2').val() && !$('#city').val() 
+          && !$('#state').val() && !$('#zip').val() && !$('#country').val())
+      ) 
+      || 
+      (selectedGuest.address 
+        && (fieldDifferentThanData($("#address1"), selectedGuest.address.street) 
+        || fieldDifferentThanData($("#address2"), selectedGuest.address.extended)
+        || fieldDifferentThanData($("#city"), selectedGuest.address.city)
+        || fieldDifferentThanData($("#state"), selectedGuest.address.region)
+        || fieldDifferentThanData($("#zip"), selectedGuest.address.postcode)
+        || fieldDifferentThanData($("#country"), selectedGuest.address.country)
+        )
+      )
+      return changed
+  }
   var fieldDifferentThanData = function(element, data) {
-    var different = element.val() != data && !(data == "" && element.val() == null)
+    var different = element.val() != data && !((element.val() == null || element.val() == "") && (data == null || data == ""))
     if (different) {
     }
     return different
@@ -83,12 +95,14 @@ $(document).ready(function() {
     var disabled;
     if (selectedGuest) {
       disabled = false
-      $("#address1").val(selectedGuest.address.street)
-      $("#address2").val(selectedGuest.address.extended)
-      $("#city").val(selectedGuest.address.city)
-      $("#state").val(selectedGuest.address.region)
-      $("#zip").val(selectedGuest.address.postcode)
-      $("#country").val(selectedGuest.address.country)
+      if (selectedGuest.address) {
+        $("#address1").val(selectedGuest.address.street)
+        $("#address2").val(selectedGuest.address.extended)
+        $("#city").val(selectedGuest.address.city)
+        $("#state").val(selectedGuest.address.region)
+        $("#zip").val(selectedGuest.address.postcode)
+        $("#country").val(selectedGuest.address.country)
+      }
     } else {
       disabled = true
       $("#address1").val('')
