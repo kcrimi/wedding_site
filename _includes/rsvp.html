@@ -1,0 +1,34 @@
+
+<!-- About Start --> 
+  <script type="text/javascript" src="{{site.baseurl}}/js/guest-suggestions.js"></script>
+  <link href="{{site.baseurl}}/css/rsvp.css" rel="stylesheet">
+  <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 text-center">
+        <h2>Mailing Info</h2>
+        <div class="ui-widget">
+          <label for="guest-name">Name: </label>
+          <input class="form-field address-form-field" type="text" id="guest-name" list="guest-datalist" placeholder="Find your name">
+		  <datalist id="guest-datalist"></datalist>
+
+          <label for="tags">Address 1: </label>
+          <input class="form-field address-form-field" type="text" id="address1" placeholder="Address 1" disabled>
+
+          <label for="tags">Address 2: </label>
+          <input class="form-field address-form-field" type="text" id="address2" placeholder="Address 2" disabled>
+
+          <label for="tags">City: </label>
+          <input class="form-field address-form-field" type="text" id="city" placeholder="City" disabled>
+
+          <label for="tags">State: </label>
+          <input class="form-field address-form-field" type="text" id="state" placeholder="State" disabled>
+
+          <label for="tags">Zip: </label>
+          <input class="form-field address-form-field" type="text" id="zip" placeholder="Zip" disabled>
+
+          <label for="tags">Country: </label>
+          <input class="form-field address-form-field" type="text" id="country" placeholder="Country" disabled>
+        </div>
+        <button id="submit-address" disabled>Save Information</button>
+      </div>
+  </div>
+<!-- About End -->

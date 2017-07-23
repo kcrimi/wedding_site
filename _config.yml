@@ -117,6 +117,9 @@ pages_list:
   - name: 'about'
     display: 'Information'
     nav: True
+  - name: 'rsvp'
+    display: 'RSVP'
+    nav: True
 
 # Pagination path
 paginate_path: "past-shows/page:num"
