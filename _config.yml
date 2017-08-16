@@ -24,19 +24,19 @@ future: true
 # HTML Head #
 #############
 
-author: "Kevin Crimi"
+author: "Kevin Crimi & Melissa Choi"
 lang: "en"
-title: "Melissa and Kevin's Wedding"
+title: "Kevin & Melissa's Wedding"
 favicon: "/img/favicon.ico"
-description: "Your new favorite band"
-keywords: "Kevin Crimi, Melissa Choi, Wedding , save the date, nashville"
+description: "Information for Kevin and Melissa's wedding"
+keywords: "Kevin Crimi, Melissa Choi, wedding, save the date, Nashville, wedding info, details, choicolateicecrimi"
 
 ################
 # Images #
 ################
 
-background-img: "/img/scoop-bg.jpg"
-
+#background-img: "/img/scoop-bg.jpg"
+background-img: "/img/darkscoop.png"
 
 ########
 # Blog #
