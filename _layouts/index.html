@@ -10,8 +10,6 @@
   <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
     {% include navigation.html %}
-
-    {% include header.html %}
     
     {% for p in site.pages_list %}
     	<section id="{{ p.name }}" class="content-section {% cycle '', 'even'%}">

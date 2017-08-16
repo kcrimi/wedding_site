@@ -7,32 +7,70 @@ datalist {
 input::-webkit-calendar-picker-indicator {
 	display: none;
 }
+input:focus {
+    border-bottom: 2px solid #00ffff;
+    outline: none;
+}
+label {
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+label span {
+    font-family: serif;
+    font-style: italic;
+}
 .form-field {
-	color: white;
+	color: #000000;
     text-align: center;
-    background: transparent;
-    border-bottom-color: white;
+    border-bottom-color: #000000;
     border-left: none;
     border-right: none;
     border-top: none;
     width: 400px;
     line-height: 33px;
-    font-family: arial;
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+input::selection {
+    color: #00ffff;
 }
 
 input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-	color: whitesmoke;
+	color: #cccccc;
 }
 input::-moz-placeholder { /* Firefox 19+ */
-	color: whitesmoke;
+	color: #cccccc;
 }
 input:-ms-input-placeholder { /* IE 10+ */
-	color: whitesmoke;
+	color: #cccccc;
 }
 input:-moz-placeholder { /* Firefox 18- */
-	color: whitesmoke;
+	color: #cccccc;
 }
 
 #submit-address {
-	color:black;
+	color: #000000;
+    font-family: Helvetica, sans-serif;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+}
+#submit-address:hover, #submit-address:focus {
+    color: white;
+    background-color: #000000;
+}
+#submit-address:focus {
+    outline: none;
+    box-shadow: 0px 0px 3px 1px #00ffff;
+    border: 1px solid #00ffff;
+}
+.mailingBlurb {
+    font-size: 18px;
+    font-family: Helvetica, sans-serif;
 }
