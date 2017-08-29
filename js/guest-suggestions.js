@@ -105,6 +105,13 @@ $(document).ready(function() {
         $("#state").val(selectedGuest.address.region)
         $("#zip").val(selectedGuest.address.postcode)
         $("#country").val(selectedGuest.address.country)
+
+        $("#address1").addClass('field-enabled')
+        $("#address2").addClass('field-enabled')
+        $("#city").addClass('field-enabled')
+        $("#state").addClass('field-enabled')
+        $("#zip").addClass('field-enabled')
+        $("#country").addClass('field-enabled')
       }
     } else {
       disabled = true
@@ -114,6 +121,13 @@ $(document).ready(function() {
       $("#state").val('')
       $("#zip").val('')
       $("#country").val('')
+
+      $("#address1").removeClass('field-enabled')
+      $("#address2").removeClass('field-enabled')
+      $("#city").removeClass('field-enabled')
+      $("#state").removeClass('field-enabled')
+      $("#zip").removeClass('field-enabled')
+      $("#country").removeClass('field-enabled')
     }
     $("#address1").prop('disabled', disabled)
     $("#address2").prop('disabled', disabled)

@@ -33,8 +33,20 @@ label span {
     margin-bottom: 10px;
 }
 
+.field-enabled {
+    background-color: rgba(0, 255, 255, 0.12);
+}
+
+@media (max-width: 530px) {
+    .rsvp-field {
+        .form-field {
+            width: 100%;
+        }
+    }
+}
+
 input::selection {
-    color: #00ffff;
+    background-color: #00ffff;
 }
 
 input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
