@@ -52,8 +52,11 @@ $(document).ready(function() {
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     request.onreadystatechange = function() {
       if(request.readyState == XMLHttpRequest.DONE && request.status == 200) {
-        console.log('submitted!')
+        $('.cd-message').html("Address updated successfully!")
+      } else {
+        $('.cd-message').html("ERROR: Something went wrong. Let Kevin or Melissa know their website is broken!")
       }
+      $('.cd-popup').addClass('is-visible');
     }
     const address = {
       address1: $("#address1").val(),
@@ -120,4 +123,17 @@ $(document).ready(function() {
     $("#country").prop('disabled', disabled)
   }
 
+  //close popup
+  $('.cd-popup').on('click', function(event){
+    if( $(event.target).is('.cd-popup-close') || $(event.target).is('.cd-popup') ) {
+      event.preventDefault();
+      $(this).removeClass('is-visible');
+    }
+  });
+  //close popup when clicking the esc keyboard button
+  $(document).keyup(function(event){
+      if(event.which=='27'){
+        $('.cd-popup').removeClass('is-visible');
+      }
+    });
 });
