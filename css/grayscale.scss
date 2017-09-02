@@ -89,10 +89,6 @@ a {
     font-size: 21px;
 }
 
-.light {
-    font-weight: 400;
-}
-
 ul,
 ol {
   text-align: center;
@@ -169,10 +165,7 @@ ol {
         }
     }
 }
-.top-nav-collapse {
-    background-color: $black;
-    padding: 0
-}
+
 .down {
     height: 30px;
     -webkit-animation-duration: 4s;
@@ -230,152 +223,9 @@ ol {
         .brand-heading {
             font-size: 40px;
         }
-        .intro-text {
-            color: $dark;
-            font-size: 40px;
-            line-height: 185%;
-        }
     }
-}
-
-.theme-background {
-    background: url( {{ site.banner-texture[0].url }} ) no-repeat top left;
-    background-size: 100% 100%;
-    h3 {
-        padding: 8px;
-    }
-}
-
-.show-row { 
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom: 35px;
-    display: flex;
-    align-items: stretch;
-    .date {
-        font-size: 40px;
-        letter-spacing: 3px;
-        padding-right:10px;
-    }
-    a {
-        background: $light_grey;
-        color: $dark;
-        font-size: x-large;
-        align-items: flex-end;
-        padding: 0px 15px 0px 15px;
-        margin: 5px;
-        flex-grow: 1;
-        strong {
-            color:black;
-            font-size: 35px;
-            letter-spacing: 2px;
-        }
-        .inline-block {
-            display: inline-block;
-        }
-        &:hover,
-        &:focus {
-            background: $light;
-            strong {
-                color: darken($primary, 20%);
-            }
-        }
-    }
-}
-
-.bottom {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-@media(min-width:767px) {
-    .intro {
-        .intro-body {
-            .brand-heading {
-                font-size: 100px;
-            }
-
-            .intro-text {
-                font-size: 95px;
-            }
-        }
-    }
-    .theme-background {
-        background-size: contain;
-    }
-}
-
-.btn-circle {
-    width: 70px;
-    height: 70px;
-    margin-top: 15px;
-    padding: 7px 16px;
-    border: 2px solid $light;
-    border-radius: 35px;
-    font-size: 40px;
-    color: $light;
-    background: transparent;
-    -webkit-transition: background .3s ease-in-out;
-    -moz-transition: background .3s ease-in-out;
-    transition: background .3s ease-in-out;
-    &:hover,
-    &:focus {
-		outline: none;
-		color: $light;
-		background: rgba($light, 0.1);
-    }
-    i.animated {
-        -webkit-transition-property: -webkit-transform;
-        -webkit-transition-duration: 1s;
-        -moz-transition-property: -moz-transform;
-        -moz-transition-duration: 1s;
-    }
-    &:hover {
-        i.animated {
-            -webkit-animation-name: pulse;
-            -moz-animation-name: pulse;
-            -webkit-animation-duration: 1.5s;
-            -moz-animation-duration: 1.5s;
-            -webkit-animation-iteration-count: infinite;
-            -moz-animation-iteration-count: infinite;
-            -webkit-animation-timing-function: linear;
-            -moz-animation-timing-function: linear;
-        }
-    }
-}
-
-@-webkit-keyframes pulse {
-    from {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-    }
-
-    50% {
-        -webkit-transform: scale(1.2);
-        transform: scale(1.2);
-    }
-
-    100% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-    }
-}
-
-@-moz-keyframes pulse {
-    fom {
-        -moz-transform: scale(1);
-        transform: scale(1);
-    }
-
-    50% {
-        -moz-transform: scale(1.2);
-        transform: scale(1.2);
-    }
-
-    100% {
-        -moz-transform: scale(1);
-        transform: scale(1);
+    .addeventatc:hover {
+        border: 1px solid #00ffff;
     }
 }
 
@@ -392,35 +242,9 @@ ol {
     padding-bottom: 85px;
     border-bottom: 8px solid #00ffff;
 }
+
 .important-row {
     font-size: 15px;
-}
-
-section#about {
-    background: url( {{ site.background-img }} ) no-repeat left center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-    padding-bottom: 30px;
-    color: #ffffff;
-    margin-top: 60px;
-
-    .addeventatc:hover {
-        border: 1px solid #00ffff;
-    }
-}
-
-.download-section {
-    width: 100%;
-    padding: 50px 0;
-    color: $light;
-    background: url(../img/downloads-bg.jpg) no-repeat center center scroll;
-    background-color: $dark;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
 }
 
 @media(min-width:767px) {
@@ -430,95 +254,30 @@ section#about {
     }
 
     .intro {
+        padding-top: 100px;
         .important-row, .unstylized {
             font-size: 30px;
             line-height: 30px;
         }
-        padding-top: 100px;
-    }
-
-    .download-section {
-        padding: 100px 0;
-    }
-
-    #map {
-        height: 400px;
-        margin-top: 250px;
-    }
-    section#about {
-        padding-bottom: 30px;
-    }
-}
-
-ul.banner-social-buttons {
-    margin-top: 0;
-}
-
-@media(max-width:1199px) {
-    ul.banner-social-buttons {
-        margin-top: 15px;
+        .intro-body {
+            .brand-heading {
+                font-size: 100px;
+            }
+        }
     }
 }
 
 @media(max-width:767px) {
-    ul.banner-social-buttons {
-        li {
-            display: block;
-            margin-bottom: 20px;
-            padding: 0;
-            &:last-child {
-                margin-bottom: 0;
-            }
-        }
-    }
     .intro {
         h2 {
             margin: 25px 0px 15px;
-        }
+        }   
     }
     .important-row {
         margin-bottom: 15px;
     }
-    #about h2 {
-        margin: 25px 0 15px;
-    }
     .down {
         margin-top: 30px;
-    }
-}
-
-ul.social-buttons li a {
-    display: block;
-    width: 40px;
-    height: 40px;
-    border-radius: 100%;
-    font-size: 20px;
-    line-height: 40px;
-    outline: 0;
-    /* color: #fff; */
-    background-color: #222;
-
-    -webkit-transition: all .3s;
-    -moz-transition: all .3s;
-    transition: all .3s;
-
-    &:hover,
-    &:focus,
-    &:active {
-        color: #222;
-        background-color: darken($primary, 10%);
-    }
-}
-
-.show-image {
-    max-width: 100%;
-}
-
-footer {
-    padding: 50px 0;
-    p {
-        margin: 0;
-        font-size: 14px
     }
 }
 
