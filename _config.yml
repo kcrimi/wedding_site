@@ -38,24 +38,20 @@ keywords: "Kevin Crimi, Melissa Choi, wedding, save the date, Nashville, wedding
 #background-img: "/img/scoop-bg.jpg"
 background-img: "/img/darkscoop.png"
 
-########
-# Blog #
-########
-
-post-preview-words: 96
-
-paginate: 25
-
-fb-share: True
-twitter-share: True
-reddit-share: True
-disqus-shortname: "panossakkos"
-
 ############
 # 404 page #
 ############
 
 err-img: "/img/dim_sum.jpg"
+
+#########################
+# Sections in Home Page #
+#########################
+
+pages_list:
+  - name: 'rsvp'
+    display: 'RSVP'
+    nav: True
 
 ################################################################################
 
@@ -64,11 +60,6 @@ err-img: "/img/dim_sum.jpg"
 # Navigation bar links
 # Blog link in the blog and post pages will point to the blog.html#blog
 # In the default page it will point to the preview of the last post
-
-pages_list:
-  - name: 'rsvp'
-    display: 'RSVP'
-    nav: True
 
 # Pagination path
 paginate_path: "past-shows/page:num"
