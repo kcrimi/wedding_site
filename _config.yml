@@ -51,54 +51,6 @@ twitter-share: True
 reddit-share: True
 disqus-shortname: "panossakkos"
 
-###############
-# Life Events #
-###############
-
-events:
-  - title: "Guitar"
-    image: "/img/bubbles/guitar.png"
-    description: "Trained in styles ranging from jazz to folk and specializing in fingerpicking, slide, and electric"
-  - title: "Effects"
-    image: "/img/bubbles/pedals.png"
-    description: "Command of wide array of guitar FX to create atmospheric textures"
-  - title: "Multi-Instrumentalist"
-    image: "/img/bubbles/multi_instrumentalist.png"
-    description: "Doubles on mandolin, pedal steel guitar, bass, drums, keys and vocals"
-  - title: "Recording/Production"
-    image: "/img/bubbles/pro_tools.png"
-    description: "Comfortable engineering in a variety of software (Pro Tools, Reason, Kontakt)"
-  - title: "Arranging"
-    image: "/img/bubbles/sibelius.png"
-    description: "Orchestration and arranging in Sibelius for high quality, professional scores"
-
-# First image of the Career timeline
-career-img: "/img/bubbles/BW_playing_guitar.png"
-
-##################
-# Contact layout #
-##################
-
-email:
-  info: "Info@BrightwoodPatriarch.com"
-  booking: "Booking@BrightwoodPatriarch.com"
-
-##################
-# Social Buttons #
-##################
-
-social:
-  - title: "facebook"
-    url: "https://facebook.com/"
-  - title: "twitter"
-    url: "https://twitter.com/"
-  - title: "youtube"
-    url: "https://youtube.com/"
-  - title: "github"
-    url: "https://github.com/PanosSakkos/personal-jekyll-theme"
-  - title: "rss"
-    url: "/feed.xml"
-
 ############
 # 404 page #
 ############
@@ -114,9 +66,6 @@ err-img: "/img/dim_sum.jpg"
 # In the default page it will point to the preview of the last post
 
 pages_list:
-  - name: 'about'
-    display: 'Information'
-    nav: True
   - name: 'rsvp'
     display: 'RSVP'
     nav: True

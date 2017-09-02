@@ -43,7 +43,6 @@ h6 {
 h2 {
     font-size: 36px;
     text-align:center;
-    text-shadow: 1px 1px 1px #000000;
 }
 
 h3 {
@@ -214,20 +213,20 @@ ol {
     display: table;
     width: 100%;
     height: auto;
-    padding: 100px 0;
+    padding: 60px 0px 30px 0px;
+    margin-top: 60px;
     text-align: center;
     color: $light;
     background: url( {{ site.background-img }} ) no-repeat left center scroll;
     background-color: $dark;
+    text-shadow: 1px 1px 5px #000000;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
     .intro-body {
-        background: radial-gradient(rgba(255, 255, 255, 1), rgba(0,128,0,0) 75%);
         display: table-cell;
         vertical-align: middle;
-        transform: rotate(-9deg);
         .brand-heading {
             font-size: 40px;
         }
@@ -292,10 +291,7 @@ ol {
 
 @media(min-width:767px) {
     .intro {
-        height: 100%;
-        padding: 0;
         .intro-body {
-            background: radial-gradient(rgba(255,255,255,.9), rgba(0,128,0,0) 48%);
             .brand-heading {
                 font-size: 100px;
             }
@@ -385,6 +381,7 @@ ol {
 
 .content-section {
     color: $black;
+    background-color: #ffffff;
     &.even {
         color: #000000;
         background-color: #ffffff;
@@ -392,11 +389,11 @@ ol {
         border-bottom: 8px solid #00ffff;
     }
     padding-top: 60px;
-    padding-bottom: 30px;
-    .important-row {
-        font-size: 15px;
-        text-shadow: 1px 1px 5px #000000;
-    }
+    padding-bottom: 85px;
+    border-bottom: 8px solid #00ffff;
+}
+.important-row {
+    font-size: 15px;
 }
 
 section#about {
@@ -430,10 +427,14 @@ section#about {
     .content-section {
         padding-top: 100px;
         padding-bottom: 125px;
+    }
+
+    .intro {
         .important-row, .unstylized {
             font-size: 30px;
             line-height: 30px;
         }
+        padding-top: 100px;
     }
 
     .download-section {
@@ -470,14 +471,13 @@ ul.banner-social-buttons {
             }
         }
     }
-    .content-section {
-        .important-row {
-            margin-bottom: 15px;
+    .intro {
+        h2 {
+            margin: 25px 0px 15px;
         }
-        /*h3 {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }*/
+    }
+    .important-row {
+        margin-bottom: 15px;
     }
     #about h2 {
         margin: 25px 0 15px;
