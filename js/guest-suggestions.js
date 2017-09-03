@@ -47,24 +47,27 @@ $(document).ready(function() {
 
   $('#submit-address').click(function() {
     console.log('clicked')
+    const address = {
+      street: $("#address1").val(),
+      extended: $("#address2").val(),
+      city: $("#city").val(),
+      region: $("#state").val(),
+      postcode: $("#zip").val(),
+      country: $("#country").val()
+    }
+    const email = $("#email").val()
     const request = new XMLHttpRequest()
     request.open('POST', 'https://aisle-planner.herokuapp.com/guests/'+selectedGuest.guests[0]+'/address', true)
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     request.onreadystatechange = function() {
       if(request.readyState == XMLHttpRequest.DONE && request.status == 200) {
         $('.cd-message').html("Address updated successfully!")
+        selectedGuest.address = address
+        selectedGuest.email = email
       } else {
         $('.cd-message').html("ERROR: Something went wrong. Let Kevin or Melissa know their website is broken!")
       }
       $('.cd-popup').addClass('is-visible');
-    }
-    const address = {
-      address1: $("#address1").val(),
-      address2: $("#address2").val(),
-      city: $("#city").val(),
-      state: $("#state").val(),
-      zip: $("#zip").val(),
-      country: $("#country").val()
     }
     request.send(JSON.stringify(address))
   })
@@ -117,7 +120,7 @@ $(document).ready(function() {
           $(this).val('')
           $(this).removeClass('field-enabled')
         }
-        $(this).prop('disabled', selectedGuest != null)
+        $(this).prop('disabled', selectedGuest == null)
     })
   }
 
