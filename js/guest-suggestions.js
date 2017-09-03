@@ -97,7 +97,6 @@ $(document).ready(function() {
   var populateFields = function() {
     var disabled;
     if (selectedGuest) {
-      disabled = false
       if (selectedGuest.address) {
         $("#address1").val(selectedGuest.address.street)
         $("#address2").val(selectedGuest.address.extended)
@@ -105,36 +104,21 @@ $(document).ready(function() {
         $("#state").val(selectedGuest.address.region)
         $("#zip").val(selectedGuest.address.postcode)
         $("#country").val(selectedGuest.address.country)
-
-        $("#address1").addClass('field-enabled')
-        $("#address2").addClass('field-enabled')
-        $("#city").addClass('field-enabled')
-        $("#state").addClass('field-enabled')
-        $("#zip").addClass('field-enabled')
-        $("#country").addClass('field-enabled')
       }
-    } else {
-      disabled = true
-      $("#address1").val('')
-      $("#address2").val('')
-      $("#city").val('')
-      $("#state").val('')
-      $("#zip").val('')
-      $("#country").val('')
-
-      $("#address1").removeClass('field-enabled')
-      $("#address2").removeClass('field-enabled')
-      $("#city").removeClass('field-enabled')
-      $("#state").removeClass('field-enabled')
-      $("#zip").removeClass('field-enabled')
-      $("#country").removeClass('field-enabled')
+      if(selectedGuest.email) {
+        $("#email").val(selectedGuest.email);
+      }
     }
-    $("#address1").prop('disabled', disabled)
-    $("#address2").prop('disabled', disabled)
-    $("#city").prop('disabled', disabled)
-    $("#state").prop('disabled', disabled)
-    $("#zip").prop('disabled', disabled)
-    $("#country").prop('disabled', disabled)
+
+    $(".secondary-form-field").each(function() {
+        if (selectedGuest && selectedGuest.address) {
+          $(this).addClass('field-enabled')
+        } else {
+          $(this).val('')
+          $(this).removeClass('field-enabled')
+        }
+        $(this).prop('disabled', selectedGuest != null)
+    })
   }
 
   //close popup

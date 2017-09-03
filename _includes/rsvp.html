@@ -7,33 +7,29 @@
       <div class="col-lg-8 col-lg-offset-2 text-center">
         <h2>Mailing Info</h2>
         <p class="mailingBlurb">Hey, we want to send you an invitation eventually. Help us out by filling out your mailing address so we can be sure we're sending that invite to the right place!</p>
-        <div class="ui-widget">
+        <div class="ui-widget rsvp-form">
           <div class="rsvp-field">
-          <input class="form-field address-form-field field-enabled" type="text" id="guest-name" list="guest-datalist" placeholder="Find your name">
-		  <datalist id="guest-datalist"></datalist>
-      </div>
-          <div class="rsvp-field">
-          <input class="form-field address-form-field" type="text" id="address1" placeholder="Address 1" disabled>
+            <h3> Name </h3>
+            <p>Look up your name in the guest list</p>
+            <input class="form-field address-form-field field-enabled" type="text" id="guest-name" list="guest-datalist" placeholder="Find your name">
+  		      <datalist id="guest-datalist"></datalist>
           </div>
 
           <div class="rsvp-field">
-          <input class="form-field address-form-field" type="text" id="address2" placeholder="Address 2" disabled>
+            <h3> Email</h3>
+            <p>A good email address to send updates and info to</p>
+            <input class="form-field address-form-field secondary-form-field" type="text" id="email" placeholder="Email" disabled>
           </div>
 
           <div class="rsvp-field">
-          <input class="form-field address-form-field" type="text" id="city" placeholder="City" disabled>
-          </div>
-
-          <div class="rsvp-field">
-          <input class="form-field address-form-field" type="text" id="state" placeholder="State" disabled>
-          </div>
-
-          <div class="rsvp-field">
-          <input class="form-field address-form-field" type="text" id="zip" placeholder="Zip" disabled>
-          </div>
-
-          <div class="rsvp-field">
-          <input class="form-field address-form-field" type="text" id="country" placeholder="Country" disabled>
+            <h3> Address</h3>
+            <p>Where should we send your invitation?</p>
+            <input class="form-field address-form-field secondary-form-field" type="text" id="address1" placeholder="Address 1" disabled>
+            <input class="form-field address-form-field secondary-form-field" type="text" id="address2" placeholder="Address 2" disabled>
+            <input class="form-field address-form-field secondary-form-field" type="text" id="city" placeholder="City" disabled>
+            <input class="form-field address-form-field secondary-form-field" type="text" id="state" placeholder="State" disabled>
+            <input class="form-field address-form-field secondary-form-field" type="text" id="zip" placeholder="Zip" disabled>
+            <input class="form-field address-form-field secondary-form-field" type="text" id="country" placeholder="Country" disabled>
           </div>
         </div>
         <button id="submit-address" disabled>Save Information</button>
