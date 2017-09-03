@@ -102,6 +102,7 @@ $(document).ready(function() {
     var disabled;
     if (selectedGuest) {
       $('#guest-name').removeClass('field-enabled')
+      $('.hideable').fadeIn('slow')
       if (selectedGuest.address) {
         $("#address1").val(selectedGuest.address.street)
         $("#address2").val(selectedGuest.address.extended)
@@ -115,6 +116,7 @@ $(document).ready(function() {
       }
     } else {
       $('#guest-name').addClass('field-enabled')
+      $('.hideable').fadeOut('slow')
     }
 
     $(".secondary-form-field").each(function() {
