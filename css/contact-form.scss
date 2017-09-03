@@ -20,9 +20,9 @@ label span {
     font-style: italic;
 }
 
-.rsvp-form {
+.contact-form {
   margin-top: 40px;
-  .rsvp-field {
+  .form-section {
     margin: 30px 0px 30px;
   }
   h3 {
@@ -57,7 +57,7 @@ label span {
 
 
 @media (max-width: 530px) {
-    .rsvp-field {
+    .form-section {
         .form-field {
             width: 100%;
         }

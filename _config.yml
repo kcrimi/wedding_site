@@ -49,8 +49,8 @@ err-img: "/img/dim_sum.jpg"
 #########################
 
 pages_list:
-  - name: 'rsvp'
-    display: 'RSVP'
+  - name: 'mailing'
+    display: 'Mailing Info'
     nav: True
 
 ################################################################################
