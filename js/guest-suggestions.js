@@ -76,16 +76,17 @@ $(document).ready(function() {
     var changed =  
       (!selectedGuest.address 
         && !(!$('#address1').val() && !$('#address2').val() && !$('#city').val() 
-          && !$('#state').val() && !$('#zip').val() && !$('#country').val())
+          && !$('#state').val() && !$('#zip').val() && !$('#country').val() && !$('email').val())
       ) 
       || 
       (selectedGuest.address 
-        && (fieldDifferentThanData($("#address1"), selectedGuest.address.street) 
-        || fieldDifferentThanData($("#address2"), selectedGuest.address.extended)
-        || fieldDifferentThanData($("#city"), selectedGuest.address.city)
-        || fieldDifferentThanData($("#state"), selectedGuest.address.region)
-        || fieldDifferentThanData($("#zip"), selectedGuest.address.postcode)
-        || fieldDifferentThanData($("#country"), selectedGuest.address.country)
+        && (fieldDifferentThanData($('#address1'), selectedGuest.address.street) 
+          || fieldDifferentThanData($('#address2'), selectedGuest.address.extended)
+          || fieldDifferentThanData($('#city'), selectedGuest.address.city)
+          || fieldDifferentThanData($('#state'), selectedGuest.address.region)
+          || fieldDifferentThanData($('#zip'), selectedGuest.address.postcode)
+          || fieldDifferentThanData($('#country'), selectedGuest.address.country)
+          || fieldDifferentThanData($('#email'), selectedGuest.email)
         )
       )
       return changed
@@ -100,6 +101,7 @@ $(document).ready(function() {
   var populateFields = function() {
     var disabled;
     if (selectedGuest) {
+      $('#guest-name').removeClass('field-enabled')
       if (selectedGuest.address) {
         $("#address1").val(selectedGuest.address.street)
         $("#address2").val(selectedGuest.address.extended)
@@ -111,6 +113,8 @@ $(document).ready(function() {
       if(selectedGuest.email) {
         $("#email").val(selectedGuest.email);
       }
+    } else {
+      $('#guest-name').addClass('field-enabled')
     }
 
     $(".secondary-form-field").each(function() {
