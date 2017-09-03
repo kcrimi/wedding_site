@@ -69,7 +69,7 @@ $(document).ready(function() {
       }
       $('.cd-popup').addClass('is-visible');
     }
-    request.send(JSON.stringify(address))
+    request.send(JSON.stringify({address, email}))
   })
 
   var fieldsHaveChanged = function () {
