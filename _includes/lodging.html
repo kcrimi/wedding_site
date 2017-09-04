@@ -1,0 +1,23 @@
+<!-- Lodging Start -->
+<div class="row">
+	<div class="col-lg-8 col-lg-offset-2 text-center">
+		<h2>Lodging</h2>
+		<p>For those coming from out of town (everyone), we recommend the following places to stay. We've arranged for hotel blocks near the venue at 2 hotels.
+    	{% for l in site.lodging %}
+						<a href="{{ l.url }}">
+			<div class="row split-row">
+					<div class="row-copy">
+						<img class="row-image img-circle" src="/img/{{ l.img }}"/>
+					</div>
+					<div class="row-copy">
+						<h3>{{ l.name }}</h3>
+						<p>{{ l.description }}</p>
+						<p><b>{{ l.code }}</b></p>
+					</div>
+			</div>
+			</a>
+		{% endfor %}
+    </div>
+</div>
+<!-- Lodging End -->
+
