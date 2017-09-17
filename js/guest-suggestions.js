@@ -64,16 +64,17 @@ $(document).ready(function() {
       payload.email = $("#email").val()
     }
     const request = new XMLHttpRequest()
-    request.open('POST', 'https://aisle-planner.herokuapp.com/guests/'+selectedGuest.guests[0]+'/address', true)
+    const url = 'https://aisle-planner.herokuapp.com/guests/'+selectedGuest.guests[0]+'/address'
+    request.open('POST', url, true)
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     request.onreadystatechange = function() {
       if(request.readyState == XMLHttpRequest.DONE && request.status == 200) {
         $('.cd-message').html("Address updated successfully!")
-        if (address) {
-          selectedGuest.address = address
+        if (payload.address) {
+          selectedGuest.address = payload.address
         }
-        if (email) {
-          selectedGuest.email = email
+        if (payload.email) {
+          selectedGuest.email = payload.email
         }
       } else {
         $('.cd-message').html("ERROR: Something went wrong. Let Kevin or Melissa know their website is broken!")
@@ -81,6 +82,7 @@ $(document).ready(function() {
       $('.cd-popup').addClass('is-visible');
     }
     request.send(JSON.stringify(payload))
+    log(url, payload, {selectedGuest})
   })
 
   var fieldsHaveChanged = function () {
@@ -141,8 +143,20 @@ $(document).ready(function() {
   });
   //close popup when clicking the esc keyboard button
   $(document).keyup(function(event){
-      if(event.which=='27'){
-        $('.cd-popup').removeClass('is-visible');
+    if(event.which=='27'){
+      $('.cd-popup').removeClass('is-visible');
+    }
+  });
+
+  var log = function(endpoint, payload, context) {
+    const request = new XMLHttpRequest()
+    request.open('POST', '/log', true)
+    request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    request.onreadystatechange = function() {
+      if(this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+        this.responseText
       }
-    });
+    }
+    request.send(JSON.stringify({endpoint, payload, context}))
+  }
 });
