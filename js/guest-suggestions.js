@@ -34,7 +34,7 @@ $(document).ready(function() {
         break
       }
     }
-    populateFields()
+    setVisibleSections()
   })
 
   $('.address-form-field').on('input', function() {
@@ -46,81 +46,83 @@ $(document).ready(function() {
   })
 
   $('#submit-address').click(function() {
-    console.log('clicked')
-    const address = {
-      street: $("#address1").val(),
-      extended: $("#address2").val(),
-      city: $("#city").val(),
-      region: $("#state").val(),
-      postcode: $("#zip").val(),
-      country: $("#country").val()
+    if (!validateForm()) {
+      return
     }
-    const email = $("#email").val()
+    var payload = {}
+    if ($("#address1").val()) {
+      payload.address = {
+        street: $("#address1").val(),
+        extended: $("#address2").val(),
+        city: $("#city").val(),
+        region: $("#state").val(),
+        postcode: $("#zip").val(),
+        country: $("#country").val()
+      }
+    }
+    if ($("#email").val()) {
+      payload.email = $("#email").val()
+    }
     const request = new XMLHttpRequest()
     request.open('POST', 'https://aisle-planner.herokuapp.com/guests/'+selectedGuest.guests[0]+'/address', true)
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     request.onreadystatechange = function() {
       if(request.readyState == XMLHttpRequest.DONE && request.status == 200) {
         $('.cd-message').html("Address updated successfully!")
-        selectedGuest.address = address
-        selectedGuest.email = email
+        if (address) {
+          selectedGuest.address = address
+        }
+        if (email) {
+          selectedGuest.email = email
+        }
       } else {
         $('.cd-message').html("ERROR: Something went wrong. Let Kevin or Melissa know their website is broken!")
       }
       $('.cd-popup').addClass('is-visible');
     }
-    request.send(JSON.stringify({address, email}))
+    request.send(JSON.stringify(payload))
   })
 
   var fieldsHaveChanged = function () {
-    var changed =  
-      (!selectedGuest.address 
-        && !(!$('#address1').val() && !$('#address2').val() && !$('#city').val() 
-          && !$('#state').val() && !$('#zip').val() && !$('#country').val() && !$('email').val())
-      ) 
-      || 
-      (selectedGuest.address 
-        && (fieldDifferentThanData($('#address1'), selectedGuest.address.street) 
-          || fieldDifferentThanData($('#address2'), selectedGuest.address.extended)
-          || fieldDifferentThanData($('#city'), selectedGuest.address.city)
-          || fieldDifferentThanData($('#state'), selectedGuest.address.region)
-          || fieldDifferentThanData($('#zip'), selectedGuest.address.postcode)
-          || fieldDifferentThanData($('#country'), selectedGuest.address.country)
-          || fieldDifferentThanData($('#email'), selectedGuest.email)
-        )
-      )
-      return changed
-  }
-  var fieldDifferentThanData = function(element, data) {
-    var different = element.val() != data && !((element.val() == null || element.val() == "") && (data == null || data == ""))
-    if (different) {
-    }
-    return different
+    var changed = false
+    $(".secondary-form-field").each(function() {
+      if ($.trim($(this).val()).length > 0) {
+        changed = true
+        return
+      }
+    })
+    return changed
   }
 
-  var populateFields = function() {
+  var validateForm = function() {
+    var valid = true
+    $(".address-section > .address-form-field").each(function() {
+      if ($(this).val()) {
+        $(".address-section > .required-field").each(function() {
+          if (!$(this).val()) {
+            valid = false
+            $(this).addClass('error-field')
+          } else {
+            $(this).removeClass('error-field')
+          }
+        })
+      }
+    })
+    return valid
+  }
+
+  var setVisibleSections = function() {
     var disabled;
     if (selectedGuest) {
       $('#guest-name').removeClass('field-enabled')
       $('.hideable').fadeIn('slow')
-      if (selectedGuest.address) {
-        $("#address1").val(selectedGuest.address.street)
-        $("#address2").val(selectedGuest.address.extended)
-        $("#city").val(selectedGuest.address.city)
-        $("#state").val(selectedGuest.address.region)
-        $("#zip").val(selectedGuest.address.postcode)
-        $("#country").val(selectedGuest.address.country)
-      }
-      if(selectedGuest.email) {
-        $("#email").val(selectedGuest.email);
-      }
     } else {
       $('#guest-name').addClass('field-enabled')
       $('.hideable').fadeOut('slow')
     }
 
     $(".secondary-form-field").each(function() {
-        if (selectedGuest && selectedGuest.address) {
+        if (selectedGuest) {
           $(this).addClass('field-enabled')
         } else {
           $(this).val('')

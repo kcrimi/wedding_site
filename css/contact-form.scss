@@ -1,5 +1,9 @@
 ---
 ---
+
+@import "variables";
+@import "mixins";
+
 datalist {
 	display: none;
 }
@@ -8,7 +12,7 @@ input::-webkit-calendar-picker-indicator {
 	display: none;
 }
 input:focus {
-    border-bottom: 2px solid #00ffff;
+    border-bottom: 2px solid $primary;
     outline: none;
 }
 label {
@@ -38,9 +42,9 @@ label span {
 }
 
 .form-field {
-  color: #000000;
+  color: $black;
   text-align: center;
-  border-bottom-color: #000000;
+  border-bottom-color: $black;
   border-left: none;
   border-right: none;
   border-top: none;
@@ -52,7 +56,11 @@ label span {
 }
 
 .field-enabled {
-    background-color: rgba(0, 255, 255, 0.12);
+  background-color: rgba(0, 255, 255, 0.12);
+}
+
+.field-enabled.error-field {
+  background-color: rgba(255, 0, 0, 0.12);
 }
 
 
@@ -65,7 +73,7 @@ label span {
 }
 
 input::selection {
-    background-color: #00ffff;
+    background-color: $primary;
 }
 
 input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -82,13 +90,13 @@ input:-moz-placeholder { /* Firefox 18- */
 }
 
 #submit-address {
-	color: #000000;
+	color: $black;
   font-family: Helvetica, sans-serif;
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid #000000;
+  border: 1px solid $black;
   color: white;
-  background-color: #000000;
+  background-color: $black;
   font-weight: bold;
   margin-top: 10px;
   cursor: pointer;
@@ -99,13 +107,13 @@ input:-moz-placeholder { /* Firefox 18- */
 }
 
 #submit-address:not([disabled]):hover, #submit-address:not([disabled]):focus {
-  color: #000000;
-  background-color: #00ffff;
+  color: $black;
+  background-color: $primary;
 }
 #submit-address:not([disabled]):focus {
     outline: none;
-    box-shadow: 0px 0px 3px 1px #00ffff;
-    border: 1px solid #00ffff;
+    box-shadow: 0px 0px 3px 1px $primary;
+    border: 1px solid $primary;
 }
 
 .cd-popup {
@@ -134,7 +142,7 @@ input:-moz-placeholder { /* Firefox 18- */
   width: 90%;
   max-width: 400px;
   margin: 4em auto;
-  background: #FFF;
+  background: $white;
   border-radius: .25em .25em .4em .4em;
   text-align: center;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -170,7 +178,7 @@ input:-moz-placeholder { /* Firefox 18- */
   height: 60px;
   line-height: 60px;
   text-transform: uppercase;
-  color: #FFF;
+  color: $white;
   -webkit-transition: background-color 0.2s;
   -moz-transition: background-color 0.2s;
   transition: background-color 0.2s;
