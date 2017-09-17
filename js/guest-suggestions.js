@@ -38,9 +38,7 @@ $(document).ready(function() {
   })
 
   $('.address-form-field').on('input', function() {
-    console.log("fields changed = "+fieldsHaveChanged())
     if (selectedGuest && fieldsHaveChanged()) {
-      console.log("In here")
      $('#submit-address').prop('disabled', false)
     } else {
       $('#submit-address').prop('disabled', true)
@@ -71,8 +69,12 @@ $(document).ready(function() {
     request.onreadystatechange = function() {
       if(request.readyState == XMLHttpRequest.DONE && request.status == 200) {
         $('.cd-message').html("Address updated successfully!")
-        selectedGuest.address = address
-        selectedGuest.email = email
+        if (address) {
+          selectedGuest.address = address
+        }
+        if (email) {
+          selectedGuest.email = email
+        }
       } else {
         $('.cd-message').html("ERROR: Something went wrong. Let Kevin or Melissa know their website is broken!")
       }
@@ -84,7 +86,6 @@ $(document).ready(function() {
   var fieldsHaveChanged = function () {
     var changed = false
     $(".secondary-form-field").each(function() {
-      console.log($(this).val() + " " + $.trim($(this).val()).length)
       if ($.trim($(this).val()).length > 0) {
         changed = true
         return
@@ -121,7 +122,7 @@ $(document).ready(function() {
     }
 
     $(".secondary-form-field").each(function() {
-        if (selectedGuest && selectedGuest.address) {
+        if (selectedGuest) {
           $(this).addClass('field-enabled')
         } else {
           $(this).val('')
