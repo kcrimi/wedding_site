@@ -34,11 +34,13 @@ $(document).ready(function() {
         break
       }
     }
-    populateFields()
+    setVisibleSections()
   })
 
   $('.address-form-field').on('input', function() {
+    console.log("fields changed = "+fieldsHaveChanged())
     if (selectedGuest && fieldsHaveChanged()) {
+      console.log("In here")
      $('#submit-address').prop('disabled', false)
     } else {
       $('#submit-address').prop('disabled', true)
@@ -46,16 +48,23 @@ $(document).ready(function() {
   })
 
   $('#submit-address').click(function() {
-    console.log('clicked')
-    const address = {
-      street: $("#address1").val(),
-      extended: $("#address2").val(),
-      city: $("#city").val(),
-      region: $("#state").val(),
-      postcode: $("#zip").val(),
-      country: $("#country").val()
+    if (!validateForm()) {
+      return
     }
-    const email = $("#email").val()
+    var payload = {}
+    if ($("#address1").val()) {
+      payload.address = {
+        street: $("#address1").val(),
+        extended: $("#address2").val(),
+        city: $("#city").val(),
+        region: $("#state").val(),
+        postcode: $("#zip").val(),
+        country: $("#country").val()
+      }
+    }
+    if ($("#email").val()) {
+      payload.email = $("#email").val()
+    }
     const request = new XMLHttpRequest()
     request.open('POST', 'https://aisle-planner.herokuapp.com/guests/'+selectedGuest.guests[0]+'/address', true)
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -69,51 +78,43 @@ $(document).ready(function() {
       }
       $('.cd-popup').addClass('is-visible');
     }
-    request.send(JSON.stringify({address, email}))
+    request.send(JSON.stringify(payload))
   })
 
   var fieldsHaveChanged = function () {
-    var changed =  
-      (!selectedGuest.address 
-        && !(!$('#address1').val() && !$('#address2').val() && !$('#city').val() 
-          && !$('#state').val() && !$('#zip').val() && !$('#country').val() && !$('email').val())
-      ) 
-      || 
-      (selectedGuest.address 
-        && (fieldDifferentThanData($('#address1'), selectedGuest.address.street) 
-          || fieldDifferentThanData($('#address2'), selectedGuest.address.extended)
-          || fieldDifferentThanData($('#city'), selectedGuest.address.city)
-          || fieldDifferentThanData($('#state'), selectedGuest.address.region)
-          || fieldDifferentThanData($('#zip'), selectedGuest.address.postcode)
-          || fieldDifferentThanData($('#country'), selectedGuest.address.country)
-          || fieldDifferentThanData($('#email'), selectedGuest.email)
-        )
-      )
-      return changed
-  }
-  var fieldDifferentThanData = function(element, data) {
-    var different = element.val() != data && !((element.val() == null || element.val() == "") && (data == null || data == ""))
-    if (different) {
-    }
-    return different
+    var changed = false
+    $(".secondary-form-field").each(function() {
+      console.log($(this).val() + " " + $.trim($(this).val()).length)
+      if ($.trim($(this).val()).length > 0) {
+        changed = true
+        return
+      }
+    })
+    return changed
   }
 
-  var populateFields = function() {
+  var validateForm = function() {
+    var valid = true
+    $(".address-section > .address-form-field").each(function() {
+      if ($(this).val()) {
+        $(".address-section > .required-field").each(function() {
+          if (!$(this).val()) {
+            valid = false
+            $(this).addClass('error-field')
+          } else {
+            $(this).removeClass('error-field')
+          }
+        })
+      }
+    })
+    return valid
+  }
+
+  var setVisibleSections = function() {
     var disabled;
     if (selectedGuest) {
       $('#guest-name').removeClass('field-enabled')
       $('.hideable').fadeIn('slow')
-      if (selectedGuest.address) {
-        $("#address1").val(selectedGuest.address.street)
-        $("#address2").val(selectedGuest.address.extended)
-        $("#city").val(selectedGuest.address.city)
-        $("#state").val(selectedGuest.address.region)
-        $("#zip").val(selectedGuest.address.postcode)
-        $("#country").val(selectedGuest.address.country)
-      }
-      if(selectedGuest.email) {
-        $("#email").val(selectedGuest.email);
-      }
     } else {
       $('#guest-name').addClass('field-enabled')
       $('.hideable').fadeOut('slow')

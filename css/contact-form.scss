@@ -56,7 +56,11 @@ label span {
 }
 
 .field-enabled {
-    background-color: rgba(0, 255, 255, 0.12);
+  background-color: rgba(0, 255, 255, 0.12);
+}
+
+.field-enabled.error-field {
+  background-color: rgba(255, 0, 0, 0.12);
 }
 
 
