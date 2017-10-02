@@ -152,7 +152,7 @@ $(document).ready(function() {
   });
 
   var log = function(endpoint, payload, context) {
-    const request = new XMLHttpRequest();
+    var request = new XMLHttpRequest();
     request.open('POST', '/log/', true);
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     request.onreadystatechange = function() {
