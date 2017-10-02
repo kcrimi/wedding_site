@@ -11,13 +11,13 @@ $(document).ready(function() {
         guests = JSON.parse(guestListRequest.responseText);
         guests.forEach(function(item) {
           var option = document.createElement('option');
-          option.value = item.name
+          option.value = item.name;
           dataList.appendChild(option);
         });
-        input.placeholder = "Find your name"
-        fixBrowsersThatDontSupportDatalist()
+        input.placeholder = "Find your name";
+        fixBrowsersThatDontSupportDatalist();
       } else {
-        input.placeholder = "Couldn't load guestlist :("
+        input.placeholder = "Couldn't load guestlist :(";
       }
     }
   };
@@ -25,32 +25,32 @@ $(document).ready(function() {
   guestListRequest.open('GET', 'https://aisle-planner.herokuapp.com/guests', true);
   guestListRequest.send();
 
-  const checkForMatchedName = function () {
-    selectedGuest = null
+  var checkForMatchedName = function () {
+    selectedGuest = null;
     var val = this.value;
     for (var i = 0; i < guests.length; i++ ){
       if (guests[i].name === val) {
-        selectedGuest = guests[i]
-        console.log(selectedGuest)
+        selectedGuest = guests[i];
+        console.log(selectedGuest);
         break
       }
     }
-    setVisibleSections()
+    setVisibleSections();
   }
 
   $("#guest-name").on('input', checkForMatchedName)
 
   $('.address-form-field').on('input', function() {
     if (selectedGuest && fieldsHaveChanged()) {
-     $('#submit-address').prop('disabled', false)
+     $('#submit-address').prop('disabled', false);
     } else {
-      $('#submit-address').prop('disabled', true)
+      $('#submit-address').prop('disabled', true);
     }
   })
 
   $('#submit-address').click(function() {
     if (!validateForm()) {
-      return
+      return;
     }
     var payload = {}
     if ($("#address1").val()) {
@@ -61,79 +61,79 @@ $(document).ready(function() {
         region: $("#state").val(),
         postcode: $("#zip").val(),
         country: $("#country").val()
-      }
+      };
     }
     if ($("#email").val()) {
-      payload.email = $("#email").val()
+      payload.email = $("#email").val();
     }
-    const request = new XMLHttpRequest()
-    const url = 'https://aisle-planner.herokuapp.com/guests/'+selectedGuest.guests[0]+'/address'
-    request.open('POST', url, true)
+    var request = new XMLHttpRequest();
+    var url = 'https://aisle-planner.herokuapp.com/guests/'+selectedGuest.guests[0]+'/address';
+    request.open('POST', url, true);
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     request.onreadystatechange = function() {
       if(request.readyState == XMLHttpRequest.DONE && request.status == 200) {
-        $('.cd-message').html("Address updated successfully!")
+        $('.cd-message').html("Address updated successfully!");
         if (payload.address) {
-          selectedGuest.address = payload.address
+          selectedGuest.address = payload.address;
         }
         if (payload.email) {
-          selectedGuest.email = payload.email
+          selectedGuest.email = payload.email;
         }
       } else {
-        $('.cd-message').html("ERROR: Something went wrong. Let Kevin or Melissa know their website is broken!")
+        $('.cd-message').html("ERROR: Something went wrong. Let Kevin or Melissa know their website is broken!");
       }
       $('.cd-popup').addClass('is-visible');
     }
-    request.send(JSON.stringify(payload))
-    log(url, payload, {selectedGuest})
+    request.send(JSON.stringify(payload));
+    log(url, payload, {selectedGuest});
   })
 
   var fieldsHaveChanged = function () {
-    var changed = false
+    var changed = false;
     $(".secondary-form-field").each(function() {
       if ($.trim($(this).val()).length > 0) {
-        changed = true
-        return
+        changed = true;
+        return;
       }
     })
-    return changed
+    return changed;
   }
 
   var validateForm = function() {
-    var valid = true
+    var valid = true;
     $(".address-section > .address-form-field").each(function() {
       if ($(this).val()) {
         $(".address-section > .required-field").each(function() {
           if (!$(this).val()) {
-            valid = false
-            $(this).addClass('error-field')
+            valid = false;
+            $(this).addClass('error-field');
           } else {
-            $(this).removeClass('error-field')
+            $(this).removeClass('error-field');
           }
         })
       }
     })
-    return valid
+    return valid;
   }
 
   var setVisibleSections = function() {
     var disabled;
     if (selectedGuest) {
-      $('#guest-name').removeClass('field-enabled')
-      $('.hideable').fadeIn('slow')
+      $('#guest-name').removeClass('field-enabled');
+      $('.hideable').fadeIn('slow');
     } else {
-      $('#guest-name').addClass('field-enabled')
-      $('.hideable').fadeOut('slow')
+      $('#guest-name').addClass('field-enabled');
+      $('.hideable').fadeOut('slow');
     }
 
     $(".secondary-form-field").each(function() {
         if (selectedGuest) {
-          $(this).addClass('field-enabled')
+          $(this).addClass('field-enabled');
         } else {
-          $(this).val('')
-          $(this).removeClass('field-enabled')
+          $(this).val('');
+          $(this).removeClass('field-enabled');
         }
-        $(this).prop('disabled', selectedGuest == null)
+        $(this).prop('disabled', selectedGuest == null);
     })
   }
 
@@ -152,15 +152,15 @@ $(document).ready(function() {
   });
 
   var log = function(endpoint, payload, context) {
-    const request = new XMLHttpRequest()
-    request.open('POST', '/log/', true)
+    const request = new XMLHttpRequest();
+    request.open('POST', '/log/', true);
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     request.onreadystatechange = function() {
       if(this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-        this.responseText
+        this.responseText;
       }
     }
-    request.send(JSON.stringify({endpoint, payload, context}))
+    request.send(JSON.stringify({endpoint, payload, context}));
   }
 
   var fixBrowsersThatDontSupportDatalist = function() {
