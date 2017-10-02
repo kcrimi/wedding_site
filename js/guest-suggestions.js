@@ -160,7 +160,10 @@ $(document).ready(function() {
         this.responseText;
       }
     }
-    request.send(JSON.stringify({endpoint, payload, context}));
+    request.send(JSON.stringify({
+      endpoint: endpoint, 
+      payloade: payload, 
+      context: context}));
   }
 
   var fixBrowsersThatDontSupportDatalist = function() {
