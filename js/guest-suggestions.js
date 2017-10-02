@@ -85,7 +85,7 @@ $(document).ready(function() {
       $('.cd-popup').addClass('is-visible');
     }
     request.send(JSON.stringify(payload));
-    log(url, payload, {selectedGuest});
+    log(url, payload, {selectedGuest : selectedGuest});
   })
 
   var fieldsHaveChanged = function () {
