@@ -15,6 +15,7 @@ $(document).ready(function() {
           dataList.appendChild(option);
         });
         input.placeholder = "Find your name"
+        fixBrowsersThatDontSupportDatalist()
       } else {
         input.placeholder = "Couldn't load guestlist :("
       }
@@ -24,7 +25,7 @@ $(document).ready(function() {
   guestListRequest.open('GET', 'https://aisle-planner.herokuapp.com/guests', true);
   guestListRequest.send();
 
-  $("#guest-name").on('input', function() {
+  const checkForMatchedName = function () {
     selectedGuest = null
     var val = this.value;
     for (var i = 0; i < guests.length; i++ ){
@@ -35,7 +36,9 @@ $(document).ready(function() {
       }
     }
     setVisibleSections()
-  })
+  }
+
+  $("#guest-name").on('input', checkForMatchedName)
 
   $('.address-form-field').on('input', function() {
     if (selectedGuest && fieldsHaveChanged()) {
@@ -158,5 +161,23 @@ $(document).ready(function() {
       }
     }
     request.send(JSON.stringify({endpoint, payload, context}))
+  }
+
+  var fixBrowsersThatDontSupportDatalist = function() {
+    var nativedatalist = !!('list' in document.createElement('input')) && 
+          !!(document.createElement('datalist') && window.HTMLDataListElement);
+      
+    if (!nativedatalist) {
+      $('input[list]').each(function () {
+        var availableTags = $('#' + $(this).attr("list")).find('option').map(function () {
+          return this.value;
+        }).get();
+        $(this).autocomplete({ 
+          source: availableTags,
+          close: checkForMatchedName,
+          minLength: 3
+        });
+      });
+    }
   }
 });
