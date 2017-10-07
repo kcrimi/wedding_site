@@ -310,6 +310,22 @@ ol {
     }
 }
 
+@media(max-width:400px) {
+    .intro {
+        padding: 27px 0px 0px 0px;
+        margin-top: 60px;
+        background-image: url('/img/scoop-bg-blur.png');
+        background-position: center;
+        .intro-body {
+            padding-top: 6px;
+            background: url(/img/darkscoop.png) no-repeat;
+            background-size: contain;
+        }
+    }
+}
+
+
+
 ::-moz-selection {
     text-shadow: none;
     background: #fcfcfc;
