@@ -71,18 +71,20 @@ $(document).ready(function() {
     request.open('POST', url, true);
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     request.onreadystatechange = function() {
-      if(request.readyState == XMLHttpRequest.DONE && request.status == 200) {
-        $('.cd-message').html("Address updated successfully!");
-        if (payload.address) {
-          selectedGuest.address = payload.address;
+      if(request.readyState == XMLHttpRequest.DONE) {
+        if (request.status == 200) {
+          $('.cd-message').html("Address updated successfully!");
+          if (payload.address) {
+            selectedGuest.address = payload.address;
+          }
+          if (payload.email) {
+            selectedGuest.email = payload.email;
+          }
+        } else {
+          $('.cd-message').html("ERROR "+request.status+": Something went wrong. Let Kevin or Melissa know their website is broken!");
         }
-        if (payload.email) {
-          selectedGuest.email = payload.email;
-        }
-      } else {
-        $('.cd-message').html("ERROR: Something went wrong. Let Kevin or Melissa know their website is broken!");
+        $('.cd-popup').addClass('is-visible');
       }
-      $('.cd-popup').addClass('is-visible');
     }
     request.send(JSON.stringify(payload));
     log(url, payload, {selectedGuest : selectedGuest});
