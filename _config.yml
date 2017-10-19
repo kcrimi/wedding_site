@@ -52,9 +52,19 @@ pages_list:
   - name: 'mailing'
     display: 'Mailing Info'
     nav: True
+  - name: 'ceremony'
+    display: 'Ceremony'
+    nav: True
   - name: 'lodging'
     display: 'Lodging'
     nav: True
+
+##################
+# External Links #
+##################
+
+links:
+  sycamore: 'http://sycamorefarmsevents.com/'
 
 ################
 # Lodging Rows #

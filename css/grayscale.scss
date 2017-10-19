@@ -36,7 +36,8 @@ h4,
 h5,
 h6 {
     margin: 0 0 35px;
-    font-weight: 700;
+    font-weight: 500;
+    text-shadow: 3px 3px 5px rgba(47, 47, 47, 0.3);
     font-family: Garden,"Palatino Linotype", "Book Antiqua", Palatino, serif;
     letter-spacing: 1px;
     line-height: 1.8;
@@ -210,7 +211,7 @@ ol {
     color: $white;
     background: url( {{ site.background-img }} ) no-repeat left center scroll;
     background-color: $dark;
-    text-shadow: 1px 1px 5px $black;
+    text-shadow: 0 0 13px rgb(0, 0, 0);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -220,6 +221,9 @@ ol {
         vertical-align: middle;
         .brand-heading {
             font-size: 40px;
+        }
+        h2 {
+            text-shadow: 0 0 13px rgb(0, 0, 0);
         }
     }
     .addeventatc:hover {
@@ -232,6 +236,22 @@ ol {
     background-color: $white;
     &.even {
         background-color: $primary-light;
+    }
+    &#ceremony{
+        padding-top: 0px;
+        .image-banner {
+            background: url(/img/sycamore.jpg) no-repeat center center;
+            background-size: 100%;
+            min-height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            h2 { 
+                color: white;
+                text-shadow: 0 0 13px rgb(0, 0, 0);
+            }
+        }
     }
     padding-top: 60px;
     padding-bottom: 85px;
@@ -267,6 +287,11 @@ ol {
     .content-section {
         padding-top: 100px;
         padding-bottom: 125px;
+        &#ceremony {
+            .image-banner {
+                min-height: 350px;
+            }
+        }
     }
 
     .intro {
