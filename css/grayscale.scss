@@ -219,11 +219,11 @@ ol {
     .intro-body {
         display: table-cell;
         vertical-align: middle;
-        .brand-heading {
-            font-size: 40px;
-        }
         h2 {
             text-shadow: 0 0 13px rgb(0, 0, 0);
+        }
+        a:not(:hover) {
+            color: $white;
         }
     }
     .addeventatc:hover {
