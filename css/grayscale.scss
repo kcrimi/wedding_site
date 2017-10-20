@@ -47,6 +47,9 @@ h2 {
     font-size: 36px;
     text-align:center;
 }
+h3.link-title {
+    margin-bottom: 10px
+}
 
 p {
     margin: 0 0 25px;
@@ -272,9 +275,6 @@ ol {
         margin-bottom: 30px;
         padding-right: 30px;
         padding-left: 30px;
-        h3 {
-            margin-bottom: 10px
-        }
         img {
             align-self: center; 
             height: 250px;
