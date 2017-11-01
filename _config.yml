@@ -75,7 +75,7 @@ lodging:
     img: 'marriott.jpg'
     description: "Very modern hotel with free breakfast. $169 / night"
     code: 'Book Here before April 13'
-    url: 'http://www.marriott.com/meeting-event-hotels/group-corporate-travel/groupCorp.mi?resLinkData=Crimi%20Choi%20Wedding%5EBNACS%60CCWCCWA%60169.00%60USD%60false%604%605/11/18%605/14/18%604/13/18&app=resvlink&stop_mobi=yes'
+    url: 'http://www.marriott.com/meeting-event-hotels/group-corporate-travel/groupCorp.mi?resLinkData=Crimi%20Choi%20Wedding%5EBNACS%60CCWCCWA%60169.00%60USD%60false%604%605/10/18%605/14/18%604/13/18&app=resvlink&stop_mobi=yes'
   - name: 'Courtyard Marriott'
     img: 'courtyard.jpg'
     description: "Located right next to each other, the Courtyard Marriott offers a king bed or 2 queens for $139 / night."
