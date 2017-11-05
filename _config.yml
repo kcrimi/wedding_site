@@ -108,7 +108,7 @@ sass:
   style: compressed
 
 # Exclusion list from the generated _site
-exclude: ["Rakefile", "LICENSE", "readme.markdown", "vendor"]
+exclude: ["Rakefile", "LICENSE", "readme.markdown", "vendor", "log.txt"]
 
 # Fixes "Deprecation: You appear to have pagination turned on, but you haven't included the `jekyll-paginate` gem"
 gems: [jekyll-paginate]
