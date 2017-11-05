@@ -66,6 +66,9 @@ $(document).ready(function() {
     if ($("#email").val()) {
       payload.email = $("#email").val();
     }
+    if ($('#phone').val()) {
+      payload.phone_number = $('#phone').val();
+    }
     var request = new XMLHttpRequest();
     var url = 'https://aisle-planner.herokuapp.com/guests/'+selectedGuest.guests[0]+'/address';
     request.open('POST', url, true);
