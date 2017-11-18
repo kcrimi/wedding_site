@@ -56,6 +56,10 @@ p {
     line-height: 1.5;
     font-size: 18px;
     font-family: Helvetica, sans-serif;
+    a {
+        text-decoration: underline;
+        color: slategrey;
+    }
 }
 
 input {
@@ -67,8 +71,12 @@ input {
         margin: 0 0 35px;
         line-height: 1.6;
     }
-    h2 {
+    h1 {
         font-size: 68px;
+        margin-top: 30px;
+    }
+    h2 {
+        font-size: 56px;
         margin-top: 30px;
     }
 }
@@ -281,6 +289,10 @@ ol {
             width: 250px;
         }
     }
+}
+
+.row-copy {
+    text-align: left;
 }
 
 @media(min-width:767px) {

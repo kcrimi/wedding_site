@@ -51,12 +51,19 @@ err-img: "/img/dim_sum.jpg"
 pages_list:
   - name: 'mailing'
     display: 'Mailing Info'
+    onIndex: True
     nav: True
   - name: 'ceremony'
     display: 'Ceremony'
+    onIndex: True
     nav: True
   - name: 'lodging'
     display: 'Lodging'
+    onIndex: True
+    nav: True
+  - name: 'recommendations'
+    display: 'Recommendations'
+    onIndex: False
     nav: True
 
 ##################

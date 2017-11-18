@@ -1,26 +1,11 @@
-
-<!-- Index Layout Start -->
-
-<!DOCTYPE html>
-<html lang="{{ site.lang }}">
-
-  {% include head.html %}
-  {% include js.html %}
-
-  <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-
-    {% include navigation.html %}
-
-    {% include header.html %}
-    
-    {% for p in site.pages_list %}
-    	<section id="{{ p.name }}" class="content-section {% cycle '', 'even'%}">
-    		{% include {{ p.name }}.html %}
-    	</section>
-    {% endfor %}
-
-  </body>
-  
-</html>
-
-<!-- Index Layout End -->
+---
+layout: default
+---
+{% include header.html %} 
+{% for p in site.pages_list %}
+  {% if p.onIndex %}
+  	<section id="{{ p.name }}" class="content-section {% cycle '', 'even'%}">
+  		{% include {{ p.name }}.html %}
+  	</section>
+  {% endif %}
+{% endfor %}
