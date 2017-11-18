@@ -59,7 +59,7 @@ pages_list:
     nav: True
   - name: 'lodging'
     display: 'Lodging'
-    onIndex: True
+    onIndex: False
     nav: True
   - name: 'recommendations'
     display: 'Recommendations'
