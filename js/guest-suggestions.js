@@ -1,9 +1,11 @@
 $(document).ready(function() {
-  var dataList = document.getElementById('guest-datalist');
-  var input = document.getElementById('guest-name');
+  var dataLists = $('.guest-datalist');
+  var input = $('.guest-name');
   var guestListRequest = new XMLHttpRequest();
   var guests = []
-  var selectedGuest;
+  var selectedGuest = {};
+  const MAILING = "mailing-guest"
+  const RSVP = "rsvp-guest"
 
   guestListRequest.onreadystatechange = function(response) {
     if (guestListRequest.readyState === XMLHttpRequest.DONE) {
@@ -12,7 +14,7 @@ $(document).ready(function() {
         guests.forEach(function(item) {
           var option = document.createElement('option');
           option.value = item.name;
-          dataList.appendChild(option);
+          dataLists.append(option);
         });
         input.placeholder = "Find your name";
         fixBrowsersThatDontSupportDatalist();
@@ -25,20 +27,60 @@ $(document).ready(function() {
   guestListRequest.open('GET', 'https://aisle-planner.herokuapp.com/guests', true);
   guestListRequest.send();
 
-  var checkForMatchedName = function () {
-    selectedGuest = null;
+  var setVisibleSectionsMailing = function() {
+    var disabled;
+    if (selectedGuest[MAILING]) {
+      $('#mailing-name').removeClass('field-enabled');
+      $('section#mailing .hideable').fadeIn('slow');
+    } else {
+      $('#mailing-name').addClass('field-enabled');
+      $('section#mailing .hideable').fadeOut('slow');
+    }
+
+    $("section#mailing .secondary-form-field").each(function() {
+        if (selectedGuest) {
+          $(this).addClass('field-enabled');
+        } else {
+          $(this).val('');
+          $(this).removeClass('field-enabled');
+        }
+        $(this).prop('disabled', selectedGuest == null);
+    })
+  }
+
+  var setVisibleSectionsRsvp = function () {
+    var disabled;
+    if (selectedGuest[RSVP]) {
+      $('#rsvp-name').removeClass('field-enabled');
+      $('section#rsvp .hideable').fadeIn('slow');
+    } else {
+      $('#rsvp-name').addClass('field-enabled');
+      $('section#rsvp .hideable').fadeOut('slow');
+    }
+  }
+
+  var checkForMatchedName = function (form) {
+    selectedGuest[this.id] = null;
     var val = this.value;
     for (var i = 0; i < guests.length; i++ ){
       if (guests[i].name === val) {
-        selectedGuest = guests[i];
+        selectedGuest[this.id] = guests[i];
         console.log(selectedGuest);
+        console.log(this.id)
         break
       }
     }
-    setVisibleSections();
+    console.log(selectedGuest)
+    if (this.id == MAILING) {
+      setVisibleSectionsMailing();
+    } else {
+      setVisibleSectionsRsvp();
+    }
   }
 
-  $("#guest-name").on('input', checkForMatchedName)
+  $('.guest-name').on('input keyup', checkForMatchedName())
+  $('.guest-name').keyup(checkForMatchedName())
+
 
   $('.address-form-field').on('input', function() {
     if (selectedGuest && fieldsHaveChanged()) {
@@ -119,27 +161,6 @@ $(document).ready(function() {
       }
     })
     return valid;
-  }
-
-  var setVisibleSections = function() {
-    var disabled;
-    if (selectedGuest) {
-      $('#guest-name').removeClass('field-enabled');
-      $('.hideable').fadeIn('slow');
-    } else {
-      $('#guest-name').addClass('field-enabled');
-      $('.hideable').fadeOut('slow');
-    }
-
-    $(".secondary-form-field").each(function() {
-        if (selectedGuest) {
-          $(this).addClass('field-enabled');
-        } else {
-          $(this).val('');
-          $(this).removeClass('field-enabled');
-        }
-        $(this).prop('disabled', selectedGuest == null);
-    })
   }
 
   //close popup

@@ -1,7 +1,6 @@
 
 <!-- About Start --> 
 <div class=container> 
-  <script type="text/javascript" src="{{site.baseurl}}/js/guest-suggestions.js"></script>
   <link href="{{site.baseurl}}/css/contact-form.css" rel="stylesheet">
   <a name="mailing"></a>
   <div class="row">
@@ -12,8 +11,8 @@
           <div id="guest-name-section" class="form-section">
             <h3> Name </h3>
             <p>Look up your name in the guest list</p>
-            <input class="form-field address-form-field field-enabled" type="text" id="guest-name" list="guest-datalist" placeholder="Find your name">
-  		      <datalist id="guest-datalist"></datalist>
+            <input class="form-field address-form-field field-enabled guest-name" type="text" id="mailing-guest" list="mailing-datalist" placeholder="Find your name">
+  		      <datalist id="mailing-datalist"class="guest-datalist"></datalist>
           </div>
 
           <div class="form-section hideable address-section">
