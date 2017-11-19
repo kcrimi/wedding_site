@@ -1,33 +1,34 @@
 ---
 ---
 <!-- Recommendations Start -->
-<section id="{{ category.name }}" class="content-section">
+<section id="{{ category.name }}" class="content-section recs rec-head">
 	<div class=container>
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2 text-center">
 				<h1>Nashville Recommendations</h1>
-				<p> We've gathered some good suggestions for how you can spend your time in Nashville below. If you want, you can also download a copy of the list <a href='/assets/nashville-recommendations.pdf'>here</a></p>
+				<p> We've gathered some good suggestions for how you can spend your time in Nashville below. If you want, you can also download a copy of the list <a href='/assets/nashville-recommendations.pdf' target="_blank">here</a>.</p>
 				{% for category in site.data.recommendations %}
 					<h3>
 						 <a class="page-scroll" href="#{{ forloop.index0 }}"> {{ category.name }} </a> 
 					</h3>
 				{% endfor %}
+				<p><a href="#rec-map">Map View</a></p>
 			</div>
 		</div>
 	</div>
 </section>
 {% for category in site.data.recommendations %}
-	<section id="{{ forloop.index0 }}" class="content-section {% cycle 'even', ''%}">
+	<section id="{{ forloop.index0 }}" class="content-section recs {% cycle 'even', ''%}">
 		<div class=container>
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2 text-center">
 		    		<h2>{{ category.name }}</h2>
 		    		{% for place in category.places %}
 							<div class="row-copy">
-								<a href="{{ place.url }}">
+								<a href="{{ place.url }}" target="_blank">
 									<h3 class="link-title unstylized">{{ place.name }}</h3>
 								</a>
-								<p>{{ place.description | markdownify }}</p>
+								{{ place.description | markdownify }}
 							</div>
 					{% endfor %}
 			    </div>
@@ -35,4 +36,17 @@
 		</div>
 	</section>
 {% endfor %}
+ 
+<section id="rec-map">
+	<!--<div class="container">
+		<div class="row">
+		<h3>Map Key</h3>
+	<div><div class="key" id="blue"></div> <span>Eat</span></div>
+	<div><div class="key" id="pink"></div> <span>Music & Bars</span></div>
+	<div><div class="key" id="yellow"></div> <span>Things to Do</span></div>
+	<div><div class="key" id="black"></div> <span>Key Locations</span></div>
+		</div>
+	</div>-->
+<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1wB-H0GcnFiJy3cZVPWDxgVce0VquX-ju" width="100%" height="480"></iframe>
+</section>
 <!-- Recommendations End -->
