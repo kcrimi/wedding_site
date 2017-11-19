@@ -90,7 +90,7 @@ input:-moz-placeholder { /* Firefox 18- */
 	color: #cccccc;
 }
 
-#submit-address {
+button {
 	color: $black;
   font-family: Helvetica, sans-serif;
   padding: 10px;
@@ -103,15 +103,15 @@ input:-moz-placeholder { /* Firefox 18- */
   cursor: pointer;
 }
 
-#submit-address:disabled {
+button:disabled {
   opacity: 0.2;
 }
 
-#submit-address:not([disabled]):hover, #submit-address:not([disabled]):focus {
+button:not([disabled]):hover, button:not([disabled]):focus {
   color: $black;
   background-color: $primary;
 }
-#submit-address:not([disabled]):focus {
+button:not([disabled]):focus {
     outline: none;
     box-shadow: 0px 0px 3px 1px $primary;
     border: 1px solid $primary;

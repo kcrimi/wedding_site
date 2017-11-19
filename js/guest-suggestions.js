@@ -1,12 +1,14 @@
 $(document).ready(function() {
   var dataLists = $('.guest-datalist');
   var input = $('.guest-name');
-  var guestListRequest = new XMLHttpRequest();
   var guests = []
+  var events = []
   var selectedGuest = {};
+  var rsvpInformation = {};
   const MAILING = "mailing-guest"
   const RSVP = "rsvp-guest"
 
+  var guestListRequest = new XMLHttpRequest();
   guestListRequest.onreadystatechange = function(response) {
     if (guestListRequest.readyState === XMLHttpRequest.DONE) {
       if (guestListRequest.status === 200) {
@@ -26,6 +28,63 @@ $(document).ready(function() {
 
   guestListRequest.open('GET', 'https://aisle-planner.herokuapp.com/guests', true);
   guestListRequest.send();
+
+  var eventsRequest = new XMLHttpRequest();
+  eventsRequest.onreadystatechange = function(response) {
+    if (eventsRequest.readyState === XMLHttpRequest.DONE) {
+      if (eventsRequest.status === 200) {
+        events = JSON.parse(eventsRequest.responseText);
+      }
+    }
+  };
+
+  eventsRequest.open('GET', 'https://aisle-planner.herokuapp.com/events', true);
+  eventsRequest.send();
+
+
+  var retrieveRsvpInfo = function(id) {
+    var rsvpRequest = new XMLHttpRequest();
+    rsvpRequest.onreadystatechange = function(response) {
+      if (rsvpRequest.readyState === XMLHttpRequest.DONE) {
+        if (rsvpRequest.status === 200) {
+          rsvpInformation = JSON.parse(rsvpRequest.responseText);
+          updateRsvpFormFromData()
+        } else {
+          $('section#rsvp .cd-message').html("ERROR "+request.status+": Something went wrong retrieving your rsvp info. Let Kevin or Melissa know their website is broken!");
+          $('section#rsvp .cd-popup').addClass('is-visible');
+        }
+      }
+    };
+
+    rsvpRequest.open('GET', 'https://aisle-planner.herokuapp.com/rsvp/'+id, true);
+    rsvpRequest.send();
+  }
+
+  var updateRsvpFormFromData = function () {
+    console.log(rsvpInformation)
+    var rows = [];
+    rsvpInformation.forEach(function(guest) {
+      var row = $("<li>", {id: guest.id})
+      row.html(guest.first_name)
+      row.append($("<input>", {type:"radio", name:guest.id+"-attending_status", value:"attending", checked:true}))
+      row.append("Attending")
+      row.append($("<input>", {type:"radio", name:guest.id+"-attending_status", value:"declined"}))
+      row.append("Not Attending")
+      events.filter(function(event) {
+        return event.meal_served;
+      }).forEach(function(event) {
+        var dropdown = $("<select>", {name:guest.id+"-meal_option_id"})
+        dropdown.append($("<option>", {value:"", disabled:true, selected:true}).text("Select Meal"))
+        event.meal_options.forEach(function(meal) {
+          dropdown.append($("<option>", {value:meal.id}).text(meal.name))
+        })
+        row.append(dropdown)
+      })
+      rows.push(row);
+    })
+    $("#guests-list").html(rows)
+    setVisibleSectionsRsvp();
+  }
 
   var setVisibleSectionsMailing = function() {
     var disabled;
@@ -60,6 +119,9 @@ $(document).ready(function() {
   }
 
   var checkForMatchedName = function (form) {
+    if (selectedGuest[this.id] != null && this.value == selectedGuest[this.id].name) {
+      return
+    }
     selectedGuest[this.id] = null;
     var val = this.value;
     for (var i = 0; i < guests.length; i++ ){
@@ -73,14 +135,12 @@ $(document).ready(function() {
     console.log(selectedGuest)
     if (this.id == MAILING) {
       setVisibleSectionsMailing();
-    } else {
-      setVisibleSectionsRsvp();
+    } else if (selectedGuest[RSVP]) {
+      retrieveRsvpInfo(selectedGuest[RSVP].id)
     }
   }
 
   $('.guest-name').on('input keyup', checkForMatchedName())
-  $('.guest-name').keyup(checkForMatchedName())
-
 
   $('.address-form-field').on('input', function() {
     if (selectedGuest && fieldsHaveChanged()) {
@@ -118,7 +178,7 @@ $(document).ready(function() {
     request.onreadystatechange = function() {
       if(request.readyState == XMLHttpRequest.DONE) {
         if (request.status == 200) {
-          $('.cd-message').html("Address updated successfully!");
+          $('section#mailing .cd-message').html("Address updated successfully!");
           if (payload.address) {
             selectedGuest.address = payload.address;
           }
@@ -126,9 +186,9 @@ $(document).ready(function() {
             selectedGuest.email = payload.email;
           }
         } else {
-          $('.cd-message').html("ERROR "+request.status+": Something went wrong. Let Kevin or Melissa know their website is broken!");
+          $('section#mailing .cd-message').html("ERROR "+request.status+": Something went wrong. Let Kevin or Melissa know their website is broken!");
         }
-        $('.cd-popup').addClass('is-visible');
+        $('section#mailing .cd-popup').addClass('is-visible');
       }
     }
     request.send(JSON.stringify(payload));
