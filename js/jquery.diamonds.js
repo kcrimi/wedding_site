@@ -16,7 +16,7 @@
             rowUpperWrap : $('<div class="diamond-row-upper"></div>'),
             rowLowerWrap : $('<div class="diamond-row-lower"></div>'),
             diamondWrap : $('<div class="diamonds"></div>'),
-            overrideCss : '.diamonds-{{guid}} .diamond-box-wrap { width: {{size}}px; height: {{size}}px; } .diamonds-{{guid}} .diamond-box { border-width: {{gap}}px }',
+            overrideCss : '.diamonds-{{guid}} .diamond-box-wrap .diamonds-{{guid}} .diamond-box { border-width: {{gap}}px }',
             debugEnabled : false,
             debugEvent : function(event, data) { console.debug("Event: " + event, data); },
             debugMethod : function(method, args) { console.debug("Method: " + method, args)}
@@ -218,7 +218,7 @@
             }
         }
 
-        wrap.css("min-width", this.options.minDiamondsPerRow * this.options.size);
+        // wrap.css("min-width", this.options.minDiamondsPerRow * this.options.size);
 
         return wrap;
     };
@@ -268,6 +268,6 @@
 })(window.hasOwnProperty("Zepto") ? window.Zepto : window.jQuery, window, document);
 
 $(".diamondswrap").diamonds({
-        size: 250, // Size of the squares
+        // size: 250, // Size of the squares
         gap: 5 // Pixels between squares
     });

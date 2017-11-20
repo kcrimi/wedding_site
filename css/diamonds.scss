@@ -1,3 +1,61 @@
+---
+---
+
+@import "variables";
+@import "mixins";
+
+/* DIAMONDS */
+.diamondswrap {
+    width: 100%;
+    .item {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 40% 0;
+
+        background-color: mintcream;
+        color: $black;
+        background-position: center center;
+        background-size: cover;
+
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    a.item:hover:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.7);
+    }
+    .item.blank {
+        background-color: transparent;
+    }
+    #sq2 {
+        background-image: url('/img/squares/2l.jpg');
+    }
+    #sq3 {
+        background-image: url('/img/squares/3.jpg');
+    }
+    #sq4 {
+        background-image: url('/img/squares/6.jpg');
+    }
+    #sq5 {
+        background-image: url('/img/squares/fire-ad.jpg');
+    }
+    #sq6 {
+        background-image: url('/img/squares/park.jpg');
+    }
+    #sq7 {
+        background-image: url('/img/squares/7.jpg');
+    }
+}
 .diamonds {
     text-align: center;
     overflow: visible;
@@ -20,15 +78,23 @@
     position: absolute;
     bottom: 0;
 }
-    .diamond-row-lower .diamond-box {
-        margin-left: 64.644660941%; /* 0.5 + 1 / sqrt(2) / 2 */
-        margin-top: 64.644660941%;
-    }
+.diamond-row-lower .diamond-box {
+    margin-left: 64.644660941%; /* 0.5 + 1 / sqrt(2) / 2 */
+    margin-top: 64.644660941%;
+}
 
 .diamond-box-wrap {
     float: left;
-    width: 250px; /* Size of diamonds */
-    height: 250px;
+    width: 170px; /* Size of diamonds */
+    height: 170px;
+}
+
+
+@media(min-width:767px) {
+    .diamond-box-wrap {
+        width: 250px; /* Size of diamonds */
+        height: 250px;
+    }
 }
 
 .diamond-box {
