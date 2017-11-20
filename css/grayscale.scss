@@ -108,18 +108,15 @@ ol {
   list-style-position: inside;
 }
 
-.navbar {
-        border-bottom: none;
-        letter-spacing: 1px;
-        -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
-        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
-        transition: background .5s ease-in-out,padding .5s ease-in-out;
-}
-
 .navbar-custom {
     margin-bottom: 0;
     font-family: Garden,"Palatino Linotype", "Book Antiqua", Palatino, serif;
     padding: 0px;
+    border-bottom: none;
+    letter-spacing: 1px;
+    -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+    -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+    transition: background .5s ease-in-out,padding .5s ease-in-out;
     /*border-top: 8px solid $primary; */
     background: $black;
 
@@ -127,30 +124,36 @@ ol {
     max-height: 100%;
     overflow-y: auto;
 
+    .navbar-collapse {
+        text-align: center;
+    }
     .navbar-nav {
         font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        display: inline-block;
+        float: none;
+        li>a {
+            padding-top: 10px;
+        }
     }
-
-    .navbar-nav>li>a {
-        padding-top: 20px;
-    }
-
-    .navbar-brand {
-        font-size: 25px;
-        font-weight: 700;
-        padding: 25px 15px;
-        text-shadow: 1px 1px 1px $black;
-            &:focus {
-                outline: none;
-            }
-        .navbar-toggle {
-            padding: 4px 6px;
-            font-size: 16px;
-                color: $white;
-                &:focus,
-                &:active {
+    .navbar-header {
+        float: none;
+        .navbar-brand {
+            font-size: 25px;
+            font-weight: 700;
+            padding: 25px 15px;
+            text-shadow: 1px 1px 1px $black;
+                &:focus {
                     outline: none;
                 }
+            .navbar-toggle {
+                padding: 4px 6px;
+                font-size: 16px;
+                    color: $white;
+                    &:focus,
+                    &:active {
+                        outline: none;
+                    }
+            }
         }
     }
     a {
@@ -177,6 +180,19 @@ ol {
                 }
                 font-size: 16px;
             }
+        }
+    }
+
+    @media(min-width:767px) {
+        .navbar-header {
+            text-align: center;
+            .navbar-brand {
+                float: none;
+            }
+        }
+        .navbar-nav>li>a {
+            padding-top: 0px;
+            padding-bottom: 5px;
         }
     }
 }
