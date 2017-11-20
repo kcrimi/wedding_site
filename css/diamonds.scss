@@ -85,8 +85,8 @@
 
 .diamond-box-wrap {
     float: left;
-    width: 150px; /* Size of diamonds */
-    height: 150px;
+    width: 160px; /* Size of diamonds */
+    height: 160px;
 }
 
 
@@ -94,6 +94,13 @@
     .diamond-box-wrap {
         width: 250px; /* Size of diamonds */
         height: 250px;
+    }
+}
+
+@media(max-width:650px) {
+    .diamond-box-wrap {
+        width: 140px; /* Size of diamonds */
+        height: 140px;
     }
 }
 
