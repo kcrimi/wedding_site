@@ -5,8 +5,10 @@
 			<div class="col-lg-8 col-lg-offset-2 text-center">
 				<h1>Lodging</h1>
 				<p>For those coming from out of town (everyone), we recommend the following places to stay. We've arranged for group discounts at 3 hotels near the venue. Because these are all very close to each other, we will likely have transport to and from the venue to the hotels.</p>
+
+				<p><b>If the hotel links won't let you select the dates you want or you have any other problems booking, please let us know<b></p>
 		    	{% for l in site.data.lodging %}
-					<a href="{{ l.url }}">
+					<a href="{{ l.url }}" target="_blank">
 						<div class="row split-row">
 								<div class="row-copy">
 									<img class="row-image img-circle" src="/img/{{ l.img }}"/>
