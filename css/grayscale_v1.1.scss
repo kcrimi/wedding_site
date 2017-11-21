@@ -120,10 +120,6 @@ ol {
     /*border-top: 8px solid $primary; */
     background: $black;
 
-    /* Fix height limit and scroll for small screen and many items menu */
-    max-height: 100%;
-    overflow-y: auto;
-
     .navbar-collapse {
         text-align: center;
     }
