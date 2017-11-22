@@ -36,7 +36,8 @@ keywords: "Kevin Crimi, Melissa Choi, wedding, save the date, Nashville, wedding
 ################
 
 #background-img: "/img/scoop-bg.jpg"
-background-img: "/img/darkscoop.png"
+#background-img: "/img/darkscoop.png"
+background-img: "/img/cover.jpg"
 
 ############
 # 404 page #
@@ -53,12 +54,12 @@ pages_list:
     display: RSVP
     onIndex: True
     nav: False
-  - name: 'mailing'
-    display: 'Mailing Info'
-    onIndex: True
-    nav: True
   - name: 'ceremony'
     display: 'Ceremony'
+    onIndex: True
+    nav: True
+  - name: 'mailing'
+    display: 'Mailing Info'
     onIndex: True
     nav: True
   - name: 'lodging'

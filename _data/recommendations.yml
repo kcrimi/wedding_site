@@ -3,24 +3,22 @@
   places:
     - name: Monell's 
       url: https://monellstn.com/
-      description: A Nashville institution. All-you-can-eat Southern comfort food served family-style at communal tables in a Victorian house. They do not take reservations, and they are very popular, so be prepared to spend a little waiting time in their cute garden out front. Come hungry...but not too hungry.
+      description: A Nashville institution. All-you-can-eat Southern comfort food served family-style at communal tables in a Victorian house. They do not take reservations, and they are very popular, so be prepared to spend a little waiting time in their cute garden out front. Come hungry...but not _too_ hungry.
     - name: Farmer's Market 
       url: http://nashvillefarmersmarket.org/merchants/market_house
       description: Farmer’s market outside; food court inside with tons of good food options. 
     - name: Hot Chicken 
       url: http://www.visitmusiccity.com/visitors/food/hotchicken
-      description: Hot chicken is a uniquely Nashville specialty that has blown up and become a hit in recent years. You may know it from KFC’s recent introduction of their KFC Nashville Hot Chicken. ‘The best’ is debated, but some great hot chicken purveyors to check out include Hattie B's, Pepperfire, Bolton’s, Party Fowl, or Prince's (the original).
+      description: Hot chicken is a uniquely Nashville specialty that has blown up and become a hit in recent years. You may know it from KFC’s recent introduction of their KFC Nashville Hot Chicken. ‘The best’ is debated, but some great hot chicken purveyors to check out include **Hattie B's**, **Pepperfire**, **Bolton’s**, **Party Fowl**, or **Prince's** (the original).
     - name: Edley's Bar-B-Que
+      url: http://www.edleysbbq.com/
       description: Known for their barbecue, but they also serve a hot chicken special on Monday. I reckon both are worth trying. They also have trivia at 8pm at their 12 South location.
-    - name: "B&C BBQ"
+    - name: B&C BBQ
       url: https://www.yelp.com/biz/b-and-c-melrose-bbq-nashville
-      description: "[Beyonce’s foodavorite BBQ joint in Nashville.](https://www.youtube.com/watch?v=5MevpiYV5X4) Also Katemaso’s."
+      description: '[Beyonce’s favorite BBQ joint in Nashville.](https://www.youtube.com/watch?v=5MevpiYV5X4){:target="_blank"} Also Katemaso’s.'
     - name: Husk 
       url: http://husknashville.com/food/
       description: I hear this is the best burger in Nashville right now [gasp face], but their daily changing menu of food made only with Southern ingredients from chef Sean Brock is worth the visit even if you disagree with the best burger title. If it didn’t come from the South, it won’t be making an appearance on your plate at Husk. 
-    - name: Little Octopus 
-      url: https://www.littleoctopusnashville.com/
-      description: “Little Octopus is a modern neighborhood restaurant serving flavors from everywhere, ingredients from here, and options for everyone. Chef Herget’s style draws inspiration from the cultural cuisines of Miami, where he studied and worked for nearly a decade. His menu celebrates fresh, clean, vibrant ingredients, that are seasonally driven, including organic and regional products whenever possible.”
     - name: Chauhan Ale & Masala House 
       url: https://chauhannashville.com/
       description: “​Celebrity Chef Maneet Chauhan’s modern Indian gastropub. Recipient of multiple awards and accolades within the first year of opening, ​Chef Chauhan and her team have created a menu that marries southern staples with traditional Indian dishes to create truly unique and award winning flavors. Think Kashmiri Lamb Shank or a Seafood Cioppino paired with one of the top 14 beers in America micro brewed exclusively for the restaurant.” 
@@ -31,9 +29,10 @@
       description: Find a Jeni’s. Eat ice cream. Be happy.
     - name: Gluten free options
       url: http://www.visitmusiccity.com/visitors/food/gluten-free
-      description: (for Connie & Kate) 
+      description: (for Connie & Kate)<br>http://www.visitmusiccity.com/visitors/food/gluten-free
     - name: Cheap Eats
-      url: https://styleblueprint.com/nashville/everyday/nashville-cheap-restaurants/?utm_source=Referral&utm_medium=Content&utm_campaign=NCVC
+      url: https://styleblueprint.com/nashville/everyday/nashville-cheap-restaurants
+      description: I am perfectly happy with fine dining and expensive food, but we loove good, cheap food. How can you not? So here's a list of 13 cheap meals in Nashville. 
 - name: Music, Bars, and Hangouts
   description: 
   places:
@@ -41,53 +40,57 @@
       description: I don’t know if listening rooms are a thing anywhere else, but Nashville is allegedly home to more songwriters than any other city, so this might be a uniquely Nashville thing. You can watch songwriters take the stage themselves to perform their songs. You may hear the next hit song straight from its source, or catch ones that won’t make the cut. Some popular and well known listening rooms are [The Listening Room Cafe](https://www.listeningroomcafe.com/) and [Bluebird Cafe](http://bluebirdcafe.com/). These will probably be mostly country music.
     - name: 3rd & Lindsley Bar and Grill
       url: http://www.3rdandlindsley.com/
-      description: 3rd & Lindsley is another well established and well regarded music venue offering up some good ol’ Nashville-ness, a staple in the Nashville live music scene. They have live music 7 days a week, but we recommend going on a Monday night to check out [The Time Jumpers](http://www.3rdandlindsley.com/featured.html), a local award winning Western Swing band made up of a cast of extremely talented musicians, all individually very accomplished in their own rights. This group of Nashville's studio elite has evolved from casual jam sessions at the Grand Ole Opry to becoming THE Monday night destination in Nashville.
+      description: 3rd & Lindsley is another well established and well regarded music venue offering up some good ol’ Nashville-ness, a staple in the Nashville live music scene. They have live music 7 days a week, but we recommend going on a Monday night to check out [**The Time Jumpers**](http://www.3rdandlindsley.com/featured.html), a local award winning Western Swing band made up of a cast of extremely talented musicians, all individually very accomplished in their own rights. This group of Nashville's studio elite has evolved from casual jam sessions at the Grand Ole Opry to becoming THE Monday night destination in Nashville.
     - name: Tennessee Brew Works 
       url: https://www.tnbrew.com/home
       description: Laid back production micro brewery and tasting room with games and great bar food in a quieter corner of downtown Nashville. 
-    - name: Acme Feed & Seed 
-      url: http://www.visitmusiccity.com/Visitors/thingstodo/listing?bid=20552
-      description: A sprawling, 3-storey entertainment hall on Lower Broadway. 
+    - name: No. 308 
+      url: http://bar308.com/
+      description: Trendy hangout open til 3am, featuring craft cocktails amid midcentury-modern decor, plus patio seating. It may be tiny, but No. 308 packs a punch with its roster of extensive cocktails and fun ambiance. Happy hour is 5:30-7pm every day except Saturday 
+    - name: Bobby's Idle Hour
+      url: http://bobbysidlehour.com/
+      description: Neighborhood dive bar with live music and a bunch of Nashville charm on Music Row. 
     - name: Honky Tonk Bars 
-      description: The famous strip of bars that has earned the name "Nashvegas". Lots of people, lots of bars, and lots of live music which is better than anything other bar band you've seen (possibly barring Austin, TX).
       url: https://www.huffingtonpost.com/renee-blodgett/exploring-the-best-of-nas_b_7465904.html
+      description: The famous strip of bars that has earned the name "Nashvegas". Lots of people, lots of bars, and lots of live music which is better than anything other bar band you've seen (possibly barring Austin, TX).
 - name: Things to See and Do
   description:
   places: 
     - name: The Musicians Hall of Fame 
       url: https://www.musicianshalloffame.com
       description: Visit this interactive museum that pays tribute to all great musicians, regardless of genre, and whether they are world famous, or great studio and session musicians whose names may not be well-known, but who have been influential and crucial in the music industry nonetheless.
-    - name: Arrington Vineyards 
-      url: http://www.arringtonvineyards.com/visit
-      description: Just a stone’s throw away from our wedding venue, Arrington Vineyards is a beautiful hillside winery where you can taste wines and have a picnic on the grounds. They also have [live jazz every Saturday and Sunday.](http://www.arringtonvineyards.com/event-calendar/music-in-the-vines) We might have held our wedding here if we didn’t have so many people.
+    - name: Jack Daniel’s Distillery 
+      url: https://www.jackdaniels.com/en-us/visit-us
+      description: About an hour and a half drive away is the Jack Daniel’s Distillery, home of your fav Tennessee whiskey. 
     - name: Cheekwood Botanical Garden and Museum of Art
       url: https://cheekwood.org
       description: 55-acre botanical garden and art museum located on the historic Cheek estate.
     - name: Gaylord Opryland
       url: http://www.visitmusiccity.com/Visitors/placestostay/listing?bid=3869
       description: If you prefer to be indoors, the Gaylord Opryland resort has 9 acres of indoor gardens and waterfalls. You can even take a boat ride on the indoor river.
-    - name: Jack Daniel’s Distillery 
-      url: https://www.jackdaniels.com/en-us/visit-us
-      description: About an hour and a half drive away is the Jack Daniel’s Distillery, home of your fav Tennessee whiskey. 
     - name: Batey Farms strawberry picking
       url: http://bateyfarms.com
       description: A fun trip for adults and kids alike, Batey Farms is a family-run farm providing farm fresh sausage and pork products. They also have strawberry, blueberry, and blackberry patches available for picking. It’ll be strawberry season in May, and we’re planning to go strawberry picking on Thursday, May 10th. Feel free to join us, or venture out for your own picking session. 
     - name: Shopping 
       url: http://www.visitmusiccity.com/visitors/thingstodo/nashvilleshopping
+      description: If shopping is your jam, check out some boutique stores, local artisan merchandise, or record stores that all offer some Nashville style and flavor. 
     - name: Take a tour of Nashville
       description: There's a few good tours including [sight seeing](https://www.tripadvisor.com/AttractionProductDetail-g55229-d11448491-Discover_Nashville-Nashville_Davidson_County_Tennessee.html) as well as some [food tours](https://www.tripadvisor.com/AttractionProductDetail-g55229-d11472644-Music_City_Bites_and_Sites_Food_and_History_Walking_Tour-Nashville_Davidson_County_Tennessee.html)
-    - name: Lane Motor Museum
-      url: https://www.lanemotormuseum.org/
-      description: “Lane Motor Museum is home to the largest European collection in the U.S. and features 150 extraordinary cars and motorcycles from around the world. Visitors will discover oddities like propeller-driven vehicles, microcars, amphibious vehicles, one-of-a-kind prototypes, military vehicles, competition cars and more. Lane Motor Museum is a working museum with a goal to maintain all vehicles in running order. Located just a few miles from downtown Nashville,the museum offers free parking on site.”
     - name: Adventure Science Center
       url: http://www.adventuresci.org/
       description: A pretty nifty non-profit science museum for kids, featuring a planetarium laser show! Along with its year-round exhibits, the Center offers the Little Labs program that invites children (ages 3-5) to participate in age-appropriate lab activities, crafts and more. Explore the outer reaches of the universe, feel what it's like to walk on the moon, and learn the story of our solar system. Also, Patrick works here. 
     - name: Nashville Zoo
       url: https://www.nashvillezoo.org/
-      description: See giraffes, red kangaroos, clouded leopards, birds from around the world, white rhinos and spider monkeys! Also, featuring a 35-foot-tall tree house, cargo-net climbing area, slide, and giant snake tunnel, the zoo’s Jungle Gym was just named one of the World's Coolest Playgrounds by Travel + Leisure.
+      description: See giraffes, red kangaroos, clouded leopards, birds from around the world, white rhinos and spider monkeys! Also, featuring a 35-foot-tall tree house, cargo-net climbing area, slide, and giant snake tunnel, the zoo’s Jungle Gym was just named one of the [World's Coolest Playgrounds](http://www.travelandleisure.com/slideshows/worlds-coolest-playgrounds/4) by Travel + Leisure.
     - name: Grand Ole Opry
       description: Take a [tour of the famous Grand Ole Opry](https://www.tripadvisor.com/AttractionProductDetail?product=6585GRANDOP&d=106503&aidSuffix=tvrm&partner=Viator) and perhaps even catch a show there.
+    - name: Arrington Vineyards 
+      url: http://www.arringtonvineyards.com/visit
+      description: Just a stone’s throw away from our wedding venue, Arrington Vineyards is a beautiful hillside winery where you can taste wines and have a picnic on the grounds. They also have [live jazz every Saturday and Sunday.](http://www.arringtonvineyards.com/event-calendar/music-in-the-vines) We might have held our wedding here if we didn’t have so many people.
     - name: Centennial Park
       url: https://www.nashville.gov/Parks-and-Recreation/Parks/Centennial-Park.aspx
-      description: Stroll through Centennial Park, also home to the Parthenon, the only full-scale [replica of the original Parthenon in Athens.](https://www.artsy.net/article/artsy-editorial-full-scale-replica-parthenon-nashville-tennessee)
+      description: Stroll through Centennial Park, also home to the **Parthenon**, the only full-scale [replica of the original Parthenon](https://www.artsy.net/article/artsy-editorial-full-scale-replica-parthenon-nashville-tennessee) in Athens.
+    - name: Lane Motor Museum
+      url: https://www.lanemotormuseum.org/
+      description: “Lane Motor Museum is home to the largest European collection in the U.S. and features 150 extraordinary cars and motorcycles from around the world. Visitors will discover oddities like propeller-driven vehicles, microcars, amphibious vehicles, one-of-a-kind prototypes, military vehicles, competition cars and more. Lane Motor Museum is a working museum with a goal to maintain all vehicles in running order. Located just a few miles from downtown Nashville,the museum offers free parking on site.”
 
