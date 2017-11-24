@@ -5,6 +5,7 @@ $(document).ready(function() {
   var events = []
   var selectedGuest = {};
   var rsvpInformation = {};
+  var meals = [];
   const MAILING = "mailing-guest"
   const RSVP = "rsvp-guest"
 
@@ -29,11 +30,25 @@ $(document).ready(function() {
   guestListRequest.open('GET', 'https://aisle-planner.herokuapp.com/guests', true);
   guestListRequest.send();
 
+  // Request Menus
   var eventsRequest = new XMLHttpRequest();
   eventsRequest.onreadystatechange = function(response) {
     if (eventsRequest.readyState === XMLHttpRequest.DONE) {
       if (eventsRequest.status === 200) {
         events = JSON.parse(eventsRequest.responseText);
+        console.log(events);
+        meals = events.find(function (event) { 
+          return event.ap_use === 'reception'
+        }).meal_options
+        const listItems = meals.map(function(meal) {
+          console.log(meal)
+          var row = $("<li>", {class: "meal-row"});
+          row.append($("<h4></h4>").text(meal.name));
+          row.append($("<p></p>").text(meal.description));
+          return row
+        })
+        console.log(listItems)
+        $('#menu-list').html(listItems);
       }
     }
   };
@@ -41,7 +56,9 @@ $(document).ready(function() {
   eventsRequest.open('GET', 'https://aisle-planner.herokuapp.com/events', true);
   eventsRequest.send();
 
-
+  //////////
+  // RSVP //
+  //////////
   var retrieveRsvpInfo = function(id) {
     var rsvpRequest = new XMLHttpRequest();
     rsvpRequest.onreadystatechange = function(response) {
@@ -52,7 +69,7 @@ $(document).ready(function() {
         } else {
           $('section#rsvp .cd-message').html("ERROR "+request.status+": Something went wrong retrieving your rsvp info. Let Kevin or Melissa know their website is broken!");
           $('section#rsvp .cd-popup').addClass('is-visible');
-        }
+        } 
       }
     };
 
@@ -65,10 +82,21 @@ $(document).ready(function() {
     var rows = [];
     rsvpInformation.forEach(function(guest) {
       var row = $("<li>", {id: guest.id})
-      row.html(guest.first_name)
-      row.append($("<input>", {type:"radio", name:guest.id+"-attending_status", value:"attending", checked:true}))
+      if (guest.is_anonymous) {
+        var plusOneRow = $("<li></li>", {class:"plus-one-row"})
+        plusOneRow.append([
+          $("<input>", {type:"checkbox", name:"plus-one"}),
+          $("<label>", {for:"plus-one"}).text("Will you be bringing a guest?")])
+        row.addClass("hidden plus-one-guest")
+        row.append($("<input>", {type:"text", name:guest.id+"-first-name", placeholder:"First Name"}))
+        row.append($("<input>", {type:"text", name:guest.id+"-last_name", placeholder:"Last Name"}))
+        rows.push(plusOneRow)
+      } else {
+        row.html(guest.first_name)
+      }
+      row.append($("<input>", {type:"radio", name:guest.id+"-attending-status", value:"attending", checked:true}))
       row.append("Attending")
-      row.append($("<input>", {type:"radio", name:guest.id+"-attending_status", value:"declined"}))
+      row.append($("<input>", {type:"radio", name:guest.id+"-attending-status", value:"declined"}))
       row.append("Not Attending")
       events.filter(function(event) {
         return event.meal_served;
@@ -78,14 +106,50 @@ $(document).ready(function() {
         event.meal_options.forEach(function(meal) {
           dropdown.append($("<option>", {value:meal.id}).text(meal.name))
         })
+        dropdown.append($("<option>", {value:"none"}).text("No Meal"))
         row.append(dropdown)
       })
       rows.push(row);
     })
     $("#guests-list").html(rows)
+    setRsvpListeners();
     setVisibleSectionsRsvp();
   }
 
+  var setRsvpListeners = function () {
+    $(".plus-one-row label").click((event) => {
+      $(".plus-one-row input").trigger('click')
+    })
+
+    $(".plus-one-row input").on('click', () => {
+      $(this).prop('checked', !$(this).prop('checked'))
+
+      console.log("clicked")
+      if ($(this).prop('checked')) {
+        $(".plus-one-guest").fadeIn('slow')
+        $(".plus-one-guest").removeClass("hidden")
+        console.log('checked')
+      } else {
+        $(".plus-one-guest").fadeOut('slow')
+        console.log('unchecked')
+      }
+    })
+  }
+
+  var setVisibleSectionsRsvp = function () {
+    var disabled;
+    if (selectedGuest[RSVP]) {
+      $('#rsvp-name').removeClass('field-enabled');
+      $('section#rsvp .hideable').fadeIn('slow');
+    } else {
+      $('#rsvp-name').addClass('field-enabled');
+      $('section#rsvp .hideable').fadeOut('slow');
+    }
+  }
+
+  /////////////
+  // MAILING //
+  /////////////
   var setVisibleSectionsMailing = function() {
     var disabled;
     if (selectedGuest[MAILING]) {
@@ -105,17 +169,6 @@ $(document).ready(function() {
         }
         $(this).prop('disabled', selectedGuest == null);
     })
-  }
-
-  var setVisibleSectionsRsvp = function () {
-    var disabled;
-    if (selectedGuest[RSVP]) {
-      $('#rsvp-name').removeClass('field-enabled');
-      $('section#rsvp .hideable').fadeIn('slow');
-    } else {
-      $('#rsvp-name').addClass('field-enabled');
-      $('section#rsvp .hideable').fadeOut('slow');
-    }
   }
 
   var checkForMatchedName = function (form) {
