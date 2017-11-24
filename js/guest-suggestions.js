@@ -1,13 +1,15 @@
 $(document).ready(function() {
   var dataLists = $('.guest-datalist');
   var input = $('.guest-name');
-  var guests = []
-  var events = []
+  var guests = [];
+  var events = [];
   var selectedGuest = {};
   var rsvpInformation = {};
   var meals = [];
-  const MAILING = "mailing-guest"
-  const RSVP = "rsvp-guest"
+  var MAILING = "mailing-guest";
+  var RSVP = "rsvp-guest";
+  var ATTENDING = "attending";
+  var DECLINED = "declined";
 
   var guestListRequest = new XMLHttpRequest();
   guestListRequest.onreadystatechange = function(response) {
@@ -36,18 +38,15 @@ $(document).ready(function() {
     if (eventsRequest.readyState === XMLHttpRequest.DONE) {
       if (eventsRequest.status === 200) {
         events = JSON.parse(eventsRequest.responseText);
-        console.log(events);
         meals = events.find(function (event) { 
-          return event.ap_use === 'reception'
+          return event.ap_use === 'reception';
         }).meal_options
-        const listItems = meals.map(function(meal) {
-          console.log(meal)
+        var listItems = meals.map(function(meal) {
           var row = $("<li>", {class: "meal-row"});
           row.append($("<h4></h4>").text(meal.name));
           row.append($("<p></p>").text(meal.description));
-          return row
-        })
-        console.log(listItems)
+          return row;
+        });
         $('#menu-list').html(listItems);
       }
     }
@@ -65,7 +64,7 @@ $(document).ready(function() {
       if (rsvpRequest.readyState === XMLHttpRequest.DONE) {
         if (rsvpRequest.status === 200) {
           rsvpInformation = JSON.parse(rsvpRequest.responseText);
-          updateRsvpFormFromData()
+          updateRsvpFormFromData();
         } else {
           $('section#rsvp .cd-message').html("ERROR "+request.status+": Something went wrong retrieving your rsvp info. Let Kevin or Melissa know their website is broken!");
           $('section#rsvp .cd-popup').addClass('is-visible');
@@ -78,60 +77,55 @@ $(document).ready(function() {
   }
 
   var updateRsvpFormFromData = function () {
-    console.log(rsvpInformation)
     var rows = [];
     rsvpInformation.forEach(function(guest) {
-      var row = $("<li>", {id: guest.id})
+      var row = $("<li>", {id: guest.id});
       if (guest.is_anonymous) {
-        var plusOneRow = $("<li></li>", {class:"plus-one-row"})
+        var plusOneRow = $("<li></li>", {class:"plus-one-row"});
         plusOneRow.append([
           $("<input>", {type:"checkbox", name:"plus-one"}),
-          $("<label>", {for:"plus-one"}).text("Will you be bringing a guest?")])
-        row.addClass("hidden plus-one-guest")
-        row.append($("<input>", {type:"text", name:guest.id+"-first-name", placeholder:"First Name"}))
-        row.append($("<input>", {type:"text", name:guest.id+"-last_name", placeholder:"Last Name"}))
-        rows.push(plusOneRow)
+          $("<label>", {for:"plus-one"}).text("Will you be bringing a guest?")]);
+        row.addClass("hidden plus-one-guest");
+        row.append($("<input>", {type:"text", class:guest.id+" first-name", placeholder:"First Name"}));
+        row.append($("<input>", {type:"text", class:guest.id+" last_name", placeholder:"Last Name"}));
+        rows.push(plusOneRow);
       } else {
-        row.html(guest.first_name)
+        row.html(guest.first_name);
+        row.append($("<input/>", {type:"radio", name:guest.id+"-attending-status", class:guest.id+" attending-status", value:ATTENDING, checked:true}));
+        row.append("Attending");
+        row.append($("<input/>", {type:"radio", name:guest.id+"-attending-status", class:guest.id+" attending-status", value:DECLINED}));
+        row.append("Not Attending");
       }
-      row.append($("<input>", {type:"radio", name:guest.id+"-attending-status", value:"attending", checked:true}))
-      row.append("Attending")
-      row.append($("<input>", {type:"radio", name:guest.id+"-attending-status", value:"declined"}))
-      row.append("Not Attending")
       events.filter(function(event) {
         return event.meal_served;
       }).forEach(function(event) {
-        var dropdown = $("<select>", {name:guest.id+"-meal_option_id"})
-        dropdown.append($("<option>", {value:"", disabled:true, selected:true}).text("Select Meal"))
+        var dropdown = $("<select>", {name:guest.id+"-meal-option-id", class:"meal-option-id "+guest.id});
+        dropdown.append($("<option>", {value:"", disabled:true, selected:true}).text("Select Meal"));
         event.meal_options.forEach(function(meal) {
-          dropdown.append($("<option>", {value:meal.id}).text(meal.name))
+          dropdown.append($("<option>", {value:meal.id}).text(meal.name));
         })
-        dropdown.append($("<option>", {value:"none"}).text("No Meal"))
-        row.append(dropdown)
-      })
+        dropdown.append($("<option>", {value:"none"}).text("No Meal"));
+        row.append(dropdown);
+      });
       rows.push(row);
     })
-    $("#guests-list").html(rows)
+    $("#guests-list").html(rows);
     setRsvpListeners();
     setVisibleSectionsRsvp();
   }
 
   var setRsvpListeners = function () {
-    $(".plus-one-row label").click((event) => {
-      $(".plus-one-row input").trigger('click')
+    $(".plus-one-row label").click(function(event) {
+      $(".plus-one-row input").trigger('click');
     })
 
-    $(".plus-one-row input").on('click', () => {
-      $(this).prop('checked', !$(this).prop('checked'))
+    $(".plus-one-row input").on('click', function() {
 
-      console.log("clicked")
       if ($(this).prop('checked')) {
-        $(".plus-one-guest").fadeIn('slow')
-        $(".plus-one-guest").removeClass("hidden")
-        console.log('checked')
+        $(".plus-one-guest").fadeIn('slow');
+        $(".plus-one-guest").removeClass("hidden");
       } else {
-        $(".plus-one-guest").fadeOut('slow')
-        console.log('unchecked')
+        $(".plus-one-guest").fadeOut('slow');
       }
     })
   }
@@ -145,6 +139,91 @@ $(document).ready(function() {
       $('#rsvp-name').addClass('field-enabled');
       $('section#rsvp .hideable').fadeOut('slow');
     }
+  }
+
+  $("#submit-rsvp").click(function() {
+    if (!validateRsvpForm) {
+      return;
+    }
+    var selectEvents = events.filter(function(event) {
+      return ['reception', 'ceremony'].includes(event.ap_use);
+    }).reduce(function(map, event) {
+      map[event.id] = event;
+      return map;
+    }, {});
+    console.log(selectEvents)
+    guestRsvps = rsvpInformation.map(function(guest) {
+      var guestPayload = {
+        id: guest.id,
+      };
+      var attending;
+      if (guest.is_anonymous) {
+        if ($(".plus-one-row input").prop("checked")) {
+          attending = ATTENDING
+          guestPayload.first_name = $(".first-name."+guest.id).val();
+          guestPayload.last_name = $(".first-name."+guest.id).val();
+        } else {
+          attending = DECLINED;
+        }
+      } else {
+        attending = $(".attending-status."+guest.id+":checked").val();
+      }
+      var rsvps = guest.statuses.reduce(function(output, status) {
+        if (selectEvents[status.wedding_event_id]) {
+          var rsvp = {
+            wedding_event_id: status.wedding_event_id,
+            guest_list: status.guest_lis,
+            attending_status: attending,
+          };
+          if (attending == ATTENDING
+            && selectEvents[status.wedding_event_id].meal_served) {
+            var selectedMeal = $(".meal-option-id."+guest.id).find(":selected").val();
+            if (selectedMeal === "none") {
+              rsvp.meal_declined = true;
+            } else {
+              rsvp.meal_option_id = selectedMeal;
+            }
+          }
+          output.push(rsvp);
+        }
+        return output;
+      }, [])
+      guestPayload.rsvps = rsvps;
+      return guestPayload;
+    });
+    var payload = {
+      guests: guestRsvps
+    }
+    sendUpdateRsvpRequest(rsvpInformation[0].group_id, payload)
+  });
+
+  var sendUpdateRsvpRequest = function(group_id, payload) {
+    var request = new XMLHttpRequest();
+    var url = 'https://aisle-planner.herokuapp.com/rsvp/'+group_id;
+    request.open('POST', url, true);
+    request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    request.onreadystatechange = function() {
+      if(request.readyState == XMLHttpRequest.DONE) {
+        if (request.status == 200) {
+          $('section#mailing .cd-message').html("RSVP submitted successfully!");
+          if (payload.address) {
+            selectedGuest.address = payload.address;
+          }
+          if (payload.email) {
+            selectedGuest.email = payload.email;
+          }
+        } else {
+          $('section#mailing .cd-message').html("ERROR "+request.status+": Something went wrong. Let Kevin or Melissa know their website is broken!");
+        }
+        $('section#mailing .cd-popup').addClass('is-visible');
+      }
+    }
+    request.send(JSON.stringify(payload));
+    log(url, payload, {selectedGuest : selectedGuest, rsvpInformation: rsvpInformation});
+  }
+
+  var validateRsvpForm = function() {
+    return true;
   }
 
   /////////////
@@ -180,12 +259,9 @@ $(document).ready(function() {
     for (var i = 0; i < guests.length; i++ ){
       if (guests[i].name === val) {
         selectedGuest[this.id] = guests[i];
-        console.log(selectedGuest);
-        console.log(this.id)
         break
       }
     }
-    console.log(selectedGuest)
     if (this.id == MAILING) {
       setVisibleSectionsMailing();
     } else if (selectedGuest[RSVP]) {
@@ -224,6 +300,10 @@ $(document).ready(function() {
     if ($('#phone').val()) {
       payload.phone_number = $('#phone').val();
     }
+    sendAddressUpdateRequest(payload)
+  })
+
+  var sendAddressUpdateRequest = function(payload) {
     var request = new XMLHttpRequest();
     var url = 'https://aisle-planner.herokuapp.com/guests/'+selectedGuest.guests[0]+'/address';
     request.open('POST', url, true);
@@ -246,7 +326,7 @@ $(document).ready(function() {
     }
     request.send(JSON.stringify(payload));
     log(url, payload, {selectedGuest : selectedGuest});
-  })
+  }
 
   var fieldsHaveChanged = function () {
     var changed = false;
