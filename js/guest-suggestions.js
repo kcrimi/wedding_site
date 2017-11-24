@@ -79,13 +79,14 @@ $(document).ready(function() {
   var updateRsvpFormFromData = function () {
     var rows = [];
     rsvpInformation.forEach(function(guest) {
-      var row = $("<li>", {id: guest.id});
+      var row = $("<li></li>", {id: guest.id, class:"guest-row"});
       if (guest.is_anonymous) {
         var plusOneRow = $("<li></li>", {class:"plus-one-row"});
         plusOneRow.append([
           $("<input>", {type:"checkbox", name:"plus-one"}),
           $("<label>", {for:"plus-one"}).text("Will you be bringing a guest?")]);
-        row.addClass("hidden plus-one-guest");
+        row.addClass("hidden plus-one-guest-row");
+        row.removeClass("guest-row")
         row.append($("<input>", {type:"text", class:guest.id+" first-name", placeholder:"First Name"}));
         row.append($("<input>", {type:"text", class:guest.id+" last_name", placeholder:"Last Name"}));
         rows.push(plusOneRow);
@@ -122,10 +123,10 @@ $(document).ready(function() {
     $(".plus-one-row input").on('click', function() {
 
       if ($(this).prop('checked')) {
-        $(".plus-one-guest").fadeIn('slow');
-        $(".plus-one-guest").removeClass("hidden");
+        $(".plus-one-guest-row").fadeIn('slow');
+        $(".plus-one-guest-row").removeClass("hidden");
       } else {
-        $(".plus-one-guest").fadeOut('slow');
+        $(".plus-one-guest-row").fadeOut('slow');
       }
     })
   }
@@ -142,7 +143,7 @@ $(document).ready(function() {
   }
 
   $("#submit-rsvp").click(function() {
-    if (!validateRsvpForm) {
+    if (!validateRsvpForm()) {
       return;
     }
     var selectEvents = events.filter(function(event) {
@@ -223,7 +224,42 @@ $(document).ready(function() {
   }
 
   var validateRsvpForm = function() {
-    return true;
+    var valid = true;
+    $("#guests-list .guest-row").each(function() {
+      console.log($(this).find(".attending-status:checked").val());
+      if ($(this).find(".attending-status:checked").val() === "attending") {
+        if ($(this).find(".meal-option-id").find(":selected").val()) {
+          $(this).find(".meal-option-id").removeClass('error-field');
+        } else {
+          $(this).find(".meal-option-id").addClass('error-field');
+          valid = false;
+        }
+      }
+    })
+    $("#guests-list .plus-one-row").each(function() {
+      console.log($(this).find("input").prop("checked"));
+      if ($(this).find("input").prop("checked")) {
+        var plusOneGuestRow = $("#guests-list .plus-one-guest-row");
+        plusOneGuestRow.find("input:text").each(function() {
+          if ($(this).val()) {
+            $(this).removeClass('error-field');
+          } else {
+            $(this).addClass('error-field');
+            valid = false;
+          }
+        })
+
+        console.log($(this).val())
+        var mealSelector = plusOneGuestRow.find(".meal-option-id");
+        if (mealSelector.find(":selected").val()) {
+          mealSelector.removeClass('error-field');
+        } else {
+          mealSelector.addClass('error-field');
+          valid = false;
+        }
+      }
+    })
+    return valid;
   }
 
   /////////////
