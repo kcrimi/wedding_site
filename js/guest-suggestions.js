@@ -173,7 +173,7 @@ $(document).ready(function() {
         if (selectEvents[status.wedding_event_id]) {
           var rsvp = {
             wedding_event_id: status.wedding_event_id,
-            guest_list: status.guest_lis,
+            guest_list: status.guest_list,
             attending_status: attending,
           };
           if (attending == ATTENDING
