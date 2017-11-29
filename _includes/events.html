@@ -1,0 +1,28 @@
+<!-- Ceremony Start -->
+<div class=container>
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-2 text-center">
+			<h1>Events</h1>
+			{% for day in site.data.events %}
+				<div class="event-date-section">
+					<div class="decor">
+					</div>
+					{% for event in day.events %}
+						<h3 class="unstylized event-date">{{ day.date | date: "%A, %B %-d"}}</h3>
+						<h3 class="event-name">{{ event.name }} </h3>
+						<div class="event-info">
+							<a href='{{ event.venue.url }}'' target='_blank' class= event>
+								<p class="event-venue-time"><b>{{ event.venue.name }} &nbsp; &#8226; &nbsp; {{ event.time }}</b></p>
+							</a>
+							<a href='https://maps.google.com/?q={{ event.venue.address}}' target='_blank'>{{ event.venue.address }}</a>
+						</div>
+						{% for detail in event.details %}
+							<p class="event-details">{{ detail }}</p>
+						{% endfor %}
+					{% endfor %}
+				</div>
+			{% endfor %}
+	    </div>
+	</div>
+</div>
+<!-- Ceremony End -->

@@ -96,7 +96,6 @@ a {
 .unstylized {
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
-    font-size: 21px;
 }
 
 ul,
@@ -354,6 +353,25 @@ ol {
             height: 250px;
             width: 250px;
         }
+    }
+}
+
+section#events {
+    .event-date {
+        color: #ad914bad;
+        text-shadow: none;
+    } 
+    .event-name{
+        margin: 0 0 14px;
+    }
+    .event-info {
+        margin-bottom: 30px;
+        .event-venue-time {
+            margin: 0 0 10px;
+        }
+    }
+    .event-address {
+        margin-bottom: 30px;
     }
 }
 

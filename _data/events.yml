@@ -1,0 +1,21 @@
+- date: 2018-05-11
+  events:
+    - name: "Welcome Drinks"
+      venue:
+        name: "Sinema"
+        url: "http://www.sinemanashville.com/the-lounge/"
+        address: "2600 8th Ave South, Suite 102, Nashville, TN 37204"
+      time: "5pm - 10pm"
+      details: 
+        - "We'll be hanging out at Sinema to welcome everyone travelling from out of town. Come stop by and join us for a drink and some snacks."
+- date: 2018-05-12
+  events:
+    - name: "Wedding Ceremony and Reception"
+      venue:
+        name: "The Barn at Sycamore Farms"
+        url: "http://sycamorefarmsevents.com/"
+        address: "4866 Murfreesboro Rd, Arrington, TN 37014"
+      time: "4pm"
+      details: 
+        - "The ceremony will begin at 4pm, followed by dinner and reception. The ceremony will take place outside, weather permitting."
+        - "<em>For those taking part in the tea ceremony, please plan to be at the venue at 2pm.</em>"
