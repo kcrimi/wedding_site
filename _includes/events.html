@@ -4,11 +4,13 @@
 		<div class="col-lg-8 col-lg-offset-2 text-center">
 			<h1>Events</h1>
 			{% for day in site.data.events %}
-				<div class="event-date-section">
-					<div class="decor">
-					</div>
+				<div class="day">
 					{% for event in day.events %}
-						<h3 class="unstylized event-date">{{ day.date | date: "%A, %B %-d"}}</h3>
+						<div class="section-header">
+							<img src='/img/decor-right.png'>
+							<h3 class="unstylized event-date">{{ day.date | date: "%A, %B %-d"}}</h3>
+							<img src='/img/decor2-left.png'>
+						</div>
 						<h3 class="event-name">{{ event.name }} </h3>
 						<div class="event-info">
 							<a href='{{ event.venue.url }}'' target='_blank' class= event>

@@ -357,21 +357,33 @@ ol {
 }
 
 section#events {
-    .event-date {
-        color: #ad914bad;
-        text-shadow: none;
-    } 
-    .event-name{
-        margin: 0 0 14px;
-    }
-    .event-info {
-        margin-bottom: 30px;
-        .event-venue-time {
-            margin: 0 0 10px;
+    .day {
+        margin-bottom: 70px;
+        .section-header {
+            margin-bottom: 30px;
+            h3 {
+                margin: 0 0 0;
+            }
+            img {
+                width: 50%;
+            }
         }
-    }
-    .event-address {
-        margin-bottom: 30px;
+        .event-date {
+            color: #ad914bad;
+            text-shadow: none;
+        } 
+        .event-name{
+            margin: 0 0 14px;
+        }
+        .event-info {
+            margin-bottom: 30px;
+            .event-venue-time {
+                margin: 0 0 10px;
+            }
+        }
+        .event-address {
+            margin-bottom: 30px;
+        }
     }
 }
 
