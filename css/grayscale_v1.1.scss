@@ -111,13 +111,14 @@ ol {
     margin-bottom: 0;
     font-family: Garden,"Palatino Linotype", "Book Antiqua", Palatino, serif;
     padding: 0px;
-    border-bottom: none;
+    border-bottom: 5px solid #ffffff;
     letter-spacing: 1px;
     -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
     -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
     transition: background .5s ease-in-out,padding .5s ease-in-out;
     /*border-top: 8px solid $primary; */
     background: $black;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
 
     .navbar-collapse {
         text-align: center;
@@ -186,7 +187,7 @@ ol {
             }
         }
         .navbar-nav>li>a {
-            padding-top: 0px;
+            padding-top: 5px;
             padding-bottom: 5px;
         }
     }
@@ -356,7 +357,7 @@ ol {
     }
 }
 
-section#events {
+section#schedule {
     .day {
         margin-bottom: 70px;
         .section-header {
@@ -366,6 +367,7 @@ section#events {
             }
             img {
                 width: 50%;
+                max-width: 210px;
             }
         }
         .event-date {

@@ -1,8 +1,8 @@
-<!-- Ceremony Start -->
+<!-- Schedule Start -->
 <div class=container>
 	<div class="row">
 		<div class="col-lg-8 col-lg-offset-2 text-center">
-			<h1>Events</h1>
+			<h1>Schedule</h1>
 			{% for day in site.data.events %}
 				<div class="day">
 					{% for event in day.events %}
@@ -16,7 +16,7 @@
 							<a href='{{ event.venue.url }}'' target='_blank' class= event>
 								<p class="event-venue-time"><b>{{ event.venue.name }} &nbsp; &#8226; &nbsp; {{ event.time }}</b></p>
 							</a>
-							<a href='https://maps.google.com/?q={{ event.venue.address}}' target='_blank'>{{ event.venue.address }}</a>
+							<a href='https://maps.google.com/?q={{ event.venue.address}}' target='_blank'>{{ event.venue.address }} (map)</a>
 						</div>
 						{% for detail in event.details %}
 							<p class="event-details">{{ detail }}</p>
@@ -27,4 +27,4 @@
 	    </div>
 	</div>
 </div>
-<!-- Ceremony End -->
+<!-- Schedule End -->

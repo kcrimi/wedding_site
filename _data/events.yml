@@ -4,18 +4,19 @@
       venue:
         name: "Sinema"
         url: "http://www.sinemanashville.com/the-lounge/"
-        address: "2600 8th Ave South, Suite 102, Nashville, TN 37204"
+        address: "2600 8th Ave South, Suite 102, Nashville, TN"
       time: "5pm - 10pm"
       details: 
-        - "We'll be hanging out at Sinema to welcome everyone travelling from out of town. Come stop by and join us for a drink and some snacks."
+        - "Hey thanks for coming out to Nashville to celebrate with us! We're excited to see you. Come hang out with the future bride and groom before the big day at the historic Melrose theater.<br>Swing by at your leisure.<br>Small bites will be provided."
 - date: 2018-05-12
   events:
     - name: "Wedding Ceremony and Reception"
       venue:
         name: "The Barn at Sycamore Farms"
         url: "http://sycamorefarmsevents.com/"
-        address: "4866 Murfreesboro Rd, Arrington, TN 37014"
-      time: "4pm"
+        address: "4866 Murfreesboro Rd, Arrington, TN"
+      time: "4:30pm"
       details: 
-        - "The ceremony will begin at 4pm, followed by dinner and reception. The ceremony will take place outside, weather permitting."
-        - "<em>For those taking part in the tea ceremony, please plan to be at the venue at 2pm.</em>"
+        - "The ceremony will begin at 4:30pm, followed by dinner and reception.<br>The ceremony will take place outside, weather permitting. Dinner and reception will be indoors."
+        - "Shuttle service will be provided to and from the hotels in Franklin."
+        - "Dress Code: Don't stress! Just look nice and come ready to have fun."
