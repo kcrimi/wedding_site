@@ -66,6 +66,10 @@ pages_list:
     display: 'Lodging'
     onIndex: False
     nav: True
+  - name: 'schedule'
+    display: 'Schedule'
+    onIndex: False
+    nav: True
   - name: 'recommendations'
     display: 'Recommendations'
     onIndex: False
