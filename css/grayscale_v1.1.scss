@@ -96,7 +96,6 @@ a {
 .unstylized {
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
-    font-size: 21px;
 }
 
 ul,
@@ -112,13 +111,14 @@ ol {
     margin-bottom: 0;
     font-family: Garden,"Palatino Linotype", "Book Antiqua", Palatino, serif;
     padding: 0px;
-    border-bottom: none;
+    border-bottom: 5px solid #ffffff;
     letter-spacing: 1px;
     -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
     -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
     transition: background .5s ease-in-out,padding .5s ease-in-out;
     /*border-top: 8px solid $primary; */
     background: $black;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
 
     .navbar-collapse {
         text-align: center;
@@ -187,7 +187,7 @@ ol {
             }
         }
         .navbar-nav>li>a {
-            padding-top: 0px;
+            padding-top: 5px;
             padding-bottom: 5px;
         }
     }
@@ -353,6 +353,38 @@ ol {
             align-self: center; 
             height: 250px;
             width: 250px;
+        }
+    }
+}
+
+section#schedule {
+    .day {
+        margin-bottom: 70px;
+        .section-header {
+            margin-bottom: 30px;
+            h3 {
+                margin: 0 0 0;
+            }
+            img {
+                width: 50%;
+                max-width: 210px;
+            }
+        }
+        .event-date {
+            color: #ad914bad;
+            text-shadow: none;
+        } 
+        .event-name{
+            margin: 0 0 14px;
+        }
+        .event-info {
+            margin-bottom: 30px;
+            .event-venue-time {
+                margin: 0 0 10px;
+            }
+        }
+        .event-address {
+            margin-bottom: 30px;
         }
     }
 }
