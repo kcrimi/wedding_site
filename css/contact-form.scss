@@ -64,6 +64,14 @@ label span {
   background-color: rgba(255, 0, 0, 0.12);
 }
 
+.guest-row {
+  list-style-type: none;
+  margin-top: 15px;
+  .rsvp-item {
+    margin: 0 26px;
+    display: inline-block;
+  }
+}
 
 @media (max-width: 530px) {
     .form-section {
@@ -117,6 +125,13 @@ button:not([disabled]):focus {
     border: 1px solid $primary;
 }
 
+.menu-info {
+    cursor: pointer;
+    font-size: 15px;
+    text-decoration: underline;
+    color: #ad914bad;
+}
+
 .cd-popup {
   position: fixed;
   left: 0;
@@ -163,6 +178,34 @@ button:not([disabled]):focus {
   -moz-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
+
+.menu-popup {
+  .cd-popup-container {
+    top: 10%;
+    max-width: 800px;
+    .cd-message {
+      padding: 35px;
+      h3 {          
+          color: #ad914bad;
+          text-shadow: none;
+      }
+      ul {
+        padding-left: 0px;
+        li {
+          list-style-type: none;
+          h4 {
+            margin-bottom: 5px;
+          }
+          p { 
+            padding: 0px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
 .cd-popup-container p {
   padding: 3em 1em;
 }

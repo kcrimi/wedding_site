@@ -95,24 +95,30 @@ $(document).ready(function() {
         rows.push(plusOneRow);
       } else {
         row.html(guest.first_name);
-        row.append($("<input/>", {type:"radio", name:guest.id+"-attending-status", class:guest.id+" attending-status", value:ATTENDING, checked:true}));
-        row.append("Attending");
-        row.append($("<input/>", {type:"radio", name:guest.id+"-attending-status", class:guest.id+" attending-status", value:DECLINED}));
-        row.append("Not Attending");
+        var attendingDiv = $("<div></div>", {class:"rsvp-item"});
+        attendingDiv.append($("<input/>", {type:"radio", name:guest.id+"-attending-status", class:guest.id+" attending-status", value:ATTENDING, checked:true}));
+        attendingDiv.append("Attending");
+        attendingDiv.append($("<input/>", {type:"radio", name:guest.id+"-attending-status", class:guest.id+" attending-status", value:DECLINED}));
+        attendingDiv.append("Not Attending");
+        row.append(attendingDiv);
       }
       events.filter(function(event) {
         return event.meal_served;
       }).forEach(function(event) {
+        var mealDiv = $("<div></div>", {class:"rsvp-item"});
         var dropdown = $("<select>", {name:guest.id+"-meal-option-id", class:"meal-option-id "+guest.id});
         dropdown.append($("<option>", {value:"", disabled:true, selected:true}).text("Select Meal"));
         event.meal_options.forEach(function(meal) {
           dropdown.append($("<option>", {value:meal.id}).text(meal.name));
         })
         dropdown.append($("<option>", {value:"none"}).text("No Meal"));
-        row.append(dropdown);
+        mealDiv.append(dropdown);
+        mealDiv.append($("<a></a>", {class:"menu-info"}).text("menu"))
+        row.append(mealDiv);
       });
       rows.push(row);
     })
+
     $("#guests-list").html(rows);
     setRsvpListeners();
     setVisibleSectionsRsvp();
@@ -131,6 +137,9 @@ $(document).ready(function() {
       } else {
         $(".plus-one-guest-row").fadeOut('slow');
       }
+    })
+    $(".menu-info").on('click', function() {
+      $(".menu-popup").addClass("is-visible");
     })
   }
 
@@ -344,7 +353,7 @@ $(document).ready(function() {
 
   var sendAddressUpdateRequest = function(payload) {
     var request = new XMLHttpRequest();
-    var url = WEDDING_BOT_URL+'guests/'+selectedGuest.guests[0]+'/address';
+    var url = WEDDING_BOT_URL+'/guests/'+selectedGuest[MAILING].guests[0]+'/address';
     request.open('POST', url, true);
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     request.onreadystatechange = function() {
@@ -352,10 +361,10 @@ $(document).ready(function() {
         if (request.status == 200) {
           $('section#mailing .cd-message').html("Address updated successfully!");
           if (payload.address) {
-            selectedGuest.address = payload.address;
+            selectedGuest[MAILING].address = payload.address;
           }
           if (payload.email) {
-            selectedGuest.email = payload.email;
+            selectedGuest[MAILING].email = payload.email;
           }
         } else {
           $('section#mailing .cd-message').html("ERROR "+request.status+": Something went wrong. Let Kevin or Melissa know their website is broken!");
@@ -364,7 +373,7 @@ $(document).ready(function() {
       }
     }
     request.send(JSON.stringify(payload));
-    log(url, payload, {selectedGuest : selectedGuest});
+    log(url, payload, {selectedGuest : selectedGuest[MAILING]});
   }
 
   var fieldsHaveChanged = function () {
