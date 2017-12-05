@@ -1,3 +1,5 @@
+---
+---
 $(document).ready(function() {
   var dataLists = $('.guest-datalist');
   var input = $('.guest-name');
@@ -10,7 +12,8 @@ $(document).ready(function() {
   var RSVP = "rsvp-guest";
   var ATTENDING = "attending";
   var DECLINED = "declined";
-
+  var WEDDING_BOT_URL = '{{ site.wedding-bot-url }}'
+  
   var guestListRequest = new XMLHttpRequest();
   guestListRequest.onreadystatechange = function(response) {
     if (guestListRequest.readyState === XMLHttpRequest.DONE) {
@@ -29,7 +32,7 @@ $(document).ready(function() {
     }
   };
 
-  guestListRequest.open('GET', 'https://aisle-planner.herokuapp.com/guests', true);
+  guestListRequest.open('GET', WEDDING_BOT_URL+'/guests', true);
   guestListRequest.send();
 
   // Request Menus
@@ -52,7 +55,7 @@ $(document).ready(function() {
     }
   };
 
-  eventsRequest.open('GET', 'https://aisle-planner.herokuapp.com/events', true);
+  eventsRequest.open('GET', WEDDING_BOT_URL+'/events', true);
   eventsRequest.send();
 
   //////////
@@ -72,7 +75,7 @@ $(document).ready(function() {
       }
     };
 
-    rsvpRequest.open('GET', 'https://aisle-planner.herokuapp.com/rsvp/'+id, true);
+    rsvpRequest.open('GET', WEDDING_BOT_URL+'/rsvp/'+id, true);
     rsvpRequest.send();
   }
 
@@ -200,7 +203,7 @@ $(document).ready(function() {
 
   var sendUpdateRsvpRequest = function(group_id, payload) {
     var request = new XMLHttpRequest();
-    var url = 'https://aisle-planner.herokuapp.com/rsvp/'+group_id;
+    var url = WEDDING_BOT_URL+'/rsvp/'+group_id;
     request.open('POST', url, true);
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     request.onreadystatechange = function() {
@@ -341,7 +344,7 @@ $(document).ready(function() {
 
   var sendAddressUpdateRequest = function(payload) {
     var request = new XMLHttpRequest();
-    var url = 'https://aisle-planner.herokuapp.com/guests/'+selectedGuest.guests[0]+'/address';
+    var url = WEDDING_BOT_URL+'guests/'+selectedGuest.guests[0]+'/address';
     request.open('POST', url, true);
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     request.onreadystatechange = function() {
