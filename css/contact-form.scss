@@ -129,6 +129,7 @@ button:not([disabled]):focus {
   -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
   -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
   transition: opacity 0.3s 0s, visibility 0s 0.3s;
+  z-index: 1;
 }
 .cd-popup.is-visible {
   opacity: 1;
@@ -141,6 +142,7 @@ button:not([disabled]):focus {
 .cd-popup-container {
   position: relative;
   width: 90%;
+  top: 30%;
   max-width: 400px;
   margin: 4em auto;
   background: $white;
