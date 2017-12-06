@@ -94,12 +94,13 @@ $(document).ready(function() {
         row.append($("<input>", {type:"text", class:guest.id+" last_name", placeholder:"Last Name"}));
         rows.push(plusOneRow);
       } else {
-        row.html(guest.first_name);
+        var nameDiv = $("<div></div>", {class:"rsvp-item unstylized"}).text(guest.first_name);
+        row.append(nameDiv);
         var attendingDiv = $("<div></div>", {class:"rsvp-item"});
-        attendingDiv.append($("<input/>", {type:"radio", name:guest.id+"-attending-status", class:guest.id+" attending-status", value:ATTENDING, checked:true}));
-        attendingDiv.append("Attending");
-        attendingDiv.append($("<input/>", {type:"radio", name:guest.id+"-attending-status", class:guest.id+" attending-status", value:DECLINED}));
-        attendingDiv.append("Not Attending");
+        attendingDiv.append($("<input/>", {id:guest.id+"-attending", type:"radio", name:guest.id+"-attending-status", class:guest.id+" attending-status", value:ATTENDING, checked:true}));
+        attendingDiv.append($("<label></label>", {for: guest.id+"-attending", class:"unstylized"}).text("Attending"));
+        attendingDiv.append($("<input/>", {id:guest.id+"-not-attending", type:"radio", name:guest.id+"-attending-status", class:guest.id+" attending-status", value:DECLINED}));
+        attendingDiv.append($("<label></label>", {for: guest.id+"-not-attending", class:"unstylized"}).text("Not Attending"));
         row.append(attendingDiv);
       }
       events.filter(function(event) {
@@ -125,12 +126,16 @@ $(document).ready(function() {
   }
 
   var setRsvpListeners = function () {
+    $(".attending-status").click(function(event) {
+      console.log("click "+$(this).val())
+      $(this).closest(".guest-row").find("select").prop('disabled', $(this).val() == 'declined')
+    })
+
     $(".plus-one-row label").click(function(event) {
       $(".plus-one-row input").trigger('click');
     })
 
     $(".plus-one-row input").on('click', function() {
-
       if ($(this).prop('checked')) {
         $(".plus-one-guest-row").fadeIn('slow');
         $(".plus-one-guest-row").removeClass("hidden");
@@ -138,6 +143,7 @@ $(document).ready(function() {
         $(".plus-one-guest-row").fadeOut('slow');
       }
     })
+
     $(".menu-info").on('click', function() {
       $(".menu-popup").addClass("is-visible");
     })
