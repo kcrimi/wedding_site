@@ -12,8 +12,9 @@ $(document).ready(function() {
   var RSVP = "rsvp-guest";
   var ATTENDING = "attending";
   var DECLINED = "declined";
-  var WEDDING_BOT_URL = '{{ site.wedding-bot-url }}'
-  
+  var WEDDING_BOT_URL = '{{ site.wedding-bot-url }}';
+  var SINEMA_ID = 278945;
+
   var guestListRequest = new XMLHttpRequest();
   guestListRequest.onreadystatechange = function(response) {
     if (guestListRequest.readyState === XMLHttpRequest.DONE) {
@@ -69,7 +70,7 @@ $(document).ready(function() {
           rsvpInformation = JSON.parse(rsvpRequest.responseText);
           updateRsvpFormFromData();
         } else {
-          $('section#rsvp .cd-message').html("ERROR "+request.status+": Something went wrong retrieving your rsvp info. Let Kevin or Melissa know their website is broken!");
+          $('section#rsvp .cd-message').html("ERROR "+rsvpRequest.status+": Something went wrong retrieving your rsvp info. Let Kevin or Melissa know their website is broken!");
           $('section#rsvp .cd-popup').addClass('is-visible');
         } 
       }
@@ -158,18 +159,21 @@ $(document).ready(function() {
     if (!validateRsvpForm()) {
       return;
     }
+    console.log(events);
     var selectEvents = events.filter(function(event) {
-      return ['reception', 'ceremony'].includes(event.ap_use);
+      return ['reception', 'ceremony'].includes(event.ap_use) || event.id == SINEMA_ID;
     }).reduce(function(map, event) {
       map[event.id] = event;
       return map;
     }, {});
     console.log(selectEvents)
+    console.log(rsvpInformation)
     guestRsvps = rsvpInformation.map(function(guest) {
       var guestPayload = {
-        id: guest.id,
+        id: guest.id
       };
       var attending;
+      // Handle names for +1s
       if (guest.is_anonymous) {
         if ($(".plus-one-row input").prop("checked")) {
           attending = ATTENDING
@@ -181,13 +185,21 @@ $(document).ready(function() {
       } else {
         attending = $(".attending-status."+guest.id+":checked").val();
       }
+
+      // Handle rsvping for events
       var rsvps = guest.statuses.reduce(function(output, status) {
         if (selectEvents[status.wedding_event_id]) {
+          // Base rsvp
           var rsvp = {
             wedding_event_id: status.wedding_event_id,
             guest_list: status.guest_list,
             attending_status: attending,
           };
+          // Check if they said they were coming to sinema
+          if (status.wedding_event_id == SINEMA_ID && !$("input[name='sinema-rsvp']").prop("checked")) {
+            rsvp.attending_status = DECLINED;
+          }
+          // Add meal information
           if (attending == ATTENDING
             && selectEvents[status.wedding_event_id].meal_served) {
             var selectedMeal = $(".meal-option-id."+guest.id).find(":selected").val();
@@ -205,8 +217,10 @@ $(document).ready(function() {
       return guestPayload;
     });
     var payload = {
+      id: selectedGuest[RSVP].id,
       guests: guestRsvps
     }
+    console.log(payload)
     sendUpdateRsvpRequest(rsvpInformation[0].group_id, payload)
   });
 
