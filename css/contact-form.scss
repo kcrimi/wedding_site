@@ -78,7 +78,9 @@ label span {
         width: 200px;
         text-align: left;
         &.last-name {
-          margin-left: 10px;
+          @media (min-width: 480px) {
+            margin-left: 10px;
+          }
         }
       }
     }
