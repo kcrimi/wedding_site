@@ -90,8 +90,8 @@ $(document).ready(function() {
           $("<label>", {for:"plus-one"}).text("Will you be bringing a guest?")]);
         row.addClass("hidden plus-one-guest-row");
         row.removeClass("guest-row")
-        row.append($("<input>", {type:"text", class:guest.id+" first-name", placeholder:"First Name"}));
-        row.append($("<input>", {type:"text", class:guest.id+" last_name", placeholder:"Last Name"}));
+        row.append($("<input>", {type:"text", class:guest.id+" first-name form-field field-enabled", placeholder:"First Name"}));
+        row.append($("<input>", {type:"text", class:guest.id+" last-name form-field field-enabled", placeholder:"Last Name"}));
         rows.push(plusOneRow);
       } else {
         row.html(guest.first_name);
@@ -174,7 +174,7 @@ $(document).ready(function() {
         if ($(".plus-one-row input").prop("checked")) {
           attending = ATTENDING
           guestPayload.first_name = $(".first-name."+guest.id).val();
-          guestPayload.last_name = $(".first-name."+guest.id).val();
+          guestPayload.last_name = $(".last-name."+guest.id).val();
         } else {
           attending = DECLINED;
         }

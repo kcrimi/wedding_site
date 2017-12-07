@@ -64,12 +64,24 @@ label span {
   background-color: rgba(255, 0, 0, 0.12);
 }
 
-.guest-row {
-  list-style-type: none;
-  margin-top: 15px;
-  .rsvp-item {
-    margin: 0 26px;
-    display: inline-block;
+#guests-list {
+  li {
+    list-style-type: none;
+    &.guest-row, &.plus-one-guest-row{
+      margin-top: 15px;
+      .rsvp-item {
+        margin-left: 26px;
+        display: inline-block;
+      }
+      .form-field {
+        display: inline-block;
+        width: 200px;
+        text-align: left;
+        &.last-name {
+          margin-left: 10px;
+        }
+      }
+    }
   }
 }
 
