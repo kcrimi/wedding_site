@@ -64,28 +64,46 @@ label span {
   background-color: rgba(255, 0, 0, 0.12);
 }
 
-.guest-row {
-  list-style-type: none;
-  margin-top: 15px;
-  .rsvp-item {
-    margin-left: 26px;
-    display: inline-block;
-    input[type="radio"] {
-      margin: 0px 10px;
-    }
-    .menu-info {
-        cursor: pointer;
-        font-size: 15px;
-        margin-left: 5px;
-        text-decoration: underline;
-        color: #ad914bad;
+#guests-list {
+  li {
+    list-style-type: none;
+    &.guest-row, &.plus-one-guest-row{
+      margin-top: 15px;
+      .rsvp-item {
+        margin-top: 6px;
+        margin-left: 26px;
+        display: inline-block;
+        input[type="radio"] {
+          margin-left: 10px;
+        }
+        label {
+          font-weight: 300;
+        }
+        .menu-info {
+          cursor: pointer;
+          font-size: 15px;
+          margin-left: 5px;
+          text-decoration: underline;
+          color: #ad914bad;
+        }
+        select:disabled {
+          color: lightgray;
+        }
+      }
+      .form-field {
+        display: inline-block;
+        width: 200px;
+        text-align: left;
+        &.last-name {
+          @media (min-width: 480px) {
+            margin-left: 10px;
+          }
+        }
+      }
     }
     label {
-      font-weight: 300;
-    }
-    select:disabled {
-      color: lightgray;
-    }
+      margin-left: 10px;
+    } 
   }
 }
 
