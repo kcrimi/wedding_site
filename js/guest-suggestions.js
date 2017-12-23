@@ -199,7 +199,9 @@ $(document).ready(function() {
     }
     console.log(events);
     var selectEvents = events.filter(function(event) {
-      return ['reception', 'ceremony'].includes(event.ap_use) || event.id == SINEMA_ID;
+      return ['reception', 'ceremony'].includes(event.ap_use) 
+      || event.id == SINEMA_ID
+      || event.id == BRUNCH_ID;
     }).reduce(function(map, event) {
       map[event.id] = event;
       return map;
@@ -211,7 +213,11 @@ $(document).ready(function() {
         id: guest.id
       };
       var attending;
+      var attendingBrunch;
       // Handle names for +1s
+      if ($(".attending-status-brunch."+guest.id)) {
+        attendingBrunch = $(".attending-status-brunch."+guest.id+":checked").val();
+      }
       if (guest.is_anonymous) {
         if ($(".plus-one-row input").prop("checked")) {
           attending = ATTENDING
@@ -219,6 +225,7 @@ $(document).ready(function() {
           guestPayload.last_name = $(".last-name."+guest.id).val();
         } else {
           attending = DECLINED;
+          attendingBrunch = DECLINED; // Override when no +1
         }
       } else {
         attending = $(".attending-status."+guest.id+":checked").val();
@@ -227,6 +234,14 @@ $(document).ready(function() {
       // Handle rsvping for events
       var rsvps = guest.statuses.reduce(function(output, status) {
         if (selectEvents[status.wedding_event_id]) {
+          if (status.wedding_event_id == BRUNCH_ID) {
+            output.push({
+              wedding_event_id: status.wedding_event_id,
+              guest_list: status.guest_list,
+              attending_status: attendingBrunch,
+            });
+            return output;
+          }}
           // Base rsvp
           var rsvp = {
             wedding_event_id: status.wedding_event_id,
@@ -248,7 +263,7 @@ $(document).ready(function() {
             }
           }
           output.push(rsvp);
-        }
+        } 
         return output;
       }, [])
       guestPayload.rsvps = rsvps;
