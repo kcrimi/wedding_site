@@ -129,9 +129,10 @@ $(document).ready(function() {
       })
 
       if (brunchEvent) {
-        var brunchRow = $("<li></li>", {id: guest.id+"-brunch", class:"guest-row"});
+        var brunchRow = $("<li></li>", {id: guest.id+"-brunch", class:"guest-row brunch"});
         if (guest.is_anonymous) {
-          var nameDiv = $("<div></div>", {class:"rsvp-item unstylized"}).text("Guest");
+          brunchRow.addClass("hidden plus-one-guest-row");
+          var nameDiv = $("<div></div>", {class:"rsvp-item unstylized name"}).text("Guest");
         } else {
           var nameDiv = $("<div></div>", {class:"rsvp-item unstylized"}).text(guest.first_name);
         }
@@ -170,6 +171,12 @@ $(document).ready(function() {
       } else {
         $(".plus-one-guest-row").fadeOut('slow');
       }
+    })
+
+    // Update the +1 guest's name in the brunch section
+    $(".plus-one-guest-row .first-name").on('input', function() {
+      var name = $(this).val().length > 0 ? $(this).val() : "Guest";
+      $(".plus-one-guest-row.brunch .name").text(name);
     })
 
     $(".menu-info").on('click', function() {
