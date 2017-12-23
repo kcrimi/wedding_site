@@ -14,6 +14,7 @@ $(document).ready(function() {
   var DECLINED = "declined";
   var WEDDING_BOT_URL = '{{ site.wedding-bot-url }}';
   var SINEMA_ID = 278945;
+  var BRUNCH_ID = 123456; // TODO: REPLACE WITH REAL ID
 
   var guestListRequest = new XMLHttpRequest();
   guestListRequest.onreadystatechange = function(response) {
@@ -81,7 +82,8 @@ $(document).ready(function() {
   }
 
   var updateRsvpFormFromData = function () {
-    var rows = [];
+    var weddingRows = [];
+    var brunchRows
     rsvpInformation.forEach(function(guest) {
       var row = $("<li></li>", {id: guest.id, class:"guest-row"});
       if (guest.is_anonymous) {
@@ -93,7 +95,7 @@ $(document).ready(function() {
         row.removeClass("guest-row")
         row.append($("<input>", {type:"text", class:guest.id+" first-name form-field field-enabled", placeholder:"First Name"}));
         row.append($("<input>", {type:"text", class:guest.id+" last-name form-field field-enabled", placeholder:"Last Name"}));
-        rows.push(plusOneRow);
+        weddingRows.push(plusOneRow);
       } else {
         var nameDiv = $("<div></div>", {class:"rsvp-item unstylized"}).text(guest.first_name);
         row.append(nameDiv);
@@ -104,6 +106,7 @@ $(document).ready(function() {
         attendingDiv.append($("<label></label>", {for: guest.id+"-not-attending", class:"unstylized"}).text("Not Attending"));
         row.append(attendingDiv);
       }
+      // Wedding meal
       events.filter(function(event) {
         return event.meal_served;
       }).forEach(function(event) {
@@ -118,10 +121,34 @@ $(document).ready(function() {
         mealDiv.append($("<a></a>", {class:"menu-info"}).text("menu"))
         row.append(mealDiv);
       });
-      rows.push(row);
-    })
+      weddingRows.push(row);
 
-    $("#guests-list").html(rows);
+      // Brunch rsvp if needed
+      var brunchEvent = events.find(function(event) {
+        return event.id === BRUNCH_ID;
+      })
+
+      if (brunchEvent) {
+        var brunchRow = $("<li></li>", {id: guest.id+"-brunch", class:"guest-row"});
+        if (guest.is_anonymous) {
+          var nameDiv = $("<div></div>", {class:"rsvp-item unstylized"}).text("Guest");
+        } else {
+          var nameDiv = $("<div></div>", {class:"rsvp-item unstylized"}).text(guest.first_name);
+        }
+        brunchRow.append(nameDiv);
+        var attendingDiv = $("<div></div>", {class:"rsvp-item"});
+        attendingDiv.append($("<input/>", {id:guest.id+"-attending-brunch", type:"radio", name:guest.id+"-attending-status-brunch", class:guest.id+" attending-status-brunch", value:ATTENDING, checked:true}));
+        attendingDiv.append($("<label></label>", {for: guest.id+"-attending-brunch", class:"unstylized"}).text("Attending"));
+        attendingDiv.append($("<input/>", {id:guest.id+"-not-attending-brunch", type:"radio", name:guest.id+"-attending-status-brunch", class:guest.id+" attending-status-brunch", value:DECLINED}));
+        attendingDiv.append($("<label></label>", {for: guest.id+"-not-attending-brunch", class:"unstylized"}).text("Not Attending"));
+        brunchRow.append(attendingDiv);
+        brunchRows.append(brunchRow);
+      }
+    })
+    $("#guests-list").html(weddingRows);
+    if (brunchRows.length > 0) {
+      $("#brunch-guests-list").html(brunchRows);      
+    }
     setRsvpListeners();
     setVisibleSectionsRsvp();
   }
@@ -152,12 +179,17 @@ $(document).ready(function() {
 
   var setVisibleSectionsRsvp = function () {
     var disabled;
+    if ($('#brunch-guests-list li')) {
+      $('brunch-guests-list').fadeIn('fast');
+    } else {
+      $('brunch-guests-list').fadeOut('fast')
+    }
     if (selectedGuest[RSVP]) {
       $('#rsvp-name').removeClass('field-enabled');
-      $('section#rsvp .hideable').fadeIn('slow');
+      $('.rsvp-section.hideable').fadeIn('slow');
     } else {
       $('#rsvp-name').addClass('field-enabled');
-      $('section#rsvp .hideable').fadeOut('slow');
+      $('.rsvp-section.hideable').fadeOut('slow');
     }
   }
 
