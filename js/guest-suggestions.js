@@ -70,13 +70,14 @@ $(document).ready(function() {
         if (rsvpRequest.status === 200) {
           rsvpInformation = JSON.parse(rsvpRequest.responseText);
           updateRsvpFormFromData();
+          $('#guest-name-section .loader').addClass('hidden');
         } else {
           $('section#rsvp .cd-message').html("ERROR "+rsvpRequest.status+": Something went wrong retrieving your rsvp info. Let Kevin or Melissa know their website is broken!");
           $('section#rsvp .cd-popup').addClass('is-visible');
         } 
       }
     };
-
+    $('#guest-name-section .loader').removeClass('hidden');
     rsvpRequest.open('GET', WEDDING_BOT_URL+'/rsvp/'+id, true);
     rsvpRequest.send();
   }
