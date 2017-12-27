@@ -64,7 +64,7 @@ label span {
   background-color: rgba(255, 0, 0, 0.12);
 }
 
-#guests-list {
+#guests-list, #brunch-guests-list {
   li {
     list-style-type: none;
     &.guest-row, &.plus-one-guest-row{

@@ -14,7 +14,7 @@ $(document).ready(function() {
   var DECLINED = "declined";
   var WEDDING_BOT_URL = '{{ site.wedding-bot-url }}';
   var SINEMA_ID = 278945;
-  var BRUNCH_ID = 123456; // TODO: REPLACE WITH REAL ID
+  var BRUNCH_ID = 273068;
 
   var guestListRequest = new XMLHttpRequest();
   guestListRequest.onreadystatechange = function(response) {
@@ -83,7 +83,7 @@ $(document).ready(function() {
 
   var updateRsvpFormFromData = function () {
     var weddingRows = [];
-    var brunchRows
+    var brunchRows = [];
     rsvpInformation.forEach(function(guest) {
       var row = $("<li></li>", {id: guest.id, class:"guest-row"});
       if (guest.is_anonymous) {
@@ -124,8 +124,8 @@ $(document).ready(function() {
       weddingRows.push(row);
 
       // Brunch rsvp if needed
-      var brunchEvent = events.find(function(event) {
-        return event.id === BRUNCH_ID;
+      var brunchEvent = guest.statuses.find(function(status) {
+        return status.wedding_event_id === BRUNCH_ID;
       })
 
       if (brunchEvent) {
@@ -143,13 +143,11 @@ $(document).ready(function() {
         attendingDiv.append($("<input/>", {id:guest.id+"-not-attending-brunch", type:"radio", name:guest.id+"-attending-status-brunch", class:guest.id+" attending-status-brunch", value:DECLINED}));
         attendingDiv.append($("<label></label>", {for: guest.id+"-not-attending-brunch", class:"unstylized"}).text("Not Attending"));
         brunchRow.append(attendingDiv);
-        brunchRows.append(brunchRow);
+        brunchRows.push(brunchRow);
       }
     })
     $("#guests-list").html(weddingRows);
-    if (brunchRows.length > 0) {
-      $("#brunch-guests-list").html(brunchRows);      
-    }
+    $("#brunch-guests-list").html(brunchRows);
     setRsvpListeners();
     setVisibleSectionsRsvp();
   }
@@ -185,18 +183,19 @@ $(document).ready(function() {
   }
 
   var setVisibleSectionsRsvp = function () {
-    var disabled;
-    if ($('#brunch-guests-list li')) {
-      $('brunch-guests-list').fadeIn('fast');
+    if ($('#brunch-guests-list li').length > 0) {
+      console.log("exist");
+      $('.brunch.hideable').fadeIn('fast');
     } else {
-      $('brunch-guests-list').fadeOut('fast')
+      console.log("not exist");
+      $('.brunch.hideable').fadeOut('fast')
     }
     if (selectedGuest[RSVP]) {
       $('#rsvp-name').removeClass('field-enabled');
-      $('.rsvp-section.hideable').fadeIn('slow');
+      $('.rsvp-section.hideable, #submit-rsvp').fadeIn('slow');
     } else {
       $('#rsvp-name').addClass('field-enabled');
-      $('.rsvp-section.hideable').fadeOut('slow');
+      $('.rsvp-section.hideable, #submit-rsvp').fadeOut('slow');
     }
   }
 
@@ -248,7 +247,7 @@ $(document).ready(function() {
               attending_status: attendingBrunch,
             });
             return output;
-          }}
+          }
           // Base rsvp
           var rsvp = {
             wedding_event_id: status.wedding_event_id,
