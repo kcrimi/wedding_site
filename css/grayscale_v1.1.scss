@@ -357,8 +357,8 @@ ol {
     }
 }
 
-section#schedule {
-    .day {
+section.standard-wrapper {
+    .detail-container {
         margin-bottom: 70px;
         .section-header {
             margin-bottom: 30px;
@@ -370,9 +370,11 @@ section#schedule {
                 max-width: 210px;
             }
         }
-        .event-date {
-            color: #ad914bad;
+        .sub-header {
             text-shadow: none;
+            &:not(:hover) {
+                color: #ad914bad;
+            }
         } 
         .event-name{
             margin: 0 0 14px;
