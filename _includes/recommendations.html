@@ -7,12 +7,24 @@
 			<div class="col-lg-8 col-lg-offset-2 text-center">
 				<h1>Nashville Recommendations</h1>
 				<p> We've gathered some recommendations for things to do while you're in Nashville. If you want, you can also download a copy of the list <a href='/assets/nashville-recommendations.pdf' target="_blank">here</a>.</p>
-				{% for category in site.data.recommendations %}
-					<h3>
-						 <a class="page-scroll" href="#{{ forloop.index0 }}"> {{ category.name }} </a> 
-					</h3>
-				{% endfor %}
-				<p><a href="#rec-map">Map View</a></p>
+				<div class="diamondswrap">
+					{% for diamond in site.data.diamonds.recommendations %}
+						{% if diamond.blank %}
+							<p class="item blank"></p>
+						{% else %}
+							{% if diamond.url %}
+								<a href="{{diamond.url}}" class="page-scroll item" style="background-image: url({{ diamond.img }});">
+									{% if diamond.text %}
+										<h3>{{ diamond.text }}</h3>
+									{% endif %}
+								</a>
+							{% else %}
+							<div class="item" style="background-image: url({{ diamond.img }});">
+							</div>
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+			    </div>
 			</div>
 		</div>
 	</div>

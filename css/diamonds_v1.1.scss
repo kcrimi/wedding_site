@@ -23,6 +23,17 @@
         -moz-box-sizing: border-box;
         -ms-box-sizing: border-box;
         box-sizing: border-box;
+        h3 {
+            position: relative;
+            padding-left: 22px;
+            padding-right: 22px;
+            font-size: 14px;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            color: white;
+            text-shadow: 0px 0px 15px black;
+        }
     }
     a.item:hover:after {
         content: "";
@@ -37,29 +48,10 @@
     .item.blank {
         background-color: transparent;
     }
-    #sq2 {
-        background-image: url('/img/squares/2l.jpg');
-    }
-    #sq3 {
-        background-image: url('/img/squares/3.jpg');
-    }
-    #sq4 {
-        background-image: url('/img/squares/6.jpg');
-    }
-    #sq5 {
-        background-image: url('/img/squares/fire-ad.jpg');
-    }
-    #sq6 {
-        background-image: url('/img/squares/park.jpg');
-    }
-    #sq7 {
-        background-image: url('/img/squares/7.jpg');
-    }
 }
 .diamonds {
     text-align: center;
     overflow: visible;
-    white-space: nowrap;
     display: inline-block;
 }
 
@@ -94,6 +86,15 @@
     .diamond-box-wrap {
         width: 250px; /* Size of diamonds */
         height: 250px;
+    }
+    .diamondswrap {
+        .item {
+            h3 {
+                padding-left: 35px;
+                padding-right: 35px;
+                font-size: 24px;
+            }
+        }
     }
 }
 
