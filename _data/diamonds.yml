@@ -1,13 +1,13 @@
 recommendations:
   - blank: True
-  - img: '/img/squares/2l.jpg'
+  - img: '/img/squares/2.jpg'
     text: 'Music, Bars, and Hangouts'
     url: '#1'
   - img: '/img/squares/3.jpg'
+  - img: '/img/squares/6.jpg'
     text: 'Food'
     url: '#0'
-  - img: '/img/squares/6.jpg'
-  - img: '/img/squares/fire-ad.jpg'
+  - img: '/img/squares/fire.jpg'
     text: 'Things to See and Do'
     url: '#2'
   - img: '/img/squares/park.jpg'
