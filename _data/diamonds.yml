@@ -1,0 +1,18 @@
+recommendations:
+  - blank: True
+  - img: '/img/squares/2l.jpg'
+    text: 'Music, Bars, and Hangouts'
+    url: '#1'
+  - img: '/img/squares/3.jpg'
+    text: 'Food'
+    url: '#0'
+  - img: '/img/squares/6.jpg'
+  - img: '/img/squares/fire-ad.jpg'
+    text: 'Things to See and Do'
+    url: '#2'
+  - img: '/img/squares/park.jpg'
+  - img: '/img/squares/7.jpg'
+    text: 'Map View'
+    url: '#rec-map'
+  - blank: true
+  
