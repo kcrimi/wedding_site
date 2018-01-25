@@ -56,10 +56,6 @@ pages_list:
     display: RSVP
     onIndex: True
     nav: False
-  - name: 'ceremony'
-    display: 'Ceremony'
-    onIndex: True
-    nav: True
   - name: 'mailing'
     display: 'Mailing Info'
     onIndex: True
