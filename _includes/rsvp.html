@@ -1,0 +1,56 @@
+
+<!-- RSVP Start --> 
+<div class=container> 
+  <link href="{{site.baseurl}}/css/contact-form.css" rel="stylesheet">
+  <a name="rsvp"></a>
+  <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 text-center">
+        <h1>RSVP</h1>
+        <div class="ui-widget contact-form">
+          <div id="guest-name-section" class="form-section">
+            <h3> Name </h3>
+            <p>Look up your name in the guest list</p>
+            <input class="form-field address-form-field field-enabled guest-name" type="text" id="rsvp-guest" list="rsvp-datalist" placeholder="Find your name">
+  		      <datalist id="rsvp-datalist" class="guest-datalist"></datalist>
+            <div class="loader hidden"></div>
+          </div>
+
+          <div class="form-section hideable rsvp-section">
+            <h3>Guests</h3>
+            <p>Who will be attending the wedding?</p>
+            <ul id="guests-list">
+            </ul>
+            <div class="hideable brunch">
+              <p>Who will be joining for the Mother's Day brunch the day after the wedding at <a href="" target="_blank">Adele's</a> (May 13th)?</p>
+              <ul id="brunch-guests-list">
+              </ul>
+            </div>
+            <div class="welcome-event">
+              <p>Would you like to join us for a welcome drinks the day before the wedding at <a href="http://www.sinemanashville.com/the-lounge/" target="_blank">Sinema</a> (May 11th)?</p>
+              <input type="checkbox" name="sinema-rsvp">
+              <label for="sinema-rsvp">Save me a spot!</label>
+            </div>
+          </div>
+
+        </div>
+        <button id="submit-rsvp" class="hideable">Submit RSVP</button>
+      </div>
+  </div>
+  <div class="cd-popup alert" role="alert">
+    <div class="cd-popup-container">
+      <p class="cd-message"></p>
+      <a href="#0" class="cd-popup-close img-replace"> </a>
+    </div> <!-- cd-popup-container -->
+  </div> <!-- cd-popup -->
+  <div class="cd-popup menu-popup" role="alert">
+    <div class="cd-popup-container">
+      <div class="cd-message">
+        <h3 class="unstylized">Menu</h3>
+        <ul id="menu-list">
+        </ul>
+      </div>
+      <a href="#0" class="cd-popup-close img-replace"> </a>
+    </div> <!-- cd-menu-popup container -->
+  </div> <!-- cd-popup  menu-->
+</div>
+<!-- About End -->
