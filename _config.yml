@@ -68,6 +68,10 @@ pages_list:
     display: 'Recommendations'
     onIndex: False
     nav: True
+  - name: 'registry'
+    display: 'Registry'
+    onIndex: False
+    nav: True
 
 ##################
 # External Links #

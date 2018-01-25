@@ -4,7 +4,7 @@ layout: default
 {% if page.ignore-wrapper %}
 	{% include {{page.section}}.html %}
 {% else %}
-	<section id="{{ page.section }}" class="content-section">
+	<section id="{{ page.section }}" class="content-section standard-wrapper">
 		{% include {{page.section}}.html %}
 	</section>
 {% endif %}
