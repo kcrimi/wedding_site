@@ -55,7 +55,7 @@ pages_list:
   - name: rsvp
     display: RSVP
     onIndex: True
-    nav: False
+    nav: True
   - name: 'lodging'
     display: 'Lodging'
     onIndex: False
