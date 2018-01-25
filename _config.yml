@@ -56,10 +56,6 @@ pages_list:
     display: RSVP
     onIndex: True
     nav: False
-  - name: 'mailing'
-    display: 'Mailing Info'
-    onIndex: True
-    nav: True
   - name: 'lodging'
     display: 'Lodging'
     onIndex: False
