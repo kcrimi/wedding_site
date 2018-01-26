@@ -72,8 +72,8 @@ $(document).ready(function() {
           updateRsvpFormFromData();
           $('#guest-name-section .loader').addClass('hidden');
         } else {
-          $('section#rsvp .cd-message').html("ERROR "+rsvpRequest.status+": Something went wrong retrieving your rsvp info. Let Kevin or Melissa know their website is broken!");
-          $('section#rsvp .cd-popup').addClass('is-visible');
+          $('section#rsvp .alert .cd-message').html("ERROR "+rsvpRequest.status+": Something went wrong retrieving your rsvp info. Let Kevin or Melissa know their website is broken!");
+          $('section#rsvp .cd-popup.alert').addClass('is-visible');
         } 
       }
     };
@@ -292,7 +292,7 @@ $(document).ready(function() {
     request.onreadystatechange = function() {
       if(request.readyState == XMLHttpRequest.DONE) {
         if (request.status == 200) {
-          $('section#mailing .cd-message').html("RSVP submitted successfully!");
+          $('section#rsvp .alert .cd-message').html("RSVP submitted successfully!");
           if (payload.address) {
             selectedGuest.address = payload.address;
           }
@@ -300,9 +300,9 @@ $(document).ready(function() {
             selectedGuest.email = payload.email;
           }
         } else {
-          $('section#mailing .cd-message').html("ERROR "+request.status+": Something went wrong. Let Kevin or Melissa know their website is broken!");
+          $('section#rsvp .alert .cd-message').html("ERROR "+request.status+": Something went wrong. Let Kevin or Melissa know their website is broken!");
         }
-        $('section#mailing .cd-popup').addClass('is-visible');
+        $('section#rsvp .cd-popup.alert').addClass('is-visible');
       }
     }
     request.send(JSON.stringify(payload));
