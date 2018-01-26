@@ -86,6 +86,7 @@ $(document).ready(function() {
   var updateRsvpFormFromData = function () {
     var weddingRows = [];
     var brunchRows = [];
+    var dinnerRows = [];
     rsvpInformation.forEach(function(guest) {
       var row = $("<li></li>", {id: guest.id, class:"guest-row"});
       if (guest.is_anonymous) {
@@ -125,31 +126,61 @@ $(document).ready(function() {
       });
       weddingRows.push(row);
 
-      // Brunch rsvp if needed
-      var brunchEvent = guest.statuses.find(function(status) {
-        return status.wedding_event_id === BRUNCH_ID;
-      })
-
-      if (brunchEvent) {
-        var brunchRow = $("<li></li>", {id: guest.id+"-brunch", class:"guest-row brunch"});
+      // Brunch and Dinner rsvp if needed
+      guest.statuses.filter(function(status) {
+        return status.wedding_event_id === BRUNCH_ID || status.wedding_event_id === DINNER_ID;
+      }).forEach(function(event) {
+        var eventTag = event.wedding_event_id === BRUNCH_ID ? "brunch" : "dinner";
+        var guestRow = $("<li></li>", {id: `${guest.id}-${eventTag}`, class: `guest-row ${eventTag}`});
+        var nameDiv = $("<div></div>", {class: "rsvp-item unstylized"}).text(guest.first_name);
         if (guest.is_anonymous) {
-          brunchRow.addClass("hidden plus-one-guest-row");
-          var nameDiv = $("<div></div>", {class:"rsvp-item unstylized name"}).text("Guest");
-        } else {
-          var nameDiv = $("<div></div>", {class:"rsvp-item unstylized"}).text(guest.first_name);
+          guestRow.addClass("hidden plus-one-guest-row");
+          nameDiv.addClass("name");
+          nameDiv.text("Guest");
         }
-        brunchRow.append(nameDiv);
         var attendingDiv = $("<div></div>", {class:"rsvp-item"});
-        attendingDiv.append($("<input/>", {id:guest.id+"-attending-brunch", type:"radio", name:guest.id+"-attending-status-brunch", class:guest.id+" attending-status-brunch", value:ATTENDING, checked:true}));
-        attendingDiv.append($("<label></label>", {for: guest.id+"-attending-brunch", class:"unstylized"}).text("Attending"));
-        attendingDiv.append($("<input/>", {id:guest.id+"-not-attending-brunch", type:"radio", name:guest.id+"-attending-status-brunch", class:guest.id+" attending-status-brunch", value:DECLINED}));
-        attendingDiv.append($("<label></label>", {for: guest.id+"-not-attending-brunch", class:"unstylized"}).text("Not Attending"));
-        brunchRow.append(attendingDiv);
-        brunchRows.push(brunchRow);
-      }
-    })
+        attendingDiv.append($("<input/>", 
+          {
+            id: `${guest.id}-attending-${eventTag}`, 
+            type: "radio", 
+            name: `${guest.id}-attending-status-${eventTag}`,
+            class:`${guest.id} attending-status-${eventTag}`, 
+            value:ATTENDING, checked:true
+          })
+        );
+        attendingDiv.append($("<label></label>", 
+          {
+            for: `${guest.id}-attending-${eventTag}`, 
+            class: "unstylized"
+          }).text("Attending")
+        );
+        attendingDiv.append($("<input/>", 
+          {
+            id: `${guest.id}-not-attending-${eventTag}`, 
+            type: "radio", 
+            name: `${guest.id}-attending-status-${eventTag}`, 
+            class:`${guest.id} attending-status-${eventTag}`, 
+            value:DECLINED
+          })
+        );
+        attendingDiv.append($("<label></label>", 
+          {
+            for: `${guest.id}-not-attending-${eventTag}`, 
+            class: "unstylized"}
+          ).text("Not Attending")
+        );
+        guestRow.append(nameDiv);
+        guestRow.append(attendingDiv);
+        if (event.wedding_event_id === BRUNCH_ID) {
+          brunchRows.push(guestRow);
+        } else {
+          dinnerRows.push(guestRow);
+        }
+      });
+    });
     $("#guests-list").html(weddingRows);
     $("#brunch-guests-list").html(brunchRows);
+    $("#dinner-guests-list").html(dinnerRows);
     setRsvpListeners();
     setVisibleSectionsRsvp();
   }
@@ -177,6 +208,7 @@ $(document).ready(function() {
     $(".plus-one-guest-row .first-name").on('input', function() {
       var name = $(this).val().length > 0 ? $(this).val() : "Guest";
       $(".plus-one-guest-row.brunch .name").text(name);
+      $(".plus-one-guest-row.dinner .name").text(name);
     })
 
     $(".menu-info").on('click', function() {
@@ -192,6 +224,14 @@ $(document).ready(function() {
       console.log("not exist");
       $('.brunch.hideable').fadeOut('fast')
     }
+    if ($('#dinner-guests-list li').length > 0) {
+      console.log("exist");
+      $('.dinner.hideable').fadeIn('fast');
+    } else {
+      console.log("not exist");
+      $('.dinner.hideable').fadeOut('fast')
+    }
+
     if (selectedGuest[RSVP]) {
       $('#rsvp-name').removeClass('field-enabled');
       $('.rsvp-section.hideable, #submit-rsvp').fadeIn('slow');
@@ -209,7 +249,8 @@ $(document).ready(function() {
     var selectEvents = events.filter(function(event) {
       return ['reception', 'ceremony'].includes(event.ap_use) 
       || event.id == SINEMA_ID
-      || event.id == BRUNCH_ID;
+      || event.id == BRUNCH_ID
+      || event.id == DINNER_ID;
     }).reduce(function(map, event) {
       map[event.id] = event;
       return map;
