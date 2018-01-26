@@ -72,14 +72,14 @@ $(document).ready(function() {
         if (rsvpRequest.status === 200) {
           rsvpInformation = JSON.parse(rsvpRequest.responseText);
           updateRsvpFormFromData();
-          $('#guest-name-section .loader').addClass('hidden');
+          $('section#rsvp .loader-container').addClass('hidden');
         } else {
           $('section#rsvp .alert .cd-message').html("ERROR "+rsvpRequest.status+": Something went wrong retrieving your rsvp info. Let Kevin or Melissa know their website is broken!");
           $('section#rsvp .cd-popup.alert').addClass('is-visible');
         } 
       }
     };
-    $('#guest-name-section .loader').removeClass('hidden');
+    $('section#rsvp .loader-container').removeClass('hidden');
     rsvpRequest.open('GET', WEDDING_BOT_URL+'/rsvp/'+id, true);
     rsvpRequest.send();
   }
@@ -250,6 +250,7 @@ $(document).ready(function() {
     if (!validateRsvpForm()) {
       return;
     }
+    $("section#rsvp .loader-container").removeClass("hidden");
     console.log(events);
     var selectEvents = events.filter(function(event) {
       return ['reception', 'ceremony'].includes(event.ap_use) 
@@ -359,6 +360,7 @@ $(document).ready(function() {
           $('section#rsvp .alert .cd-message').html("ERROR "+request.status+": Something went wrong. Let Kevin or Melissa know their website is broken!");
         }
         $('section#rsvp .cd-popup.alert').addClass('is-visible');
+        $("section#rsvp .loader-container").addClass("hidden");
       }
     }
     request.send(JSON.stringify(payload));
