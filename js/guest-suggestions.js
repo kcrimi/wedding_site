@@ -16,6 +16,7 @@ $(document).ready(function() {
   var SINEMA_ID = 278945;
   var BRUNCH_ID = 203467;
   var DINNER_ID = 273068;
+  var EVENT_TAGS = ["brunch", "dinner"];
 
   var guestListRequest = new XMLHttpRequest();
   guestListRequest.onreadystatechange = function(response) {
@@ -216,21 +217,25 @@ $(document).ready(function() {
     })
   }
 
+  var resetRsvpForm = function () {
+    $(".guest-name").val('');
+    selectedGuest[RSVP] = null;
+    EVENT_TAGS.forEach(function(tag) {
+      $(`#${tag}-guests-list`).empty();
+    })
+    setVisibleSectionsRsvp();
+  }
+
   var setVisibleSectionsRsvp = function () {
-    if ($('#brunch-guests-list li').length > 0) {
-      console.log("exist");
-      $('.brunch.hideable').fadeIn('fast');
-    } else {
-      console.log("not exist");
-      $('.brunch.hideable').fadeOut('fast')
-    }
-    if ($('#dinner-guests-list li').length > 0) {
-      console.log("exist");
-      $('.dinner.hideable').fadeIn('fast');
-    } else {
-      console.log("not exist");
-      $('.dinner.hideable').fadeOut('fast')
-    }
+    EVENT_TAGS.forEach(function(tag) {
+      if ($(`#${tag}-guests-list li`).length > 0) {
+        console.log("exist");
+        $(`.${tag}.hideable`).fadeIn('fast');
+      } else {
+        console.log("not exist");
+        $(`.${tag}.hideable`).fadeOut('fast')
+      }
+    })
 
     if (selectedGuest[RSVP]) {
       $('#rsvp-name').removeClass('field-enabled');
@@ -343,6 +348,7 @@ $(document).ready(function() {
       if(request.readyState == XMLHttpRequest.DONE) {
         if (request.status == 200) {
           $('section#rsvp .alert .cd-message').html("RSVP submitted successfully!");
+          resetRsvpForm();
           if (payload.address) {
             selectedGuest.address = payload.address;
           }
