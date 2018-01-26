@@ -65,6 +65,8 @@ label span {
 }
 
 #guests-list, #brunch-guests-list {
+  padding-left: 0px; // Padding is taken care of on the item level
+  padding-right: 26px;
   li {
     list-style-type: none;
     &.guest-row, &.plus-one-guest-row{
