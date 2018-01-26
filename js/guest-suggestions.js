@@ -262,11 +262,18 @@ $(document).ready(function() {
         id: guest.id
       };
       var attending;
+      // Brunch
       var attendingBrunch;
-      // Handle names for +1s
       if ($(".attending-status-brunch."+guest.id)) {
         attendingBrunch = $(".attending-status-brunch."+guest.id+":checked").val();
       }
+      // Dinner
+      var attendingDinner;
+      if ($(".attending-status-dinner."+guest.id)) {
+        attendingDinner = $(".attending-status-dinner."+guest.id+":checked").val();
+      }
+
+      // Handle names for +1s
       if (guest.is_anonymous) {
         if ($(".plus-one-row input").prop("checked")) {
           attending = ATTENDING
@@ -275,6 +282,7 @@ $(document).ready(function() {
         } else {
           attending = DECLINED;
           attendingBrunch = DECLINED; // Override when no +1
+          attendingDinner = DECLINED; // Override when no +1
         }
       } else {
         attending = $(".attending-status."+guest.id+":checked").val();
@@ -283,11 +291,11 @@ $(document).ready(function() {
       // Handle rsvping for events
       var rsvps = guest.statuses.reduce(function(output, status) {
         if (selectEvents[status.wedding_event_id]) {
-          if (status.wedding_event_id == BRUNCH_ID) {
+          if (status.wedding_event_id == BRUNCH_ID || status.wedding_event_id == DINNER_ID) {
             output.push({
               wedding_event_id: status.wedding_event_id,
               guest_list: status.guest_list,
-              attending_status: attendingBrunch,
+              attending_status: status.wedding_event_id == BRUNCH_ID ? attendingBrunch : attendingDinner,
             });
             return output;
           }
