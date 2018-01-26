@@ -14,7 +14,8 @@ $(document).ready(function() {
   var DECLINED = "declined";
   var WEDDING_BOT_URL = '{{ site.wedding-bot-url }}';
   var SINEMA_ID = 278945;
-  var BRUNCH_ID = 273068;
+  var BRUNCH_ID = 203467;
+  var DINNER_ID = 273068;
 
   var guestListRequest = new XMLHttpRequest();
   guestListRequest.onreadystatechange = function(response) {
