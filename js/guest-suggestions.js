@@ -122,7 +122,7 @@ $(document).ready(function() {
         })
         dropdown.append($("<option>", {value:"none"}).text("No Meal"));
         mealDiv.append(dropdown);
-        mealDiv.append($("<a></a>", {class:"menu-info"}).text("menu"))
+        mealDiv.append($("<a></a>", {class:"menu-info"}).text("View Menu"))
         row.append(mealDiv);
       });
       weddingRows.push(row);
