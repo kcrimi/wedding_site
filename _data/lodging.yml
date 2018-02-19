@@ -1,16 +1,16 @@
 - name: 'Franklin Marriott Cool Springs'
   img: 'marriott.jpg'
-  description: "Very modern hotel with free breakfast. $169 / night"
+  description: "Very modern hotel with free breakfast. $169 / night <br/>Ph. (615) 261-6100"
   code: 'Book Here before April 13'
   url: 'http://www.marriott.com/meeting-event-hotels/group-corporate-travel/groupCorp.mi?resLinkData=Crimi%20Choi%20Wedding%5EBNACS%60CCWCCWA%60169.00%60USD%60false%604%605/05/18%605/19/18%604/13/18&app=resvlink&stop_mobi=yes'
 - name: 'Courtyard Marriott'
   img: 'courtyard.jpg'
-  description: "Located right next to each other, the Courtyard Marriott offers a king bed or 2 queens for $139 / night."
+  description: "Located right next to each other, the Courtyard Marriott offers a king bed or 2 queens for $139 / night.<br/>Ph. (615) 778-0080"
   code: 'Book Here before April 20'
   url: 'http://www.marriott.com/meeting-event-hotels/group-corporate-travel/groupCorp.mi?resLinkData=Crimi%20Choi%20Wedding%5Ebnacc%60CCWCCWA%7CCCWCCWB%60139%60USD%60false%604%60;bnacl%60CCWCCWA%60149%60USD%60false%604%605/10/18%605/14/18%6004/20/18&app=resvlink&stop_mobi=yes'
 - name: 'Residence Inn'
   img: 'residence_inn.jpg'
-  description: "Good for families, the Residence Inn offers suites with a full kitchen, king bed, and queen pull out bed for $149 / night."
+  description: "Good for families, the Residence Inn offers suites with a full kitchen, king bed, and queen pull out bed for $149 / night.<br/>Ph. (615) 778-0002"
   code: 'Book Here before April 20'
   url: 'http://www.marriott.com/meeting-event-hotels/group-corporate-travel/groupCorp.mi?resLinkData=Crimi%20Choi%20Wedding%5Ebnacc%60CCWCCWA%7CCCWCCWB%60139%60USD%60false%604%60;bnacl%60CCWCCWA%60149%60USD%60false%604%605/10/18%605/14/18%6004/20/18&app=resvlink&stop_mobi=yes'
 - name: 'Airbnb'
