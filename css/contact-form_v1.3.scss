@@ -315,16 +315,6 @@ button:not([disabled]):focus {
     margin: 8em auto;
   }
 }
-.loader {
-  display: inline-block;
-  border: 6px solid $primary;
-  border-radius: 50%;
-  border-top: 6px solid #ad914bad;
-  width: 40px;
-  height: 40px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
-}
 
 /* Safari */
 @-webkit-keyframes spin {

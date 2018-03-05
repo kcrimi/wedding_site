@@ -395,6 +395,17 @@ section.standard-wrapper {
     text-align: left;
 }
 
+.loader {
+  display: inline-block;
+  border: 6px solid $primary;
+  border-radius: 50%;
+  border-top: 6px solid #ad914bad;
+  width: 40px;
+  height: 40px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
 footer {
     min-height: 150px;
     background: url(/img/feet.jpg) no-repeat center bottom;
