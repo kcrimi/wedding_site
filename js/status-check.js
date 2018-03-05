@@ -9,20 +9,16 @@ $(document).ready(function() {
   var guestListRequest = new XMLHttpRequest();
   guestListRequest.onreadystatechange = function(response) {
     if (guestListRequest.readyState === XMLHttpRequest.DONE) {
+      $(".loader-container").addClass("hidden");
       if (guestListRequest.status === 200) {
         guests = JSON.parse(guestListRequest.responseText);
         guests.forEach(function(item) {
-          var row = $("<li></li>");
-          row.text(item.name);
-          list.append(row);
-          // var option = document.createElement('option');
-          // option.value = item.name;
-          // dataLists.append(option);
+          if (item.needs_rsvp) {
+            var row = $("<li></li>");
+            row.text(item.name);
+            list.append(row);
+          }
         });
-        // input.placeholder = "Find your name";
-        // fixBrowsersThatDontSupportDatalist();
-      // } else {
-      //   input.placeholder = "Couldn't load guestlist :(";
       }
     }
   };
@@ -30,22 +26,5 @@ $(document).ready(function() {
   guestListRequest.open('GET', WEDDING_BOT_URL+'/guests', true);
   guestListRequest.send();
 
-  // var fixBrowsersThatDontSupportDatalist = function() {
-  //   var nativedatalist = !!('list' in document.createElement('input')) && 
-  //         !!(document.createElement('datalist') && window.HTMLDataListElement);
-      
-  //   if (true || !nativedatalist) {
-  //     $('input[list]').each(function () {
-  //       var availableTags = $('#' + $(this).attr("list")).find('option').map(function () {
-  //         return this.value;
-  //       }).get();
-  //       $(this).autocomplete({ 
-  //         source: availableTags,
-  //         close: checkForMatchedName,
-  //         minLength: 3
-  //       });
-  //       $(this).attr("list", "");
-  //     });
-  //   }
-  // }
+  $(".loader-container").removeClass("hidden");
 });
