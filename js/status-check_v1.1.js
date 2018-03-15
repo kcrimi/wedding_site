@@ -12,7 +12,6 @@ $(document).ready(function() {
         var guests = JSON.parse(guestListRequest.responseText);
         // Group the results
         guests.forEach(function(item) {
-          console.log(item.relationship);
           if (!groups[item.relationship]) {
             groups[item.relationship] = {
               count: 0,
@@ -32,6 +31,36 @@ $(document).ready(function() {
   };
 
   var updateUI = function() {
+    console.log($(".email-list"));
+    if ($(".email-list").length > 0) {
+      console.log("email list");
+      makeUnrespondedCsv();
+    } else {
+      console.log("lists");
+      addUnrespondedLists();
+    }
+  }
+
+  var makeUnrespondedCsv = function() {
+    console.log("csv");
+    var container = $(".email-list");
+    text = "";
+    for (var key in groups) {
+      if (key != "null") {
+        var group = groups[key];
+        group.unresponded.forEach(function(item) {
+          if (text != "") {
+            text += "</br>"  ;
+          }
+          text += item.name+","+item.email+","+key;
+        })
+      }
+    }
+    container.html(text);
+  }
+
+  var addUnrespondedLists = function() {
+    console.log('list');
     var container = $('#container');
     for (var key in groups) {
       if (key != "null") {
@@ -50,7 +79,7 @@ $(document).ready(function() {
     }
   }
 
-  guestListRequest.open('GET', WEDDING_BOT_URL+'/guests?includeRelationship=true', true);
+  guestListRequest.open('GET', WEDDING_BOT_URL+'/guests?includeRelationship=true&includeAddress=true', true);
   guestListRequest.send();
 
   $(".loader-container").removeClass("hidden");
