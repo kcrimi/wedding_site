@@ -52,7 +52,7 @@ $(document).ready(function() {
           if (text != "") {
             text += "</br>"  ;
           }
-          text += item.name+","+item.email+","+key;
+          text += '"'+item.name+'","'+item.email+'","'+key+'"';
         })
       }
     }
