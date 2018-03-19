@@ -1,6 +1,7 @@
 ---
 ---
 $(document).ready(function() {
+  var guests;
   var groups = {};
   var WEDDING_BOT_URL = '{{ site.wedding-bot-url }}';
 
@@ -9,7 +10,7 @@ $(document).ready(function() {
     if (guestListRequest.readyState === XMLHttpRequest.DONE) {
       $(".loader-container").addClass("hidden");
       if (guestListRequest.status === 200) {
-        var guests = JSON.parse(guestListRequest.responseText);
+        guests = JSON.parse(guestListRequest.responseText);
         // Group the results
         guests.forEach(function(item) {
           if (!groups[item.relationship]) {
@@ -35,6 +36,9 @@ $(document).ready(function() {
     if ($(".email-list").length > 0) {
       console.log("email list");
       makeUnrespondedCsv();
+    } else if ($(".full-export").length > 0) {
+      console.log("export")
+      makeExportCsv();
     } else {
       console.log("lists");
       addUnrespondedLists();
@@ -55,6 +59,29 @@ $(document).ready(function() {
           text += '"'+item.name+'","'+item.email+'","'+key+'"';
         })
       }
+    }
+    container.html(text);
+  }
+
+  var makeExportCsv = function() {
+    console.log("csv");
+    var container = $(".full-export");
+    text = `"Rsvp Id","Name","Needs Rsvp","Attending Count","Relationship","Email","Address 1","Address 2","City","Region","Postal Code","Country"`;
+    for (var i = 0; i < guests.length; i++ ){
+      var guest = guests[i];
+      text += `</br>
+        "${guest.rsvp_id }",
+        "${guest.name}",
+        "${guest.needs_rsvp}",
+        "${guest.attending_count}",
+        "${guest.relationship}",
+        "${guest.email && guest.email ? guest.email : ""}",
+        "${guest.address && guest.address.street ? guest.address.street : ""}",
+        "${guest.address && guest.address.extended ? guest.address.extended : ""}",
+        "${guest.address && guest.address.city ? guest.address.city : ""}",
+        "${guest.address && guest.address.region ? guest.address.region : ""}",
+        "${guest.address && guest.address.postcode ? guest.address.postcode : ""}",
+        "${guest.address && guest.address.country ? guest.address.country : ""}"`
     }
     container.html(text);
   }
