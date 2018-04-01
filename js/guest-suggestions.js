@@ -24,9 +24,11 @@ $(document).ready(function() {
       if (guestListRequest.status === 200) {
         guests = JSON.parse(guestListRequest.responseText);
         guests.forEach(function(item) {
-          var option = document.createElement('option');
-          option.value = item.name;
-          dataLists.append(option);
+          if (item.needs_rsvp) {
+            var option = document.createElement('option');
+            option.value = item.name;
+            dataLists.append(option);
+          }
         });
         input.placeholder = "Find your name";
         fixBrowsersThatDontSupportDatalist();
