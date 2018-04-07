@@ -357,7 +357,7 @@ ol {
     }
 }
 
-section.standard-wrapper {
+section#schedule {
     .detail-container {
         margin-bottom: 70px;
         .section-header {
@@ -372,9 +372,7 @@ section.standard-wrapper {
         }
         .sub-header {
             text-shadow: none;
-            &:not(:hover) {
-                color: #ad914bad;
-            }
+            color: #ad914bad;
         } 
         .event-name{
             margin: 0 0 14px;

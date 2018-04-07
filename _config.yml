@@ -52,16 +52,16 @@ err-img: "/img/dim_sum.jpg"
 #########################
 
 pages_list:
+  - name: 'schedule'
+    display: 'Schedule'
+    onIndex: True
+    nav: True
   - name: rsvp
     display: RSVP
-    onIndex: True
+    onIndex: False
     nav: True
   - name: 'lodging'
     display: 'Lodging'
-    onIndex: False
-    nav: True
-  - name: 'schedule'
-    display: 'Schedule'
     onIndex: False
     nav: True
   - name: 'recommendations'
