@@ -1,6 +1,7 @@
 - date: 2018-05-11
   events:
     - name: "Welcome Drinks"
+      icon: "fa-wine-glass"
       venue:
         name: "Sinema"
         url: "http://www.sinemanashville.com/the-lounge/"
@@ -8,15 +9,27 @@
       time: "5pm - 10pm"
       details: 
         - "Hey thanks for coming out to Nashville to celebrate with us! We're excited to see you. Come hang out with the future bride and groom before the big day at the historic Melrose theater.<br>Swing by at your leisure.<br>Small bites will be provided."
+        - "<strong>Dress Code:</strong> Casual"
 - date: 2018-05-12
   events:
+    - name: "Shuttle Bus Transportation"
+      icon: "fa-bus"
+      map: 
+        url: "https://drive.google.com/open?id=13fVfpPzqf7LA6gk6KnOHoX4MtKAh9y10&usp=sharing"
+        name: "Shuttle Stops"
+      details: 
+        - "Shuttle buses will be provided to the venue from the hotels. buses will make stops first at Franklin Cool Springs Marriott and then in the parking lot adjoining the Courtyard Marriott and Residence Inn"
+        - "For guests needing to attend the Tea Ceremony, please be ready to depart at your stop at <strong>2pm</strong>"
+        - "For all other guests, there will be 2 more buses to the main cermony departing from the hotels at <strong>4pm</strong> and <strong>4:15pm</strong>"
+        - "Shuttle buses will also return guests from the venue to the hotel stops at the end of the night"
     - name: "Wedding Ceremony and Reception"
+      icon: "fa-heart"
       venue:
         name: "The Barn at Sycamore Farms"
         url: "http://sycamorefarmsevents.com/"
         address: "4866 Murfreesboro Rd, Arrington, TN"
       time: "5pm"
       details: 
-        - "The ceremony will begin at 5pm, followed by the reception.<br>The ceremony will take place outside, weather permitting. Reception dinner will be indoors."
-        - "Shuttle service will be provided to and from the hotels in Franklin."
-        - "Dress Code: Cocktail attire or nicer. Just dress up and come ready to have fun."
+        - "For guests needing to attend the tea ceremony, it will being at <strong>3pm</strong>"
+        - "For all other guests, the main ceremony will begin at <strong>5pm</strong>, followed by the reception.<br>The ceremony will take place outside, weather permitting. Reception dinner will be indoors."
+        - "<strong>Dress Code:</strong> Cocktail attire or nicer. Just dress up and come ready to have fun."

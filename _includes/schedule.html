@@ -3,20 +3,27 @@
 	<div class="row">
 		<div class="col-lg-8 col-lg-offset-2 text-center">
 			<h1>Schedule</h1>
+			<h4 class="unstylized sub-header">If you encounter any issues the day of the wedding, please call our planner Brigett at <br/><a href="tel:6159998219">(615) 999-8219</a></h4>
 			{% for day in site.data.events %}
 				<div class="detail-container">
+					<div class="section-header">
+						<img src='/img/decor-right.png'>
+						<h3 class="unstylized sub-header">{{ day.date | date: "%A, %B %-d"}}</h3>
+						<img src='/img/decor2-left.png'>
+					</div>
 					{% for event in day.events %}
-						<div class="section-header">
-							<img src='/img/decor-right.png'>
-							<h3 class="unstylized sub-header">{{ day.date | date: "%A, %B %-d"}}</h3>
-							<img src='/img/decor2-left.png'>
-						</div>
+						<i class="event-icon fas {{ event.icon }} fa-5x" data-fa-transform="shrink-6.5"
+						data-fa-mask="fas fa-circle fa-3x"></i>
 						<h3 class="event-name">{{ event.name }} </h3>
 						<div class="event-info">
-							<a href='{{ event.venue.url }}' target='_blank' class= event>
-								<p class="event-venue-time"><b>{{ event.venue.name }} &nbsp; &#8226; &nbsp; {{ event.time }}</b></p>
-							</a>
-							<a href='https://maps.google.com/?q={{ event.venue.address}}' target='_blank'>{{ event.venue.address }} (map)</a>
+							{% if event.venue %}
+								<a href='{{ event.venue.url }}' target='_blank' class= event>
+									<p class="event-venue-time"><b>{{ event.venue.name }} &nbsp; &#8226; &nbsp; {{ event.time }}</b></p>
+								</a>
+								<a href='https://maps.google.com/?q={{ event.venue.address}}' target='_blank'>{{ event.venue.address }} (map)</a>
+							{% else %}
+								<a href='{{ event.map.url}}' target='_blank'>{{ event.map.name }} (map)</a>
+							{% endif %}
 						</div>
 						{% for detail in event.details %}
 							<p class="event-details">{{ detail }}</p>
