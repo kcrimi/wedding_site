@@ -56,8 +56,8 @@ pages_list:
     display: 'Schedule'
     onIndex: True
     nav: True
-  - name: rsvp
-    display: RSVP
+  - name: 'proposal'
+    display: "The Proposal"
     onIndex: False
     nav: True
   - name: 'lodging'
