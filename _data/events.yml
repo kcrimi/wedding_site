@@ -1,14 +1,14 @@
 - date: 2018-05-10
   events:
-    - name: "Strawberry Picking"
+    - name: 'Strawberry Picking'
       icon: "fa-leaf"
       venue:
         name: "Batey Farms"
         url: "http://www.bateyfarms.com/strawberries"
-        address: "3250 Wilkinson Pike, Murfreesboro, TN"
-      time: "11am - 12:30pm"
+        address: ""
+      time: '<span style="color:red">CANCELLED</span>'
       details: 
-        - "It's strawberry season in Tennessee! We're planning on going strawberry picking and anyone who'd like to joing is welcome."
+        - "Unfortunately, the farm announced it will not be open until the weekend due to a crop shortage 😢😢😢"
 - date: 2018-05-11
   events:
     - name: "Welcome Drinks"
