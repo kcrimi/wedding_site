@@ -56,6 +56,10 @@ pages_list:
     display: "Photos"
     onIndex: True
     nav: True
+  - name: 'playlist'
+    display: "Wedding Playlist"
+    onIndex: True
+    nav: True
   - name: 'proposal'
     display: "The Proposal"
     onIndex: False
