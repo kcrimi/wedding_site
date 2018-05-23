@@ -204,7 +204,6 @@ ol {
     background: url(/img/caret.png) no-repeat;
     background-size: 40px;
     background-position: center;
-    margin-top: 50px;
     animation: bounce 1s infinite alternate;
   -webkit-animation: bounce 1s infinite alternate;
 }
@@ -248,7 +247,7 @@ ol {
     .intro-body {
         display: table-cell;
         vertical-align: middle;
-        text-align: right;
+        text-align: left;
         h2 {
             text-shadow: 0 0 13px rgb(0, 0, 0);
         }
@@ -258,6 +257,15 @@ ol {
     }
     .addeventatc:hover {
         border: 1px solid $primary;
+    }
+    .col-lg-8 {
+        width: 100%;
+        margin-left: 0px;
+        h1 {
+            margin: 80px 0 0 0;
+
+            text-shadow: 3px 3px 5px rgba(0,0,0, 0.75);
+        }
     }
 }
 
@@ -487,7 +495,7 @@ footer {
         margin-bottom: 15px;
     }
     .down {
-        margin-top: 30px;
+        margin-top: 15px;
     }
 }
 
